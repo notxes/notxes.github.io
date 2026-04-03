@@ -61,6 +61,15 @@ nav {
   flex-wrap: wrap;
 }
 
+.hero-image {
+  width: 100%;
+  max-width: 900px;
+  display: block;
+  margin: 20px auto 30px;
+  border-radius: 16px;
+  border: 1px solid rgba(90, 120, 200, 0.25);
+}
+
 /* Hero */
 .hero {
   display: grid;
