@@ -33,60 +33,62 @@
         <h2>Enterprise Segmented Cybersecurity Homelab</h2>
         <h3>Overview</h3>
         <p>
-          Designed and built a segmented cybersecurity homelab to simulate a realistic enterprise environment. The lab supports both attacker and defender workflows, allowing me to practice network security, monitoring, incident response, and adversary simulation in a controlled setting.
+          Designed and built a segmented cybersecurity homelab to simulate enterprise network architecture and real-world attack and defense scenarios. The environment supports both attacker and defender workflows, enabling hands-on practice with network security, monitoring, incident response, and adversary simulation in a controlled lab.
         </p>
 
         <img src="images/homelab-diagram.png" class="hero-image">
        
         <h3>Technologies Used</h3>
         <ul>
-          <li>Proxmox</li>
-          <li>OPNsense</li>
+          <li>Proxmox (Multi-Node Virtualization)</li>
+          <li>OPNsense (Firewall, Routing, VPN)</li>
           <li>VLAN Segmentation</li>
-          <li>Security Onion</li>
-          <li>Active Directory</li>
-          <li>Kali Linux</li>
-          <li>Pi-hole</li>
-          <li>WireGuard</li>
-          <li>Cisco Switching</li>
+          <li>Security Onion (Network Monitoring and Detection)</li>
+          <li>Active Directory (Windows Server Environment)</li>
+          <li>Kali Linux (Offensive Testing and Attack Simulation)</li>
+          <li>Pi-hole (DNS Management)</li>
+          <li>WireGuard (Secure Remote Access)</li>
+          <li>Cisco Switching (VLAN and Network Infrastructure) </li>
         </ul>
 
         <h3>Architecture and Design</h3>
         <ul>
-          <li>VLAN 10 → Management</li>
+          <li>VLAN 10 → Management Network</li>
           <li>VLAN 20 → Red Team / Attacker Systems</li>
-          <li>VLAN 21 → Blue Team / Victim Systems</li>
-          <li>VLAN 30 → SOC / Monitoring Infrastructure</li>
+          <li>VLAN 21 → Victim Environment (Active Directory + Endpoints)</li>
+          <li>VLAN 30 → Blue Team / Monitoring Infrastructure</li>
           <li>VLAN 40 → DMZ / Public-Facing Services</li>
           <li>VLAN 50 → IoT / Untrusted Devices</li>
-          <li>Firewall rules configured in OPNsense to control inter-VLAN traffic</li>
-          <li>Mirrored traffic sent to Security Onion for monitoring and alerting</li>
-          <li>Virtual networking built with Proxmox bridges and VLAN tagging</li>
+          <li>Inter-VLAN traffic is routed through OPNsense and controlled via firewall policies</li>
+          <li>Port mirroring (SPAN) configured to forward traffic to Security Onion for monitoring</li>
+          <li>Virtual networking implemented using Proxmox bridges with VLAN tagging</li>
+          <li>Segmentation designed to enforce isolation and simulate real enterprise trust boundaries</li>
         </ul>
         
         <h3>What I Did</h3>
         <ul>
-          <li>Built the virtualized infrastructure across multiple Proxmox systems</li>
-          <li>Designed and implemented segmented networks for realistic attack and defense scenarios</li>
-          <li>Configured DMZ and IoT network segmentation to strengthen isolation and trust boundaries</li>
-          <li>Set up attacker and victim systems for testing and monitoring</li>
-          <li>Integrated Security Onion for traffic visibility, alert review, and analysis</li>
-          <li>Configured DNS, VPN access, and supporting infrastructure for lab functionality</li>
-          <li>Applied firewall rules to restrict lateral movement between VLANs while allowing controlled access where needed</li>
-          <li>Tested simulated attack activity to better understand detection and response workflows</li>
+          <li>Built and managed a multi-node Proxmox environment to support segmented infrastructure</li>
+          <li>Designed VLAN architecture to separate attacker, victim, SOC, DMZ, IoT, and management networks</li>
+          <li>Configured OPNsense firewall rules to control inter-VLAN traffic and restrict lateral movement</li>
+          <li>Deployed Security Onion for network visibility, alerting, and traffic analysis</li>
+          <li>Implemented an Active Directory lab environment with Windows clients for attack simulation</li>
+          <li>Set up attacker systems (Kali Linux) and victim machines to simulate real-world scenarios</li>
+          <li>Configured DNS services, VPN access (WireGuard), and supporting infrastructure</li>
+          <li>Conducted simulated attack activity to observe detection, logging, and response workflows</li>
         </ul>
 
         <h3>Results and Learning Outcomes</h3>
         <p>
-          This project strengthened my understanding of network segmentation, monitoring visibility, traffic flow, firewall policy design, and incident response. Building dedicated management, attacker, victim, SOC, DMZ, and IoT segments gave me practical experience with trust boundaries and how proper isolation can reduce attack surface and limit lateral movement inside an environment.
+         This project strengthened my understanding of network segmentation, traffic flow, and firewall policy design in a realistic environment. By building isolated VLANs for management, attacker, victim, SOC, DMZ, and IoT systems, I gained practical experience with enforcing trust boundaries and reducing attack surface.
+         Hands-on monitoring with Security Onion improved my ability to analyze network traffic and understand detection workflows, while configuring firewall rules reinforced how proper segmentation limits lateral movement and enhances overall security posture.
         </p>
 
         <div class="project-screenshots">
           <h3>Screenshots</h3>
           <div class="screenshot-grid">
-            <img src="images/proxmox-lab.jpg" alt="Proxmox homelab infrastructure">
+            <img src="images/proxmox-lab.jpg" alt="Proxmox homelab infrastructure (Coming Soon)">
             <img src="images/opnsense-vlans.jpg" alt="OPNsense VLAN interfaces">
-            <img src="images/opnsense-firewall-rules.jpg" alt="OPNsense firewall rules for lab segmentation">
+            <img src="images/opnsense-firewall-rules.jpg" alt="OPNsense firewall rules for lab segmentation (Coming Soon)">
           </div>
         </div>
       </div>
