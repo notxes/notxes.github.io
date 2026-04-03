@@ -1,0 +1,250 @@
+<section id="projects-page" class="projects-page">
+  <div class="container">
+    <h1>Projects</h1>
+    <p class="projects-intro">
+      A collection of hands-on cybersecurity, networking, and homelab projects focused on segmentation, monitoring, detection, and practical enterprise-style security design.
+    </p>
+
+    <div class="project-detail-card">
+      <h2>Enterprise Segmented Cybersecurity Homelab</h2>
+
+      <h3>Overview</h3>
+      <p>
+        Designed and built a segmented cybersecurity homelab to simulate a realistic enterprise environment. The lab supports both attacker and defender workflows, allowing me to practice network security, monitoring, incident response, and adversary simulation in a controlled setting.
+      </p>
+
+      <h3>Technologies Used</h3>
+      <ul>
+        <li>Proxmox</li>
+        <li>OPNsense</li>
+        <li>VLAN Segmentation</li>
+        <li>Security Onion</li>
+        <li>Active Directory</li>
+        <li>Kali Linux</li>
+        <li>Pi-hole</li>
+        <li>WireGuard</li>
+        <li>Cisco Switching</li>
+      </ul>
+
+      <h3>Architecture and Design</h3>
+      <ul>
+        <li>VLAN 10 → Management</li>
+        <li>VLAN 20 → Red Team / Attacker Systems</li>
+        <li>VLAN 21 → Blue Team / Victim Systems</li>
+        <li>VLAN 30 → SOC / Monitoring Infrastructure</li>
+        <li>VLAN 40 → DMZ / Public-Facing Services</li>
+        <li>VLAN 50 → IoT / Untrusted Devices</li>
+        <li>Firewall rules configured in OPNsense to control inter-VLAN traffic</li>
+        <li>Mirrored traffic sent to Security Onion for monitoring and alerting</li>
+        <li>Virtual networking built with Proxmox bridges and VLAN tagging</li>
+      </ul>
+
+      <h3>What I Did</h3>
+      <ul>
+        <li>Built the virtualized infrastructure across multiple Proxmox systems</li>
+        <li>Designed and implemented segmented networks for realistic attack and defense scenarios</li>
+        <li>Configured DMZ and IoT network segmentation to strengthen isolation and trust boundaries</li>
+        <li>Set up attacker and victim systems for testing and monitoring</li>
+        <li>Integrated Security Onion for traffic visibility, alert review, and analysis</li>
+        <li>Configured DNS, VPN access, and supporting infrastructure for lab functionality</li>
+        <li>Applied firewall rules to restrict lateral movement between VLANs while allowing controlled access where needed</li>
+        <li>Tested simulated attack activity to better understand detection and response workflows</li>
+      </ul>
+
+      <h3>Results and Learning Outcomes</h3>
+      <p>
+        This project strengthened my understanding of network segmentation, monitoring visibility, traffic flow, firewall policy design, and incident response. Building dedicated management, attacker, victim, SOC, DMZ, and IoT segments gave me practical experience with trust boundaries and how proper isolation can reduce attack surface and limit lateral movement inside an environment.
+      </p>
+
+      <div class="project-screenshots">
+        <h3>Screenshots</h3>
+        <div class="screenshot-grid">
+          <img src="images/homelab-diagram.jpg" alt="Enterprise segmented homelab network diagram">
+          <img src="images/proxmox-lab.jpg" alt="Proxmox homelab infrastructure">
+          <img src="images/opnsense-vlans.jpg" alt="OPNsense VLAN interfaces">
+          <img src="images/opnsense-firewall-rules.jpg" alt="OPNsense firewall rules for lab segmentation">
+        </div>
+      </div>
+    </div>
+
+    <div class="project-detail-card">
+      <h2>Security Onion Monitoring Environment</h2>
+
+      <h3>Overview</h3>
+      <p>
+        Deployed a Security Onion monitoring environment to observe network traffic across lab segments and better understand SOC workflows such as alerting, traffic analysis, event investigation, and visibility tuning.
+      </p>
+
+      <h3>Technologies Used</h3>
+      <ul>
+        <li>Security Onion</li>
+        <li>Zeek</li>
+        <li>Suricata</li>
+        <li>Proxmox</li>
+        <li>Cisco Switch SPAN Port</li>
+        <li>Ubuntu Server</li>
+      </ul>
+
+      <h3>Architecture and Design</h3>
+      <ul>
+        <li>Configured separate management and monitoring interfaces</li>
+        <li>Mirrored traffic from selected VLANs to the monitoring interface</li>
+        <li>Used a SPAN port to feed lab traffic into Security Onion</li>
+        <li>Monitored segmented activity to improve visibility into attacker and victim communications</li>
+      </ul>
+
+      <h3>What I Did</h3>
+      <ul>
+        <li>Installed and configured Security Onion in a standalone lab deployment</li>
+        <li>Set up network monitoring for segmented lab traffic</li>
+        <li>Verified packet capture and log ingestion</li>
+        <li>Reviewed dashboards, alerts, and SOC-style workflows</li>
+        <li>Used simulated attack traffic to understand what activity was visible and how alerts were generated</li>
+        <li>Troubleshot interface, span, and traffic visibility issues during deployment</li>
+      </ul>
+
+      <h3>Results and Learning Outcomes</h3>
+      <p>
+        This project helped me better understand how network monitoring tools ingest traffic, generate alerts, and support investigation workflows. It also improved my troubleshooting skills around mirrored traffic, interface configuration, and visibility across segmented environments.
+      </p>
+
+      <div class="project-screenshots">
+        <h3>Screenshots</h3>
+        <div class="screenshot-grid">
+          <img src="images/security-onion-dashboard.jpg" alt="Security Onion dashboard">
+          <img src="images/security-onion-alerts.jpg" alt="Security Onion alerts and monitoring view">
+          <img src="images/security-onion-hunt.jpg" alt="Security Onion investigation view">
+        </div>
+      </div>
+    </div>
+
+    <div class="project-detail-card">
+      <h2>School Network Security Design</h2>
+
+      <h3>Overview</h3>
+      <p>
+        Created a layered school network security design as part of a capstone project. The design focused on segmentation, endpoint protection, secure wireless access, and enterprise-style architecture built in Cisco Packet Tracer.
+      </p>
+
+      <h3>Technologies Used</h3>
+      <ul>
+        <li>Cisco Packet Tracer</li>
+        <li>VLAN Segmentation</li>
+        <li>Firewall Design</li>
+        <li>Wireless Network Design</li>
+        <li>Access Control Concepts</li>
+        <li>Windows Deployment Concepts</li>
+      </ul>
+
+      <h3>Architecture and Design</h3>
+      <ul>
+        <li>Separated traffic for students, staff, administrators, and guests</li>
+        <li>Applied layered security principles and defense in depth</li>
+        <li>Included switching, routing, and wireless design considerations</li>
+        <li>Considered endpoint protection, patching, MFA, and access control</li>
+      </ul>
+
+      <h3>What I Did</h3>
+      <ul>
+        <li>Focused on the cybersecurity and protection side of the design</li>
+        <li>Helped define segmentation and layered defense strategies</li>
+        <li>Contributed recommendations for endpoint security and hardening</li>
+        <li>Supported the overall technical and business design of the environment</li>
+      </ul>
+
+      <h3>Results and Learning Outcomes</h3>
+      <p>
+        This project improved my understanding of secure network design in a collaborative environment and helped me connect classroom concepts to practical decisions involving segmentation, access control, wireless security, and defense in depth.
+      </p>
+
+      <div class="project-screenshots">
+        <h3>Screenshots</h3>
+        <div class="screenshot-grid">
+          <img src="images/school-network-diagram.jpg" alt="School network security design diagram">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<style>
+.projects-page {
+  padding: 60px 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.projects-page h1 {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+.projects-intro {
+  max-width: 850px;
+  margin-bottom: 32px;
+  color: #b8c0d9;
+  line-height: 1.7;
+}
+
+.project-detail-card {
+  background: rgba(8, 18, 50, 0.88);
+  border: 1px solid rgba(90, 120, 200, 0.25);
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 30px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.18);
+}
+
+.project-detail-card h2 {
+  font-size: 1.8rem;
+  margin-bottom: 18px;
+  color: #ffffff;
+}
+
+.project-detail-card h3 {
+  margin-top: 24px;
+  margin-bottom: 10px;
+  color: #dce5ff;
+}
+
+.project-detail-card p,
+.project-detail-card li {
+  color: #c6cde2;
+  line-height: 1.7;
+}
+
+.project-detail-card ul {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.project-screenshots {
+  margin-top: 24px;
+}
+
+.screenshot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.screenshot-grid img {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid rgba(90, 120, 200, 0.25);
+  display: block;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.screenshot-grid img:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+</style>
