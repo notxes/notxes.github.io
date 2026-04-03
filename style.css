@@ -1,0 +1,78 @@
+<style>
+.projects-page {
+  padding: 60px 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.projects-page h1 {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+.projects-intro {
+  max-width: 850px;
+  margin-bottom: 32px;
+  color: #b8c0d9;
+  line-height: 1.7;
+}
+
+.project-detail-card {
+  background: rgba(8, 18, 50, 0.88);
+  border: 1px solid rgba(90, 120, 200, 0.25);
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 30px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.18);
+}
+
+.project-detail-card h2 {
+  font-size: 1.8rem;
+  margin-bottom: 18px;
+  color: #ffffff;
+}
+
+.project-detail-card h3 {
+  margin-top: 24px;
+  margin-bottom: 10px;
+  color: #dce5ff;
+}
+
+.project-detail-card p,
+.project-detail-card li {
+  color: #c6cde2;
+  line-height: 1.7;
+}
+
+.project-detail-card ul {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.project-screenshots {
+  margin-top: 24px;
+}
+
+.screenshot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.screenshot-grid img {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid rgba(90, 120, 200, 0.25);
+  display: block;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.screenshot-grid img:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+</style>
