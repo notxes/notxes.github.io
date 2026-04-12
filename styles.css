@@ -212,6 +212,21 @@ ul {
   padding: 8px;
 }
 
+.screenshot-grid figure {
+  margin: 0;
+  background: #16213f;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 10px;
+}
+
+.screenshot-grid figcaption {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
 /* Footer */
 footer {
   padding: 26px 0 50px;
