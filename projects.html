@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +6,357 @@
   <title>Matthew Sexton | Projects</title>
   <meta name="description" content="Cybersecurity, homelab, app development, and network security projects by Matthew Sexton." />
   <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* Scoped app-style projects page. This avoids breaking the rest of your site. */
+    body.projects-app-page {
+      background:
+        linear-gradient(rgba(4, 7, 13, 0.86), rgba(4, 7, 13, 0.96)),
+        radial-gradient(circle at top right, rgba(100, 181, 255, 0.18), transparent 35%),
+        linear-gradient(180deg, #080d18 0%, #0b1020 100%);
+      color: #f5f2e8;
+    }
+
+    .projects-app-shell {
+      width: min(1280px, 94%);
+      margin: 0 auto;
+      padding-bottom: 70px;
+    }
+
+    .projects-app-page header {
+      padding: 28px 0 26px;
+      border-bottom: 1px solid rgba(230, 185, 79, 0.18);
+      background: rgba(2, 5, 12, 0.18);
+    }
+
+    .projects-app-page nav {
+      margin-bottom: 26px;
+    }
+
+    .projects-app-page .brand,
+    .projects-app-page .nav-links a {
+      color: #f5f2e8;
+    }
+
+    .projects-app-hero {
+      text-align: center;
+      padding: 18px 0 4px;
+    }
+
+    .projects-app-hero .eyebrow {
+      margin: 0 0 8px;
+      color: #e6b94f;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+    }
+
+    .projects-app-hero h1 {
+      margin: 0 0 8px;
+      font-size: clamp(3rem, 7vw, 5rem);
+      line-height: 1;
+      color: #fff4d6;
+    }
+
+    .projects-app-hero p {
+      margin: 0 auto;
+      max-width: 760px;
+      color: #d8d6d0;
+    }
+
+    .projects-app-main {
+      padding-top: 24px;
+    }
+
+    .projects-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .projects-stat-card,
+    .projects-control,
+    .projects-categories,
+    .projects-list,
+    .projects-detail {
+      background: rgba(0, 0, 0, 0.68);
+      border: 1px solid rgba(230, 185, 79, 0.36);
+      border-radius: 16px;
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.28);
+      backdrop-filter: blur(8px);
+    }
+
+    .projects-stat-card {
+      padding: 18px;
+    }
+
+    .projects-stat-card span {
+      display: block;
+      color: #e6b94f;
+      font-size: 0.76rem;
+      font-weight: 900;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .projects-stat-card strong {
+      display: block;
+      margin-top: 8px;
+      color: #ffffff;
+      font-size: 1.55rem;
+      line-height: 1.1;
+    }
+
+    .projects-controls {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .projects-control {
+      width: 100%;
+      color: #f5f2e8;
+      padding: 13px 15px;
+      outline: none;
+    }
+
+    .projects-control::placeholder {
+      color: #b8b4aa;
+    }
+
+    .projects-categories {
+      padding: 18px;
+      margin-bottom: 18px;
+    }
+
+    .projects-categories h2,
+    .projects-list h2 {
+      margin: 0 0 14px;
+      color: #fff4d6;
+    }
+
+    .projects-category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .project-category-btn,
+    .project-list-btn {
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+      color: #f5f2e8;
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(230, 185, 79, 0.22);
+      border-radius: 12px;
+      transition: 0.18s ease;
+    }
+
+    .project-category-btn {
+      padding: 14px;
+    }
+
+    .project-category-btn:hover,
+    .project-list-btn:hover,
+    .project-category-btn.active,
+    .project-list-btn.active {
+      background: rgba(230, 185, 79, 0.12);
+      border-color: rgba(230, 185, 79, 0.58);
+    }
+
+    .project-category-btn span {
+      display: block;
+      font-weight: 900;
+      color: #ffffff;
+    }
+
+    .project-category-btn small {
+      display: block;
+      margin-top: 4px;
+      color: #e6b94f;
+      font-weight: 800;
+    }
+
+    .projects-workspace {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .projects-list {
+      padding: 16px;
+      position: sticky;
+      top: 16px;
+    }
+
+    .projects-list .muted {
+      margin: -6px 0 14px;
+      color: #b8b4aa;
+    }
+
+    .project-list-btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      margin-top: 10px;
+    }
+
+    .project-list-btn span {
+      display: block;
+      font-weight: 900;
+      color: #ffffff;
+    }
+
+    .project-list-btn small {
+      display: block;
+      margin-top: 4px;
+      color: #e6b94f;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+    }
+
+    .projects-detail {
+      padding: 22px;
+      min-height: 620px;
+    }
+
+    .project-panel {
+      display: none;
+    }
+
+    .project-panel.active {
+      display: block;
+    }
+
+    .project-panel-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+
+    .project-label {
+      margin: 0 0 8px;
+      color: #e6b94f;
+      font-size: 0.75rem;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .project-panel h2 {
+      margin: 0 0 10px;
+      color: #fff4d6;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      line-height: 1.05;
+    }
+
+    .project-badge {
+      white-space: nowrap;
+      color: #fff4d6;
+      border: 1px solid rgba(230, 185, 79, 0.48);
+      background: rgba(230, 185, 79, 0.08);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-weight: 900;
+    }
+
+    .project-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .project-tags span {
+      color: #e6b94f;
+      border: 1px solid rgba(230, 185, 79, 0.34);
+      background: rgba(230, 185, 79, 0.08);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 0.75rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .project-panel p,
+    .project-panel li {
+      color: #e9e5db;
+    }
+
+    .project-image {
+      display: block;
+      width: 100%;
+      max-height: 480px;
+      object-fit: contain;
+      margin: 18px 0;
+      border-radius: 16px;
+      border: 1px solid rgba(230, 185, 79, 0.28);
+      background: rgba(255, 255, 255, 0.05);
+      padding: 8px;
+    }
+
+    .detail-box {
+      margin-top: 16px;
+      padding: 16px;
+      border: 1px solid rgba(230, 185, 79, 0.24);
+      border-radius: 14px;
+      background: rgba(0, 0, 0, 0.24);
+    }
+
+    .detail-box h3 {
+      margin: 0 0 10px;
+      color: #fff4d6;
+    }
+
+    .detail-box ul {
+      margin: 0;
+    }
+
+    .detail-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .project-screenshot-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .project-screenshot-grid img {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid rgba(230, 185, 79, 0.24);
+      background: rgba(255, 255, 255, 0.05);
+      padding: 6px;
+    }
+
+    @media (max-width: 1000px) {
+      .projects-stats,
+      .projects-controls,
+      .projects-category-grid,
+      .projects-workspace {
+        grid-template-columns: 1fr;
+      }
+
+      .projects-list {
+        position: static;
+      }
+    }
+  </style>
 </head>
-<body>
-  <header class="projects-app-header">
-    <div class="container">
+<body class="projects-app-page">
+  <header>
+    <div class="projects-app-shell">
       <nav>
         <div class="brand">Matthew Sexton</div>
         <div class="nav-links">
@@ -23,389 +369,146 @@
       </nav>
 
       <section class="projects-app-hero">
-        <p class="projects-eyebrow">Project Hall</p>
+        <p class="eyebrow">Project Hall</p>
         <h1>Projects</h1>
-        <p>Track my cybersecurity labs, infrastructure builds, app development, and portfolio work.</p>
+        <p>Cybersecurity labs, infrastructure builds, app development, and portfolio work organized like my D&D app interface.</p>
       </section>
     </div>
   </header>
 
-  <main class="container projects-app">
-
-    <section class="project-stats">
-      <div class="stat-card">
+  <main class="projects-app-shell projects-app-main">
+    <section class="projects-stats">
+      <div class="projects-stat-card">
         <span>Total Projects</span>
         <strong>6</strong>
       </div>
-      <div class="stat-card">
+      <div class="projects-stat-card">
         <span>Active Builds</span>
-        <strong>4</strong>
+        <strong>5</strong>
       </div>
-      <div class="stat-card">
-        <span>Focus Areas</span>
-        <strong>Security / Dev / Infrastructure</strong>
+      <div class="projects-stat-card">
+        <span>Focus</span>
+        <strong>Security / Infrastructure / Dev</strong>
       </div>
     </section>
 
-    <section class="project-search-row">
-      <input type="text" placeholder="Search projects..." />
-      <select>
-        <option>All Categories</option>
-        <option>Cybersecurity</option>
-        <option>Firewall</option>
-        <option>Proxmox Server</option>
-        <option>D&D App</option>
-        <option>Website</option>
+    <section class="projects-controls">
+      <input class="projects-control" id="projectSearch" type="text" placeholder="Search projects..." />
+      <select class="projects-control" id="projectSelect">
+        <option value="homelab">Enterprise Segmented Cybersecurity Homelab</option>
+        <option value="security-onion">Security Onion Monitoring Environment</option>
+        <option value="firewall">OPNsense Firewall & VLAN Policy Design</option>
+        <option value="proxmox">Proxmox Multi-Node Virtualization Lab</option>
+        <option value="dnd-app">D&D Campaign Management App</option>
+        <option value="website">Notxes Portfolio Website</option>
       </select>
     </section>
 
-    <section class="project-category-panel">
+    <section class="projects-categories">
       <h2>Categories</h2>
-
-      <div class="project-category-grid">
-        <a href="#homelab" class="category-tile active">
-          <span>Cybersecurity</span>
-          <strong>3 projects</strong>
-        </a>
-
-        <a href="#firewall" class="category-tile">
-          <span>Firewall</span>
-          <strong>1 project</strong>
-        </a>
-
-        <a href="#proxmox" class="category-tile">
-          <span>Proxmox Server</span>
-          <strong>1 project</strong>
-        </a>
-
-        <a href="#dnd-app" class="category-tile">
-          <span>D&D App</span>
-          <strong>1 project</strong>
-        </a>
-
-        <a href="#website" class="category-tile">
-          <span>Website</span>
-          <strong>1 project</strong>
-        </a>
-
-        <a href="#school-network" class="category-tile">
-          <span>School Projects</span>
-          <strong>1 project</strong>
-        </a>
+      <div class="projects-category-grid">
+        <button class="project-category-btn active" data-project="homelab"><span>Cybersecurity</span><small>Homelab + monitoring</small></button>
+        <button class="project-category-btn" data-project="firewall"><span>Firewall</span><small>OPNsense + VLAN rules</small></button>
+        <button class="project-category-btn" data-project="proxmox"><span>Proxmox Server</span><small>Virtual infrastructure</small></button>
+        <button class="project-category-btn" data-project="dnd-app"><span>D&D App</span><small>Full-stack development</small></button>
       </div>
     </section>
 
-    <section class="project-workspace">
-
-      <aside class="project-list-panel">
+    <section class="projects-workspace">
+      <aside class="projects-list">
         <h2>Project List</h2>
-        <p class="muted">Select a project to view the technical breakdown.</p>
+        <p class="muted">Click a project to view the breakdown.</p>
 
-        <a href="#homelab" class="project-list-item active">
-          <span>Enterprise Segmented Cybersecurity Homelab</span>
-          <small>Cybersecurity • Active Lab</small>
-        </a>
-
-        <a href="#security-onion" class="project-list-item">
-          <span>Security Onion Monitoring Environment</span>
-          <small>SOC Lab • Monitoring</small>
-        </a>
-
-        <a href="#firewall" class="project-list-item">
-          <span>OPNsense Firewall & VLAN Policy Design</span>
-          <small>Firewall • Segmentation</small>
-        </a>
-
-        <a href="#proxmox" class="project-list-item">
-          <span>Proxmox Multi-Node Virtualization Lab</span>
-          <small>Infrastructure • Virtualization</small>
-        </a>
-
-        <a href="#dnd-app" class="project-list-item">
-          <span>D&D Campaign Management App</span>
-          <small>Full-Stack App • Active Development</small>
-        </a>
-
-        <a href="#website" class="project-list-item">
-          <span>Notxes Portfolio Website</span>
-          <small>Portfolio • Branding</small>
-        </a>
-
-        <a href="#school-network" class="project-list-item">
-          <span>School Network Security Design</span>
-          <small>Network Design • Completed</small>
-        </a>
+        <button class="project-list-btn active" data-project="homelab"><span>Enterprise Segmented Cybersecurity Homelab</span><small>Cybersecurity • Active lab</small></button>
+        <button class="project-list-btn" data-project="security-onion"><span>Security Onion Monitoring Environment</span><small>SOC lab • Detection</small></button>
+        <button class="project-list-btn" data-project="firewall"><span>OPNsense Firewall & VLAN Policy Design</span><small>Firewall • Segmentation</small></button>
+        <button class="project-list-btn" data-project="proxmox"><span>Proxmox Multi-Node Virtualization Lab</span><small>Infrastructure • Virtualization</small></button>
+        <button class="project-list-btn" data-project="dnd-app"><span>D&D Campaign Management App</span><small>Full-stack app • Active development</small></button>
+        <button class="project-list-btn" data-project="website"><span>Notxes Portfolio Website</span><small>Portfolio • Career branding</small></button>
       </aside>
 
-      <section class="project-detail-panel">
-
-        <article id="homelab" class="project-display-card">
-          <div class="project-display-top">
+      <section class="projects-detail">
+        <article id="homelab" class="project-panel active" data-title="enterprise segmented cybersecurity homelab cybersecurity vlan security onion active directory">
+          <div class="project-panel-top">
             <div>
-              <p class="project-lock">ACTIVE LAB</p>
+              <p class="project-label">Active Lab</p>
               <h2>Enterprise Segmented Cybersecurity Homelab</h2>
-              <div class="project-tags">
-                <span>Cybersecurity</span>
-                <span>VLANs</span>
-                <span>Security Onion</span>
-                <span>Active Directory</span>
-              </div>
+              <div class="project-tags"><span>Cybersecurity</span><span>VLANs</span><span>Security Onion</span><span>Active Directory</span></div>
             </div>
-            <strong class="project-score">Core Project</strong>
+            <strong class="project-badge">Core Project</strong>
           </div>
-
-          <p>
-            Designed and built a segmented cybersecurity homelab to simulate enterprise network architecture and real-world attack and defense scenarios. The environment supports attacker and defender workflows for hands-on practice with network security, monitoring, incident response, and adversary simulation.
-          </p>
-
-          <img src="images/homelab-diagram.png" class="project-main-image" alt="Enterprise cybersecurity homelab network diagram" />
-
-          <div class="detail-box">
-            <h3>Technologies Used</h3>
-            <ul>
-              <li>Proxmox multi-node virtualization</li>
-              <li>OPNsense firewall, routing, VPN, and VLAN policies</li>
-              <li>Security Onion monitoring and detection</li>
-              <li>Active Directory and Windows endpoint environment</li>
-              <li>Kali Linux offensive testing system</li>
-              <li>Pi-hole DNS and WireGuard remote access</li>
-              <li>Cisco switching and SPAN traffic monitoring</li>
-            </ul>
-          </div>
-
-          <div class="detail-box">
-            <h3>Architecture</h3>
-            <ul>
-              <li>VLAN 10 → Management Network</li>
-              <li>VLAN 20 → Red Team / Attacker Systems</li>
-              <li>VLAN 21 → Victim Environment</li>
-              <li>VLAN 30 → Blue Team / SOC Monitoring</li>
-              <li>VLAN 40 → DMZ / Public-Facing Services</li>
-              <li>VLAN 50 → IoT / Untrusted Devices</li>
-            </ul>
-          </div>
-
-          <div class="detail-box">
-            <h3>Results</h3>
-            <p>
-              This project strengthened my understanding of segmentation, firewall policy design, traffic flow, monitoring visibility, trust boundaries, and how defensive tools observe attacker behavior in a controlled lab.
-            </p>
-          </div>
+          <p>Designed and built a segmented cybersecurity homelab to simulate enterprise network architecture and real-world attack and defense scenarios.</p>
+          <img src="images/homelab-diagram.png" class="project-image" alt="Enterprise cybersecurity homelab network diagram" />
+          <div class="detail-box"><h3>Technologies Used</h3><ul><li>Proxmox multi-node virtualization</li><li>OPNsense firewall, routing, VPN, and VLAN policies</li><li>Security Onion monitoring and detection</li><li>Active Directory and Windows endpoint environment</li><li>Kali Linux offensive testing system</li><li>Pi-hole DNS and WireGuard remote access</li><li>Cisco switching and SPAN traffic monitoring</li></ul></div>
+          <div class="detail-box"><h3>Architecture</h3><ul><li>VLAN 10 → Management Network</li><li>VLAN 20 → Red Team / Attacker Systems</li><li>VLAN 21 → Victim Environment</li><li>VLAN 30 → Blue Team / SOC Monitoring</li><li>VLAN 40 → DMZ / Public-Facing Services</li><li>VLAN 50 → IoT / Untrusted Devices</li></ul></div>
+          <div class="detail-box"><h3>Results</h3><p>This project strengthened my understanding of segmentation, firewall policy design, traffic flow, monitoring visibility, trust boundaries, and how defensive tools observe attacker behavior.</p></div>
         </article>
 
-        <article id="security-onion" class="project-display-card">
-          <div class="project-display-top">
-            <div>
-              <p class="project-lock">MONITORING</p>
-              <h2>Security Onion Monitoring Environment</h2>
-              <div class="project-tags">
-                <span>SOC</span>
-                <span>Zeek</span>
-                <span>Suricata</span>
-                <span>SPAN</span>
-              </div>
-            </div>
-            <strong class="project-score">SOC Lab</strong>
-          </div>
-
-          <p>
-            Deployed Security Onion to observe segmented lab traffic and practice SOC workflows including alert review, event investigation, packet visibility, and traffic analysis.
-          </p>
-
-          <div class="detail-box">
-            <h3>What I Did</h3>
-            <ul>
-              <li>Installed and configured Security Onion in the lab</li>
-              <li>Configured management and monitoring interfaces</li>
-              <li>Used mirrored traffic from selected VLANs</li>
-              <li>Reviewed dashboards, alerts, packet capture, and logs</li>
-              <li>Troubleshot interface, SPAN, and visibility issues</li>
-            </ul>
-          </div>
-
-          <div class="screenshot-grid">
-            <img src="images/security-onion-dashboard.jpg" alt="Security Onion dashboard">
-            <img src="images/security-onion-alerts.jpg" alt="Security Onion alerts">
-            <img src="images/security-onion-hunt.jpg" alt="Security Onion hunt view">
-          </div>
+        <article id="security-onion" class="project-panel" data-title="security onion monitoring soc zeek suricata span alerts">
+          <div class="project-panel-top"><div><p class="project-label">Monitoring</p><h2>Security Onion Monitoring Environment</h2><div class="project-tags"><span>SOC</span><span>Zeek</span><span>Suricata</span><span>SPAN</span></div></div><strong class="project-badge">SOC Lab</strong></div>
+          <p>Deployed Security Onion to observe segmented lab traffic and practice SOC workflows including alert review, event investigation, packet visibility, and traffic analysis.</p>
+          <div class="detail-box"><h3>What I Did</h3><ul><li>Installed and configured Security Onion in the lab</li><li>Configured management and monitoring interfaces</li><li>Used mirrored traffic from selected VLANs</li><li>Reviewed dashboards, alerts, packet capture, and logs</li><li>Troubleshot interface, SPAN, and visibility issues</li></ul></div>
+          <div class="project-screenshot-grid"><img src="images/security-onion-dashboard.jpg" alt="Security Onion dashboard"><img src="images/security-onion-alerts.jpg" alt="Security Onion alerts"><img src="images/security-onion-hunt.jpg" alt="Security Onion hunt view"></div>
         </article>
 
-        <article id="firewall" class="project-display-card">
-          <div class="project-display-top">
-            <div>
-              <p class="project-lock">FIREWALL</p>
-              <h2>OPNsense Firewall & VLAN Policy Design</h2>
-              <div class="project-tags">
-                <span>OPNsense</span>
-                <span>Firewall Rules</span>
-                <span>VLANs</span>
-                <span>WireGuard</span>
-              </div>
-            </div>
-            <strong class="project-score">Security Control</strong>
-          </div>
-
-          <p>
-            Designed firewall rules to control inter-VLAN traffic, restrict lateral movement, route segmented networks, and support VPN access into the lab.
-          </p>
-
-          <div class="detail-box">
-            <h3>What I Did</h3>
-            <ul>
-              <li>Created segmented VLAN interfaces</li>
-              <li>Built allow/deny policies between lab zones</li>
-              <li>Controlled Red Team, Victim, SOC, DMZ, IoT, and Management traffic</li>
-              <li>Troubleshot DNS, routing, and connectivity issues</li>
-              <li>Used rules to simulate enterprise trust boundaries</li>
-            </ul>
-          </div>
-
-          <div class="screenshot-grid">
-            <img src="images/opnsense-vlans.jpg" alt="OPNsense VLAN interfaces">
-            <img src="images/opnsense-firewall-rules.jpg" alt="OPNsense firewall rules">
-          </div>
+        <article id="firewall" class="project-panel" data-title="opnsense firewall vlan rules segmentation wireguard dns routing">
+          <div class="project-panel-top"><div><p class="project-label">Firewall</p><h2>OPNsense Firewall & VLAN Policy Design</h2><div class="project-tags"><span>OPNsense</span><span>Firewall Rules</span><span>VLANs</span><span>WireGuard</span></div></div><strong class="project-badge">Security Control</strong></div>
+          <p>Designed firewall rules to control inter-VLAN traffic, restrict lateral movement, route segmented networks, and support VPN access into the lab.</p>
+          <div class="detail-box"><h3>What I Did</h3><ul><li>Created segmented VLAN interfaces</li><li>Built allow/deny policies between lab zones</li><li>Controlled Red Team, Victim, SOC, DMZ, IoT, and Management traffic</li><li>Troubleshot DNS, routing, and connectivity issues</li><li>Used rules to simulate enterprise trust boundaries</li></ul></div>
+          <div class="project-screenshot-grid"><img src="images/opnsense-vlans.jpg" alt="OPNsense VLAN interfaces"><img src="images/opnsense-firewall-rules.jpg" alt="OPNsense firewall rules"></div>
         </article>
 
-        <article id="proxmox" class="project-display-card">
-          <div class="project-display-top">
-            <div>
-              <p class="project-lock">INFRASTRUCTURE</p>
-              <h2>Proxmox Multi-Node Virtualization Lab</h2>
-              <div class="project-tags">
-                <span>Proxmox</span>
-                <span>Virtualization</span>
-                <span>Bridges</span>
-                <span>Lab Infrastructure</span>
-              </div>
-            </div>
-            <strong class="project-score">Infrastructure</strong>
-          </div>
-
-          <p>
-            Built and managed a Proxmox-based virtualization environment to host attacker systems, victim machines, monitoring tools, infrastructure services, and lab networks.
-          </p>
-
-          <div class="detail-box">
-            <h3>What I Did</h3>
-            <ul>
-              <li>Configured multiple Proxmox hosts for lab workloads</li>
-              <li>Created virtual networks and VLAN-aware bridges</li>
-              <li>Separated infrastructure, Red Team, Blue Team, and victim workloads</li>
-              <li>Hosted Windows Server, Windows clients, Linux systems, Kali, and monitoring tools</li>
-            </ul>
-          </div>
-
-          <div class="screenshot-grid">
-            <img src="images/proxmox-lab-infra.jpg" alt="Proxmox infrastructure host">
-            <img src="images/proxmox-lab-blue.jpg" alt="Proxmox blue team host">
-            <img src="images/proxmox-lab-red.jpg" alt="Proxmox red team host">
-          </div>
+        <article id="proxmox" class="project-panel" data-title="proxmox virtualization multi node server bridges infrastructure">
+          <div class="project-panel-top"><div><p class="project-label">Infrastructure</p><h2>Proxmox Multi-Node Virtualization Lab</h2><div class="project-tags"><span>Proxmox</span><span>Virtualization</span><span>Bridges</span><span>Infrastructure</span></div></div><strong class="project-badge">Infrastructure</strong></div>
+          <p>Built and managed a Proxmox-based virtualization environment to host attacker systems, victim machines, monitoring tools, infrastructure services, and lab networks.</p>
+          <div class="detail-box"><h3>What I Did</h3><ul><li>Configured multiple Proxmox hosts for lab workloads</li><li>Created virtual networks and VLAN-aware bridges</li><li>Separated infrastructure, Red Team, Blue Team, and victim workloads</li><li>Hosted Windows Server, Windows clients, Linux systems, Kali, and monitoring tools</li></ul></div>
+          <div class="project-screenshot-grid"><img src="images/proxmox-lab-infra.jpg" alt="Proxmox infrastructure host"><img src="images/proxmox-lab-blue.jpg" alt="Proxmox blue team host"><img src="images/proxmox-lab-red.jpg" alt="Proxmox red team host"></div>
         </article>
 
-        <article id="dnd-app" class="project-display-card">
-          <div class="project-display-top">
-            <div>
-              <p class="project-lock">ACTIVE DEVELOPMENT</p>
-              <h2>D&D Campaign Management App</h2>
-              <div class="project-tags">
-                <span>Next.js</span>
-                <span>Supabase</span>
-                <span>PostgreSQL</span>
-                <span>TypeScript</span>
-              </div>
-            </div>
-            <strong class="project-score">Full-Stack</strong>
-          </div>
-
-          <p>
-            Built a custom full-stack D&D 5.5 / 2024 application focused on campaign management, character creation, character sheets, inventory, spells, features, achievements, and database-driven automation.
-          </p>
-
-          <img src="images/dnd-app-dashboard.jpg" class="project-main-image" alt="D&D app dashboard preview" />
-
-          <div class="detail-box">
-            <h3>What I Did</h3>
-            <ul>
-              <li>Designed and built a multi-step character creator</li>
-              <li>Created database-backed systems for species, classes, backgrounds, spells, inventory, equipment, and features</li>
-              <li>Built app-style UI screens for achievements, characters, campaign tools, and progression systems</li>
-              <li>Worked through schema migrations, permission issues, frontend bugs, and data consistency problems</li>
-            </ul>
-          </div>
-
-          <div class="detail-box">
-            <h3>Results</h3>
-            <p>
-              This project demonstrates full-stack development, database design, complex rule modeling, debugging, UI organization, and long-term project ownership.
-            </p>
-          </div>
+        <article id="dnd-app" class="project-panel" data-title="dnd campaign management app nextjs supabase postgres typescript achievement character creator">
+          <div class="project-panel-top"><div><p class="project-label">Active Development</p><h2>D&D Campaign Management App</h2><div class="project-tags"><span>Next.js</span><span>Supabase</span><span>PostgreSQL</span><span>TypeScript</span></div></div><strong class="project-badge">Full-Stack</strong></div>
+          <p>Built a custom full-stack D&D 5.5 / 2024 application focused on campaign management, character creation, character sheets, inventory, spells, features, achievements, and database-driven automation.</p>
+          <img src="images/dnd-app-dashboard.jpg" class="project-image" alt="D&D app dashboard preview" />
+          <div class="detail-box"><h3>What I Did</h3><ul><li>Designed and built a multi-step character creator</li><li>Created database-backed systems for species, classes, backgrounds, spells, inventory, equipment, and features</li><li>Built app-style UI screens for achievements, characters, campaign tools, and progression systems</li><li>Worked through schema migrations, permission issues, frontend bugs, and data consistency problems</li></ul></div>
+          <div class="detail-box"><h3>Results</h3><p>This project demonstrates full-stack development, database design, complex rule modeling, debugging, UI organization, and long-term project ownership.</p></div>
         </article>
 
-        <article id="website" class="project-display-card">
-          <div class="project-display-top">
-            <div>
-              <p class="project-lock">PORTFOLIO</p>
-              <h2>Notxes Portfolio Website</h2>
-              <div class="project-tags">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>Portfolio</span>
-                <span>Career Branding</span>
-              </div>
-            </div>
-            <strong class="project-score">Professional</strong>
-          </div>
-
-          <p>
-            Built and maintained a personal portfolio website to present cybersecurity projects, education, technical skills, and professional experience.
-          </p>
-
-          <div class="detail-box">
-            <h3>Purpose</h3>
-            <p>
-              The site is designed to give employers a clear view of practical technical work, including cybersecurity labs, infrastructure projects, application development, and career progress.
-            </p>
-          </div>
+        <article id="website" class="project-panel" data-title="notxes portfolio website html css branding">
+          <div class="project-panel-top"><div><p class="project-label">Portfolio</p><h2>Notxes Portfolio Website</h2><div class="project-tags"><span>HTML</span><span>CSS</span><span>Portfolio</span><span>Branding</span></div></div><strong class="project-badge">Professional</strong></div>
+          <p>Built and maintained a personal portfolio website to present cybersecurity projects, education, technical skills, and professional experience.</p>
+          <div class="detail-box"><h3>Purpose</h3><p>The site gives employers a clear view of practical technical work, including cybersecurity labs, infrastructure projects, application development, and career progress.</p></div>
         </article>
-
-        <article id="school-network" class="project-display-card">
-          <div class="project-display-top">
-            <div>
-              <p class="project-lock">COMPLETED</p>
-              <h2>School Network Security Design</h2>
-              <div class="project-tags">
-                <span>Cisco Packet Tracer</span>
-                <span>VLANs</span>
-                <span>Wireless</span>
-                <span>Defense in Depth</span>
-              </div>
-            </div>
-            <strong class="project-score">Course Project</strong>
-          </div>
-
-          <p>
-            Created a layered school network security design focused on segmentation, endpoint protection, secure wireless access, and enterprise-style architecture.
-          </p>
-
-          <div class="detail-box">
-            <h3>Learning Outcomes</h3>
-            <p>
-              This project improved my understanding of secure network design, segmentation, access control, wireless security, endpoint protection, and defense-in-depth planning.
-            </p>
-          </div>
-
-          <div class="screenshot-grid">
-            <img src="images/school-network-diagram.jpg" alt="School network security design diagram">
-          </div>
-        </article>
-
       </section>
     </section>
   </main>
 
   <footer>
-    <div class="container"></div>
+    <div class="projects-app-shell"></div>
   </footer>
+
+  <script>
+    const buttons = document.querySelectorAll('[data-project]');
+    const panels = document.querySelectorAll('.project-panel');
+    const select = document.getElementById('projectSelect');
+    const search = document.getElementById('projectSearch');
+
+    function showProject(id) {
+      panels.forEach(panel => panel.classList.toggle('active', panel.id === id));
+      buttons.forEach(button => button.classList.toggle('active', button.dataset.project === id));
+      if (select) select.value = id;
+    }
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => showProject(button.dataset.project));
+    });
+
+    select.addEventListener('change', () => showProject(select.value));
+
+    search.addEventListener('input', () => {
+      const query = search.value.toLowerCase().trim();
+      const match = Array.from(panels).find(panel => panel.dataset.title.includes(query));
+      if (query && match) showProject(match.id);
+    });
+  </script>
 </body>
 </html>
-```
