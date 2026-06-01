@@ -7,47 +7,31 @@
   <meta name="description" content="Cybersecurity, homelab, app development, and network security projects by Matthew Sexton." />
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
       min-height: 100vh;
       font-family: Arial, Helvetica, sans-serif;
       background:
-        linear-gradient(rgba(3, 5, 10, 0.86), rgba(3, 5, 10, 0.95)),
-        radial-gradient(circle at top right, rgba(71, 170, 255, 0.22), transparent 34%),
-        linear-gradient(180deg, #070b14 0%, #0c1324 100%);
-      color: #f5f2e8;
+        radial-gradient(circle at top right, rgba(100, 181, 255, 0.18), transparent 36%),
+        radial-gradient(circle at top left, rgba(80, 120, 255, 0.12), transparent 32%),
+        linear-gradient(180deg, #09101d 0%, #0f1830 100%);
+      color: #e8ecf4;
       line-height: 1.6;
     }
 
-    body, h1, h2, h3, p, li, span, small, strong, a, button, input, select {
-      color: #f5f2e8;
-    }
+    body, h1, h2, h3, p, li, span, small, strong, a, button, input, select { color: #e8ecf4; }
+    a { text-decoration: none; }
+    button, input, select { font: inherit; }
 
-    a {
-      text-decoration: none;
-    }
-
-    button, input, select {
-      font: inherit;
-    }
-
-    .shell {
-      width: min(1280px, 94%);
-      margin: 0 auto;
-    }
+    .shell { width: min(1280px, 94%); margin: 0 auto; }
 
     header {
       padding: 28px 0 30px;
-      border-bottom: 1px solid rgba(218, 176, 74, 0.22);
-      background: rgba(0, 0, 0, 0.18);
+      border-bottom: 1px solid rgba(100, 181, 255, 0.18);
+      background: rgba(8, 15, 30, 0.45);
     }
 
     nav {
@@ -59,34 +43,16 @@
       margin-bottom: 34px;
     }
 
-    .brand {
-      font-weight: 900;
-      letter-spacing: 0.04em;
-    }
+    .brand { font-weight: 900; letter-spacing: 0.04em; }
+    .nav-links { display: flex; gap: 18px; flex-wrap: wrap; }
+    .nav-links a { color: #e8ecf4; opacity: 0.9; }
+    .nav-links a:hover { color: #64b5ff; }
 
-    .nav-links {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .nav-links a {
-      color: #f5f2e8;
-      opacity: 0.9;
-    }
-
-    .nav-links a:hover {
-      color: #e6b94f;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 12px 0 6px;
-    }
+    .hero { text-align: center; padding: 12px 0 6px; }
 
     .eyebrow {
       margin: 0 0 10px;
-      color: #e6b94f;
+      color: #64b5ff;
       font-weight: 900;
       letter-spacing: 0.18em;
       text-transform: uppercase;
@@ -95,22 +61,15 @@
 
     .hero h1 {
       margin: 0 0 10px;
-      color: #fff4d6;
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: clamp(3.5rem, 8vw, 6rem);
+      color: #f3f7ff;
+      font-size: clamp(3rem, 7vw, 5.4rem);
       line-height: 0.95;
-      font-weight: 700;
+      font-weight: 900;
+      letter-spacing: -0.04em;
     }
 
-    .hero p {
-      margin: 0 auto;
-      max-width: 780px;
-      color: #d6d1c4;
-    }
-
-    main {
-      padding: 24px 0 70px;
-    }
+    .hero p { margin: 0 auto; max-width: 780px; color: #a8b0c5; }
+    main { padding: 24px 0 70px; }
 
     .stats {
       display: grid;
@@ -120,33 +79,23 @@
     }
 
     .card-glass {
-      background: rgba(0, 0, 0, 0.72);
-      border: 1px solid rgba(230, 185, 79, 0.38);
+      background: rgba(18, 25, 49, 0.82);
+      border: 1px solid rgba(100, 181, 255, 0.28);
       border-radius: 16px;
-      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.28);
       backdrop-filter: blur(8px);
     }
 
-    .stat {
-      padding: 18px;
-    }
-
+    .stat { padding: 18px; }
     .stat span {
       display: block;
-      color: #e6b94f;
+      color: #64b5ff;
       font-size: 0.76rem;
       font-weight: 900;
       letter-spacing: 0.13em;
       text-transform: uppercase;
     }
-
-    .stat strong {
-      display: block;
-      margin-top: 8px;
-      color: #ffffff;
-      font-size: 1.55rem;
-      line-height: 1.1;
-    }
+    .stat strong { display: block; margin-top: 8px; color: #ffffff; font-size: 1.45rem; line-height: 1.1; }
 
     .controls {
       display: grid;
@@ -159,25 +108,15 @@
       width: 100%;
       padding: 13px 15px;
       outline: none;
-      background: rgba(0, 0, 0, 0.72);
-      border: 1px solid rgba(230, 185, 79, 0.38);
+      background: rgba(18, 25, 49, 0.82);
+      border: 1px solid rgba(100, 181, 255, 0.28);
       border-radius: 12px;
-      color: #f5f2e8;
+      color: #e8ecf4;
     }
+    .control::placeholder { color: #a8b0c5; }
 
-    .control::placeholder {
-      color: #b8b2a6;
-    }
-
-    .categories {
-      padding: 18px;
-      margin-bottom: 18px;
-    }
-
-    .categories h2, .project-list h2 {
-      margin: 0 0 14px;
-      color: #fff4d6;
-    }
+    .categories { padding: 18px; margin-bottom: 18px; }
+    .categories h2, .project-list h2 { margin: 0 0 14px; color: #f3f7ff; }
 
     .category-grid {
       display: grid;
@@ -189,33 +128,21 @@
       width: 100%;
       text-align: left;
       cursor: pointer;
-      border: 1px solid rgba(230, 185, 79, 0.24);
+      border: 1px solid rgba(100, 181, 255, 0.22);
       border-radius: 12px;
       background: rgba(255, 255, 255, 0.025);
       transition: 0.18s ease;
     }
 
-    .category-btn {
-      padding: 14px;
-    }
+    .category-btn { padding: 14px; }
 
     .category-btn:hover, .project-btn:hover, .category-btn.active, .project-btn.active {
-      background: rgba(230, 185, 79, 0.13);
-      border-color: rgba(230, 185, 79, 0.62);
+      background: rgba(100, 181, 255, 0.12);
+      border-color: rgba(100, 181, 255, 0.62);
     }
 
-    .category-btn span {
-      display: block;
-      color: #ffffff;
-      font-weight: 900;
-    }
-
-    .category-btn small {
-      display: block;
-      margin-top: 4px;
-      color: #e6b94f;
-      font-weight: 800;
-    }
+    .category-btn span { display: block; color: #ffffff; font-weight: 900; }
+    .category-btn small { display: block; margin-top: 4px; color: #64b5ff; font-weight: 800; }
 
     .workspace {
       display: grid;
@@ -224,47 +151,24 @@
       align-items: start;
     }
 
-    .project-list {
-      padding: 16px;
-      position: sticky;
-      top: 16px;
-    }
+    .project-list { padding: 16px; position: sticky; top: 16px; }
+    .project-list .muted { margin: -6px 0 14px; color: #a8b0c5; }
 
-    .project-list .muted {
-      margin: -6px 0 14px;
-      color: #b8b2a6;
-    }
-
-    .project-btn {
-      display: block;
-      padding: 14px;
-      margin-top: 10px;
-    }
-
-    .project-btn span {
-      display: block;
-      color: #ffffff;
-      font-weight: 900;
-    }
-
+    .project-btn { display: block; padding: 14px; margin-top: 10px; }
+    .project-btn[hidden] { display: none !important; }
+    .project-btn span { display: block; color: #ffffff; font-weight: 900; }
     .project-btn small {
       display: block;
       margin-top: 4px;
-      color: #e6b94f;
+      color: #64b5ff;
       text-transform: uppercase;
       font-size: 0.7rem;
       font-weight: 900;
       letter-spacing: 0.04em;
     }
 
-    .project-detail {
-      padding: 22px;
-      min-height: 620px;
-    }
-
-    .project-panel[hidden] {
-      display: none !important;
-    }
+    .project-detail { padding: 22px; min-height: 620px; }
+    .project-panel[hidden] { display: none !important; }
 
     .project-panel-top {
       display: flex;
@@ -276,7 +180,7 @@
 
     .project-label {
       margin: 0 0 8px;
-      color: #e6b94f;
+      color: #64b5ff;
       font-size: 0.75rem;
       font-weight: 900;
       letter-spacing: 0.15em;
@@ -285,39 +189,36 @@
 
     .project-panel h2 {
       margin: 0 0 10px;
-      color: #fff4d6;
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: clamp(1.9rem, 4vw, 3.1rem);
-      line-height: 1.05;
+      color: #f3f7ff;
+      font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+      line-height: 1.08;
+      font-weight: 900;
+      letter-spacing: -0.035em;
     }
 
     .project-badge {
       white-space: nowrap;
-      color: #fff4d6;
-      border: 1px solid rgba(230, 185, 79, 0.48);
-      background: rgba(230, 185, 79, 0.08);
+      color: #dbeafe;
+      border: 1px solid rgba(100, 181, 255, 0.48);
+      background: rgba(100, 181, 255, 0.08);
       border-radius: 999px;
       padding: 8px 12px;
       font-weight: 900;
     }
 
-    .tags {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 18px;
-    }
-
+    .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
     .tags span {
-      color: #e6b94f;
-      border: 1px solid rgba(230, 185, 79, 0.34);
-      background: rgba(230, 185, 79, 0.08);
+      color: #64b5ff;
+      border: 1px solid rgba(100, 181, 255, 0.34);
+      background: rgba(100, 181, 255, 0.08);
       border-radius: 999px;
       padding: 6px 10px;
       font-size: 0.75rem;
       font-weight: 900;
       text-transform: uppercase;
     }
+
+    .project-panel p, .project-panel li { color: #dce4f5; }
 
     .project-image {
       display: block;
@@ -326,7 +227,7 @@
       object-fit: contain;
       margin: 18px 0;
       border-radius: 16px;
-      border: 1px solid rgba(230, 185, 79, 0.28);
+      border: 1px solid rgba(100, 181, 255, 0.28);
       background: rgba(255, 255, 255, 0.05);
       padding: 8px;
     }
@@ -334,23 +235,13 @@
     .detail-box {
       margin-top: 16px;
       padding: 16px;
-      border: 1px solid rgba(230, 185, 79, 0.24);
+      border: 1px solid rgba(100, 181, 255, 0.22);
       border-radius: 14px;
-      background: rgba(0, 0, 0, 0.24);
+      background: rgba(5, 10, 22, 0.42);
     }
-
-    .detail-box h3 {
-      margin: 0 0 10px;
-      color: #fff4d6;
-    }
-
-    .detail-box ul {
-      margin: 0;
-    }
-
-    .detail-box p:last-child {
-      margin-bottom: 0;
-    }
+    .detail-box h3 { margin: 0 0 10px; color: #f3f7ff; }
+    .detail-box ul { margin: 0; }
+    .detail-box p:last-child { margin-bottom: 0; }
 
     .screenshot-grid {
       display: grid;
@@ -358,28 +249,19 @@
       gap: 12px;
       margin-top: 14px;
     }
-
     .screenshot-grid img {
       width: 100%;
       border-radius: 12px;
-      border: 1px solid rgba(230, 185, 79, 0.24);
+      border: 1px solid rgba(100, 181, 255, 0.22);
       background: rgba(255, 255, 255, 0.05);
       padding: 6px;
     }
 
-    footer {
-      border-top: 1px solid rgba(230, 185, 79, 0.18);
-      padding: 24px 0;
-    }
+    footer { border-top: 1px solid rgba(100, 181, 255, 0.18); padding: 24px 0; }
 
     @media (max-width: 1000px) {
-      .stats, .controls, .category-grid, .workspace {
-        grid-template-columns: 1fr;
-      }
-
-      .project-list {
-        position: static;
-      }
+      .stats, .controls, .category-grid, .workspace { grid-template-columns: 1fr; }
+      .project-list { position: static; }
     }
   </style>
 </head>
@@ -400,7 +282,7 @@
       <section class="hero">
         <p class="eyebrow">Project Hall</p>
         <h1>Projects</h1>
-        <p>Cybersecurity labs, infrastructure builds, app development, and portfolio work organized like my D&D app interface.</p>
+        <p>Cybersecurity labs, infrastructure builds, app development, and portfolio work organized in an app-style project dashboard.</p>
       </section>
     </div>
   </header>
@@ -427,23 +309,24 @@
     <section class="categories card-glass">
       <h2>Categories</h2>
       <div class="category-grid">
-        <button class="category-btn active" type="button" data-project="homelab"><span>Cybersecurity</span><small>Homelab + monitoring</small></button>
-        <button class="category-btn" type="button" data-project="firewall"><span>Firewall</span><small>OPNsense + VLAN rules</small></button>
-        <button class="category-btn" type="button" data-project="proxmox"><span>Proxmox Server</span><small>Virtual infrastructure</small></button>
-        <button class="category-btn" type="button" data-project="dnd-app"><span>D&D App</span><small>Full-stack development</small></button>
+        <button class="category-btn active" type="button" data-category="cybersecurity"><span>Cybersecurity</span><small>2 projects</small></button>
+        <button class="category-btn" type="button" data-category="firewall"><span>Firewall</span><small>1 project</small></button>
+        <button class="category-btn" type="button" data-category="proxmox"><span>Proxmox Server</span><small>1 project</small></button>
+        <button class="category-btn" type="button" data-category="dnd"><span>D&D App</span><small>1 project</small></button>
       </div>
     </section>
 
     <section class="workspace">
       <aside class="project-list card-glass">
         <h2>Project List</h2>
-        <p class="muted">Click a project to view the breakdown.</p>
-        <button class="project-btn active" type="button" data-project="homelab"><span>Enterprise Segmented Cybersecurity Homelab</span><small>Cybersecurity • Active lab</small></button>
-        <button class="project-btn" type="button" data-project="security-onion"><span>Security Onion Monitoring Environment</span><small>SOC lab • Detection</small></button>
-        <button class="project-btn" type="button" data-project="firewall"><span>OPNsense Firewall & VLAN Policy Design</span><small>Firewall • Segmentation</small></button>
-        <button class="project-btn" type="button" data-project="proxmox"><span>Proxmox Multi-Node Virtualization Lab</span><small>Infrastructure • Virtualization</small></button>
-        <button class="project-btn" type="button" data-project="dnd-app"><span>D&D Campaign Management App</span><small>Full-stack app • Active development</small></button>
-        <button class="project-btn" type="button" data-project="website"><span>Notxes Portfolio Website</span><small>Portfolio • Career branding</small></button>
+        <p class="muted" id="listHint">Cybersecurity projects</p>
+
+        <button class="project-btn active" type="button" data-category="cybersecurity" data-project="homelab"><span>Enterprise Segmented Cybersecurity Homelab</span><small>Cybersecurity • Active lab</small></button>
+        <button class="project-btn" type="button" data-category="cybersecurity" data-project="security-onion"><span>Security Onion Monitoring Environment</span><small>SOC lab • Detection</small></button>
+        <button class="project-btn" type="button" data-category="firewall" data-project="firewall" hidden><span>OPNsense Firewall & VLAN Policy Design</span><small>Firewall • Segmentation</small></button>
+        <button class="project-btn" type="button" data-category="proxmox" data-project="proxmox" hidden><span>Proxmox Multi-Node Virtualization Lab</span><small>Infrastructure • Virtualization</small></button>
+        <button class="project-btn" type="button" data-category="dnd" data-project="dnd-app" hidden><span>D&D Campaign Management App</span><small>Full-stack app • Active development</small></button>
+        <button class="project-btn" type="button" data-category="website" data-project="website" hidden><span>Notxes Portfolio Website</span><small>Portfolio • Career branding</small></button>
       </aside>
 
       <section class="project-detail card-glass">
@@ -497,27 +380,44 @@
   <footer><div class="shell"></div></footer>
 
   <script>
-    const buttons = document.querySelectorAll('[data-project]');
+    const categoryButtons = document.querySelectorAll('[data-category].category-btn');
+    const projectButtons = document.querySelectorAll('.project-btn[data-project]');
     const panels = document.querySelectorAll('.project-panel');
     const select = document.getElementById('projectSelect');
     const search = document.getElementById('projectSearch');
+    const listHint = document.getElementById('listHint');
+
+    const categoryLabels = {
+      cybersecurity: 'Cybersecurity projects',
+      firewall: 'Firewall projects',
+      proxmox: 'Proxmox Server projects',
+      dnd: 'D&D App projects',
+      website: 'Website projects'
+    };
 
     function showProject(id) {
-      panels.forEach(panel => {
-        panel.hidden = panel.id !== id;
-      });
-      buttons.forEach(button => {
-        button.classList.toggle('active', button.dataset.project === id);
-      });
+      panels.forEach(panel => panel.hidden = panel.id !== id);
+      projectButtons.forEach(button => button.classList.toggle('active', button.dataset.project === id));
       if (select) select.value = id;
     }
 
-    buttons.forEach(button => {
-      button.addEventListener('click', () => showProject(button.dataset.project));
-    });
+    function showCategory(category) {
+      categoryButtons.forEach(button => button.classList.toggle('active', button.dataset.category === category));
+      projectButtons.forEach(button => button.hidden = button.dataset.category !== category);
+      if (listHint) listHint.textContent = categoryLabels[category] || 'Projects';
+      const firstProject = Array.from(projectButtons).find(button => button.dataset.category === category);
+      if (firstProject) showProject(firstProject.dataset.project);
+    }
+
+    categoryButtons.forEach(button => button.addEventListener('click', () => showCategory(button.dataset.category)));
+    projectButtons.forEach(button => button.addEventListener('click', () => showProject(button.dataset.project)));
 
     if (select) {
-      select.addEventListener('change', () => showProject(select.value));
+      select.addEventListener('change', () => {
+        const selectedButton = Array.from(projectButtons).find(button => button.dataset.project === select.value);
+        if (selectedButton) showCategory(selectedButton.dataset.category);
+        showProject(select.value);
+      });
     }
 
     if (search) {
@@ -525,7 +425,10 @@
         const query = search.value.toLowerCase().trim();
         if (!query) return;
         const match = Array.from(panels).find(panel => panel.dataset.title.includes(query));
-        if (match) showProject(match.id);
+        if (!match) return;
+        const selectedButton = Array.from(projectButtons).find(button => button.dataset.project === match.id);
+        if (selectedButton) showCategory(selectedButton.dataset.category);
+        showProject(match.id);
       });
     }
   </script>
