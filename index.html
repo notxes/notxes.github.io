@@ -8,29 +8,33 @@
 
   <style>
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
+      min-height: 100vh;
       font-family: Arial, Helvetica, sans-serif;
       background:
-        radial-gradient(circle at top right, rgba(100,181,255,.18), transparent 35%),
-        radial-gradient(circle at top left, rgba(80,120,255,.12), transparent 32%),
+        radial-gradient(circle at top right, rgba(100, 181, 255, 0.18), transparent 36%),
+        radial-gradient(circle at top left, rgba(80, 120, 255, 0.12), transparent 32%),
         linear-gradient(180deg, #09101d 0%, #0f1830 100%);
       color: #e8ecf4;
       line-height: 1.6;
     }
 
-    a { color: #64b5ff; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    body, h1, h2, h3, p, li, span, small, strong, a, button { color: #e8ecf4; }
+    a { text-decoration: none; }
+    a:hover { color: #64b5ff; }
 
-    .container {
-      width: min(1180px, 92%);
+    .shell {
+      width: min(1280px, 94%);
       margin: 0 auto;
     }
 
     header {
-      padding: 34px 0 58px;
-      border-bottom: 1px solid rgba(100,181,255,.18);
+      padding: 28px 0 34px;
+      border-bottom: 1px solid rgba(100, 181, 255, 0.18);
+      background: rgba(8, 15, 30, 0.45);
     }
 
     nav {
@@ -39,68 +43,250 @@
       align-items: center;
       gap: 18px;
       flex-wrap: wrap;
-      margin-bottom: 60px;
+      margin-bottom: 40px;
     }
 
     .brand {
       font-weight: 900;
-      letter-spacing: .04em;
-      color: #fff;
+      letter-spacing: 0.04em;
+      color: #ffffff;
     }
 
     .nav-links {
       display: flex;
-      gap: 20px;
+      gap: 18px;
       flex-wrap: wrap;
     }
 
     .nav-links a {
       color: #dce4f5;
+      opacity: 0.9;
     }
 
     .hero {
-      display: grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 32px;
-      align-items: center;
+      text-align: center;
+      padding: 18px 0 4px;
     }
 
     .eyebrow {
+      margin: 0 0 10px;
       color: #64b5ff;
-      font-size: .8rem;
       font-weight: 900;
-      letter-spacing: .16em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      margin-bottom: 12px;
+      font-size: 0.78rem;
     }
 
-    h1 {
-      margin: 0 0 18px;
-      font-size: clamp(2.8rem, 6vw, 5rem);
-      line-height: .98;
-      letter-spacing: -.05em;
+    .hero h1 {
+      margin: 0 0 14px;
+      color: #f3f7ff;
+      font-size: clamp(3rem, 7vw, 5.4rem);
+      line-height: 0.98;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+    }
+
+    .hero p {
+      margin: 0 auto;
+      max-width: 780px;
+      color: #a8b0c5;
+      font-size: 1.03rem;
+    }
+
+    main { padding: 24px 0 70px; }
+
+    .card-glass {
+      background: rgba(18, 25, 49, 0.82);
+      border: 1px solid rgba(100, 181, 255, 0.28);
+      border-radius: 16px;
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.28);
+      backdrop-filter: blur(8px);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .stat {
+      padding: 18px;
+    }
+
+    .stat span {
+      display: block;
+      color: #64b5ff;
+      font-size: 0.76rem;
+      font-weight: 900;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .stat strong {
+      display: block;
+      margin-top: 8px;
+      color: #ffffff;
+      font-size: 1.45rem;
+      line-height: 1.1;
+    }
+
+    .hero-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .action-card {
+      display: block;
+      padding: 18px;
+      border-radius: 16px;
+      background: rgba(18, 25, 49, 0.82);
+      border: 1px solid rgba(100, 181, 255, 0.28);
+      transition: 0.18s ease;
+    }
+
+    .action-card:hover {
+      transform: translateY(-2px);
+      background: rgba(100, 181, 255, 0.1);
+      border-color: rgba(100, 181, 255, 0.62);
+    }
+
+    .action-card span {
+      display: block;
+      color: #64b5ff;
+      font-size: 0.76rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .action-card strong {
+      color: #fff;
+      font-size: 1.05rem;
+    }
+
+    .workspace {
+      display: grid;
+      grid-template-columns: 360px minmax(0, 1fr);
+      gap: 16px;
+      align-items: start;
+    }
+
+    .side-panel,
+    .main-panel {
+      padding: 18px;
+    }
+
+    .side-panel {
+      position: sticky;
+      top: 16px;
+    }
+
+    .side-panel h2,
+    .main-panel h2,
+    .section-title {
+      margin: 0 0 14px;
       color: #f3f7ff;
     }
 
-    h2, h3 {
-      color: #f3f7ff;
-    }
-
-    .hero p,
+    .side-panel p,
     .muted {
       color: #a8b0c5;
     }
 
-    .hero p {
-      max-width: 720px;
-      font-size: 1.08rem;
-      margin-bottom: 26px;
+    .focus-item {
+      display: block;
+      padding: 14px;
+      margin-top: 10px;
+      border: 1px solid rgba(100, 181, 255, 0.22);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .focus-item strong {
+      display: block;
+      color: #ffffff;
+    }
+
+    .focus-item small {
+      display: block;
+      margin-top: 4px;
+      color: #64b5ff;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+    }
+
+    .main-panel h2 {
+      font-size: clamp(1.8rem, 3.6vw, 3.2rem);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+    }
+
+    .badge {
+      display: inline-block;
+      color: #64b5ff;
+      border: 1px solid rgba(100, 181, 255, 0.34);
+      background: rgba(100, 181, 255, 0.08);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 0.75rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin: 0 6px 8px 0;
+    }
+
+    .detail-box {
+      margin-top: 16px;
+      padding: 16px;
+      border: 1px solid rgba(100, 181, 255, 0.22);
+      border-radius: 14px;
+      background: rgba(5, 10, 22, 0.42);
+    }
+
+    .detail-box h3 {
+      margin: 0 0 10px;
+      color: #f3f7ff;
+    }
+
+    .detail-box p,
+    .detail-box li {
+      color: #dce4f5;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .feature-card {
+      padding: 16px;
+      border: 1px solid rgba(100, 181, 255, 0.22);
+      border-radius: 14px;
+      background: rgba(5, 10, 22, 0.42);
+    }
+
+    .feature-card h3 {
+      margin: 0 0 8px;
+      color: #f3f7ff;
+    }
+
+    .feature-card p {
+      margin: 0;
+      color: #a8b0c5;
     }
 
     .cta-row {
       display: flex;
-      gap: 12px;
       flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
     }
 
     .btn {
@@ -109,8 +295,8 @@
       justify-content: center;
       padding: 12px 18px;
       border-radius: 12px;
-      border: 1px solid rgba(100,181,255,.28);
-      background: rgba(18,25,49,.88);
+      border: 1px solid rgba(100, 181, 255, 0.28);
+      background: rgba(18, 25, 49, 0.88);
       color: #e8ecf4;
       font-weight: 800;
     }
@@ -121,124 +307,25 @@
       border-color: transparent;
     }
 
-    .btn:hover {
-      text-decoration: none;
-      transform: translateY(-1px);
-    }
-
-    .card {
-      background: rgba(18,25,49,.84);
-      border: 1px solid rgba(100,181,255,.24);
-      border-radius: 18px;
-      padding: 24px;
-      box-shadow: 0 18px 45px rgba(0,0,0,.25);
-    }
-
-    .hero-card ul {
-      padding-left: 20px;
-      color: #dce4f5;
-    }
-
-    main {
-      padding: 52px 0 76px;
-    }
-
-    section {
-      margin-bottom: 34px;
-    }
-
-    .section-heading {
-      margin-bottom: 18px;
-    }
-
-    .section-heading h2 {
-      margin: 0 0 6px;
-      font-size: 1.8rem;
-    }
-
-    .quick-grid,
-    .project-grid,
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-
-    .project-grid,
-    .skills-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    .mini-card span {
-      display: block;
-      color: #64b5ff;
-      font-size: .78rem;
-      font-weight: 900;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    .mini-card strong {
-      display: block;
-      color: #fff;
-      font-size: 1.05rem;
-    }
-
-    .project-card h3,
-    .skill-card h3 {
-      margin-top: 0;
-    }
-
-    .project-card p,
-    .skill-card p {
-      color: #a8b0c5;
-    }
-
-    .tag-row {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 14px;
-    }
-
-    .tag {
-      padding: 6px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(100,181,255,.28);
-      color: #64b5ff;
-      background: rgba(100,181,255,.08);
-      font-size: .75rem;
-      font-weight: 800;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 18px;
-    }
-
-    .contact-card p {
-      color: #dce4f5;
+    .section-block {
+      margin-top: 16px;
     }
 
     footer {
-      padding: 26px 0 44px;
-      border-top: 1px solid rgba(100,181,255,.18);
-      color: #a8b0c5;
+      padding: 24px 0;
+      border-top: 1px solid rgba(100, 181, 255, 0.18);
     }
 
-    @media (max-width: 950px) {
-      .hero,
-      .about-grid,
-      .quick-grid,
-      .project-grid,
-      .skills-grid {
+    @media (max-width: 1000px) {
+      .stats,
+      .hero-actions,
+      .workspace,
+      .feature-grid {
         grid-template-columns: 1fr;
       }
 
-      nav {
-        align-items: flex-start;
+      .side-panel {
+        position: static;
       }
     }
   </style>
@@ -246,7 +333,7 @@
 
 <body>
   <header>
-    <div class="container">
+    <div class="shell">
       <nav>
         <div class="brand">Matthew Sexton</div>
         <div class="nav-links">
@@ -258,153 +345,108 @@
         </div>
       </nav>
 
-      <div class="hero">
-        <div>
-          <div class="eyebrow">Cyber Defense • Homelab • IT Support</div>
-          <h1>Cyber Defense Graduate Building Real Systems</h1>
-          <p>
-            I build practical cybersecurity, infrastructure, and full-stack projects through hands-on homelab work,
-            production IT support, and long-term application development.
-          </p>
-
-          <div class="cta-row">
-            <a class="btn primary" href="projects.html">View Projects</a>
-            <a class="btn" href="images/resume.pdf" target="_blank">Resume</a>
-            <a class="btn" href="https://github.com/notxes" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a class="btn" href="https://www.linkedin.com/in/matthew-sexton-858699362/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          </div>
-        </div>
-
-        <div class="card hero-card">
-          <h3>Current Focus</h3>
-          <p class="muted">
-            SOC workflows, VLAN segmentation, Proxmox, Security Onion, Active Directory, OPNsense,
-            and full-stack project development.
-          </p>
-          <ul>
-            <li>County IT support experience with Windows and Linux</li>
-            <li>Enterprise-style segmented cybersecurity homelab</li>
-            <li>Custom D&D full-stack app with database-driven systems</li>
-            <li>Growing toward SOC / Security Analyst opportunities</li>
-          </ul>
-        </div>
-      </div>
+      <section class="hero">
+        <p class="eyebrow">Cyber Defense Portfolio</p>
+        <h1>Cyber Defense Graduate Building Real Systems</h1>
+        <p>Hands-on cybersecurity, infrastructure, and full-stack development projects built through production IT support, enterprise-style homelab work, and long-term application development.</p>
+      </section>
     </div>
   </header>
 
-  <main class="container">
-
-    <section class="quick-grid">
-      <div class="card mini-card"><span>Education</span><strong>B.S. Cyber Defense</strong></div>
-      <div class="card mini-card"><span>Experience</span><strong>IT Support Technician</strong></div>
-      <div class="card mini-card"><span>Cyber Lab</span><strong>Proxmox / OPNsense / SO</strong></div>
-      <div class="card mini-card"><span>Development</span><strong>Next.js / Supabase App</strong></div>
+  <main class="shell">
+    <section class="stats">
+      <div class="stat card-glass"><span>Education</span><strong>B.S. Cyber Defense</strong></div>
+      <div class="stat card-glass"><span>Experience</span><strong>IT Support Technician</strong></div>
+      <div class="stat card-glass"><span>Focus</span><strong>SOC / Infrastructure / Dev</strong></div>
     </section>
 
-    <section id="about" class="about-grid">
-      <div class="card">
-        <h2>About Me</h2>
-        <p class="muted">
-          I am a Cyber Defense graduate with hands-on IT support experience and a strong focus on practical cybersecurity,
-          infrastructure, and defensive security skills.
-        </p>
-        <p class="muted">
-          I actively build and maintain a segmented homelab using Proxmox, OPNsense, Security Onion, Active Directory,
-          Kali Linux, Windows clients, and supporting infrastructure to practice realistic security scenarios.
-        </p>
-      </div>
-
-      <div class="card">
-        <h2>What I’m Building</h2>
-        <p class="muted">
-          My portfolio focuses on proof of work: cybersecurity labs, monitoring environments, firewall policy design,
-          virtualization, and a custom full-stack D&D campaign management app.
-        </p>
-      </div>
+    <section class="hero-actions">
+      <a class="action-card" href="projects.html"><span>Portfolio</span><strong>View Projects</strong></a>
+      <a class="action-card" href="images/resume.pdf" target="_blank"><span>Resume</span><strong>View Resume</strong></a>
+      <a class="action-card" href="https://github.com/notxes" target="_blank" rel="noopener noreferrer"><span>Code</span><strong>GitHub</strong></a>
+      <a class="action-card" href="https://www.linkedin.com/in/matthew-sexton-858699362/" target="_blank" rel="noopener noreferrer"><span>Network</span><strong>LinkedIn</strong></a>
     </section>
 
-    <section id="projects">
-      <div class="section-heading">
-        <h2>Featured Projects</h2>
-        <p class="muted">A quick look at the strongest projects on my portfolio.</p>
-      </div>
+    <section class="workspace">
+      <aside class="side-panel card-glass">
+        <h2>Current Focus</h2>
+        <p>What I’m actively building and improving.</p>
 
-      <div class="project-grid">
-        <article class="card project-card">
-          <h3>Segmented Cybersecurity Homelab</h3>
-          <p>Enterprise-style lab with VLANs, firewall rules, attacker systems, victim networks, and monitoring.</p>
-          <div class="tag-row">
-            <span class="tag">Proxmox</span><span class="tag">OPNsense</span><span class="tag">VLANs</span>
-          </div>
-        </article>
+        <div class="focus-item"><strong>Cybersecurity Homelab</strong><small>Proxmox • OPNsense • VLANs</small></div>
+        <div class="focus-item"><strong>Security Monitoring</strong><small>Security Onion • SOC workflows</small></div>
+        <div class="focus-item"><strong>D&D Full-Stack App</strong><small>Next.js • Supabase • PostgreSQL</small></div>
+        <div class="focus-item"><strong>Professional Growth</strong><small>SOC / Security Analyst path</small></div>
+      </aside>
 
-        <article class="card project-card">
-          <h3>D&D Campaign Management App</h3>
-          <p>Full-stack app with character creation, achievements, campaign tools, inventory, and Supabase backend.</p>
-          <div class="tag-row">
-            <span class="tag">Next.js</span><span class="tag">Supabase</span><span class="tag">PostgreSQL</span>
-          </div>
-        </article>
-
-        <article class="card project-card">
-          <h3>Security Onion Monitoring</h3>
-          <p>SOC-style monitoring environment for alerts, traffic visibility, packet analysis, and detection workflows.</p>
-          <div class="tag-row">
-            <span class="tag">Security Onion</span><span class="tag">Zeek</span><span class="tag">Suricata</span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="skills">
-      <div class="section-heading">
-        <h2>Skills</h2>
-        <p class="muted">Grouped by the areas I am actively building experience in.</p>
-      </div>
-
-      <div class="skills-grid">
-        <div class="card skill-card">
-          <h3>Infrastructure</h3>
-          <p>Proxmox, VLANs, OPNsense, Cisco switching, DNS, VPNs, Active Directory, Windows/Linux systems.</p>
+      <section class="main-panel card-glass" id="about">
+        <p class="eyebrow">About Me</p>
+        <h2>Practical Cybersecurity, Infrastructure, and Application Building</h2>
+        <div>
+          <span class="badge">Cyber Defense</span>
+          <span class="badge">Homelab</span>
+          <span class="badge">IT Support</span>
+          <span class="badge">Full-Stack Projects</span>
         </div>
 
-        <div class="card skill-card">
-          <h3>Security</h3>
-          <p>Security Onion, network segmentation, monitoring, access control, traffic analysis, lab simulations.</p>
+        <p class="muted">
+          I am a Cyber Defense graduate with hands-on IT support experience and a focus on practical cybersecurity, defensive security, infrastructure, and long-term technical project building.
+        </p>
+
+        <div class="detail-box">
+          <h3>What I Do</h3>
+          <ul>
+            <li>Support Windows and Linux systems in a production IT environment</li>
+            <li>Build segmented lab networks using Proxmox, OPNsense, VLANs, and Active Directory</li>
+            <li>Use Security Onion and monitoring tools to practice SOC-style investigation workflows</li>
+            <li>Build a custom full-stack D&D app using Next.js, Supabase, PostgreSQL, and TypeScript</li>
+          </ul>
         </div>
 
-        <div class="card skill-card">
-          <h3>Development</h3>
-          <p>HTML, CSS, Next.js, TypeScript, Supabase, PostgreSQL, schema design, UI organization.</p>
+        <div class="feature-grid section-block" id="projects">
+          <div class="feature-card">
+            <h3>Cybersecurity Homelab</h3>
+            <p>Enterprise-style segmented lab with Red Team, Blue Team, victim, DMZ, and IoT networks.</p>
+          </div>
+          <div class="feature-card">
+            <h3>D&D Campaign App</h3>
+            <p>Full-stack software platform with character tools, achievements, inventory, campaigns, and backend systems.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Security Onion SOC Lab</h3>
+            <p>Monitoring and detection environment for visibility, alerts, packet analysis, and investigation practice.</p>
+          </div>
         </div>
-      </div>
-    </section>
 
-    <section id="resume" class="card">
-      <h2>Resume</h2>
-      <p class="muted">
-        Download my current resume for experience, education, technical skills, and project background.
-      </p>
-      <div class="cta-row">
-        <a class="btn primary" href="images/resume.pdf" target="_blank">View Resume</a>
-        <a class="btn" href="images/resume.pdf" download>Download PDF</a>
-      </div>
-    </section>
+        <div class="detail-box section-block" id="skills">
+          <h3>Skills</h3>
+          <p>
+            Infrastructure: Proxmox, VLANs, OPNsense, Cisco switching, DNS, VPNs, Active Directory.<br>
+            Security: Security Onion, segmentation, monitoring, access control, traffic analysis, lab simulations.<br>
+            Development: HTML, CSS, Next.js, TypeScript, Supabase, PostgreSQL, schema design, UI organization.
+          </p>
+        </div>
 
-    <section id="contact" class="card contact-card">
-      <h2>Contact</h2>
-      <p>
-        GitHub: <a href="https://github.com/notxes" target="_blank" rel="noopener noreferrer">github.com/notxes</a><br />
-        LinkedIn: <a href="https://www.linkedin.com/in/matthew-sexton-858699362/" target="_blank" rel="noopener noreferrer">linkedin.com/in/matthew-sexton-858699362/</a><br />
-        Email: <a href="mailto:msexton@notxes.com">msexton@notxes.com</a>
-      </p>
-    </section>
+        <div class="detail-box section-block" id="resume">
+          <h3>Resume</h3>
+          <p>Download my current resume for experience, education, technical skills, and project background.</p>
+          <div class="cta-row">
+            <a class="btn primary" href="images/resume.pdf" target="_blank">View Resume</a>
+            <a class="btn" href="images/resume.pdf" download>Download PDF</a>
+          </div>
+        </div>
 
+        <div class="detail-box section-block" id="contact">
+          <h3>Contact</h3>
+          <p>
+            GitHub: <a href="https://github.com/notxes" target="_blank" rel="noopener noreferrer">github.com/notxes</a><br>
+            LinkedIn: <a href="https://www.linkedin.com/in/matthew-sexton-858699362/" target="_blank" rel="noopener noreferrer">linkedin.com/in/matthew-sexton-858699362/</a><br>
+            Email: <a href="mailto:msexton@notxes.com">msexton@notxes.com</a>
+          </p>
+        </div>
+      </section>
+    </section>
   </main>
 
-  <footer>
-    <div class="container"></div>
-  </footer>
+  <footer><div class="shell"></div></footer>
 </body>
 </html>
-```
