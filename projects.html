@@ -399,6 +399,11 @@
         <option value="firewall">OPNsense Firewall & VLAN Policy Design</option>
         <option value="proxmox">Proxmox Multi-Node Virtualization Lab</option>
         <option value="dnd-app">D&D Campaign Management App</option>
+        <option value="dnd-dashboard">D&D App - Dashboard & Interface</option>
+        <option value="dnd-character-creator">D&D App - Character Creator</option>
+        <option value="dnd-character-sheet">D&D App - Character Sheet</option>
+        <option value="dnd-achievements">D&D App - Achievement System</option>
+        <option value="dnd-database">D&D App - Supabase & Database Design</option>
         <option value="website">Notxes Portfolio Website</option>
       </select>
     </section>
@@ -409,7 +414,7 @@
         <button class="category-btn active" type="button" data-category="cybersecurity"><span>Cybersecurity</span><small>2 projects</small></button>
         <button class="category-btn" type="button" data-category="firewall"><span>Firewall</span><small>1 project</small></button>
         <button class="category-btn" type="button" data-category="proxmox"><span>Proxmox Server</span><small>1 project</small></button>
-        <button class="category-btn" type="button" data-category="dnd"><span>D&D App</span><small>1 project</small></button>
+        <button class="category-btn" type="button" data-category="dnd"><span>D&D App</span><small>6 sections</small></button>
       </div>
     </section>
 
@@ -422,7 +427,12 @@
         <button class="project-btn" type="button" data-category="cybersecurity" data-project="security-onion"><span>Security Onion Monitoring Environment</span><small>SOC lab • Detection</small></button>
         <button class="project-btn" type="button" data-category="firewall" data-project="firewall" hidden><span>OPNsense Firewall & VLAN Policy Design</span><small>Firewall • Segmentation</small></button>
         <button class="project-btn" type="button" data-category="proxmox" data-project="proxmox" hidden><span>Proxmox Multi-Node Virtualization Lab</span><small>Infrastructure • Virtualization</small></button>
-        <button class="project-btn" type="button" data-category="dnd" data-project="dnd-app" hidden><span>D&D Campaign Management App</span><small>Full-stack app • Active development</small></button>
+        <button class="project-btn" type="button" data-category="dnd" data-project="dnd-app" hidden><span>D&D Campaign Management App</span><small>Overview • Active development</small></button>
+        <button class="project-btn" type="button" data-category="dnd" data-project="dnd-dashboard" hidden><span>Dashboard & App Interface</span><small>UI/UX • Navigation</small></button>
+        <button class="project-btn" type="button" data-category="dnd" data-project="dnd-character-creator" hidden><span>Character Creator</span><small>Wizard • Validation</small></button>
+        <button class="project-btn" type="button" data-category="dnd" data-project="dnd-character-sheet" hidden><span>Character Sheet</span><small>Player tools • Automation</small></button>
+        <button class="project-btn" type="button" data-category="dnd" data-project="dnd-achievements" hidden><span>Achievement System</span><small>Progression • Rewards</small></button>
+        <button class="project-btn" type="button" data-category="dnd" data-project="dnd-database" hidden><span>Supabase & Database Design</span><small>Backend • PostgreSQL</small></button>
         <button class="project-btn" type="button" data-category="website" data-project="website" hidden><span>Notxes Portfolio Website</span><small>Portfolio • Career branding</small></button>
       </aside>
 
@@ -484,6 +494,42 @@
           <img src="images/dnd-app-dashboard.jpg" class="project-image" alt="D&D app dashboard preview" />
           <div class="detail-box"><h3>What I Did</h3><ul><li>Designed and built a multi-step character creator</li><li>Created database-backed systems for species, classes, backgrounds, spells, inventory, equipment, and features</li><li>Built app-style UI screens for achievements, characters, campaign tools, and progression systems</li><li>Worked through schema migrations, permission issues, frontend bugs, and data consistency problems</li></ul></div>
           <div class="detail-box"><h3>Results</h3><p>This project demonstrates full-stack development, database design, complex rule modeling, debugging, UI organization, and long-term project ownership.</p></div>
+        </article>
+
+        <article id="dnd-dashboard" class="project-panel" hidden data-title="dnd dashboard app interface navigation ui ux">
+          <div class="project-panel-top"><div><p class="project-label">D&D App Section</p><h2>Dashboard & App Interface</h2><div class="tags"><span>UI/UX</span><span>Navigation</span><span>Dashboard</span><span>Player Hub</span></div></div><strong class="project-badge">Interface</strong></div>
+          <p>The dashboard acts as the central hub for the application, giving users access to characters, campaign tools, achievements, progression systems, and app navigation.</p>
+          <img src="images/dnd-app-dashboard.jpg" class="project-image" alt="D&D app dashboard preview" />
+          <div class="detail-box"><h3>What This Shows</h3><ul><li>App-style interface design</li><li>Organized navigation between major systems</li><li>Player-focused layout for campaign tools and progression</li><li>Visual consistency across the app</li></ul></div>
+        </article>
+
+        <article id="dnd-character-creator" class="project-panel" hidden data-title="dnd character creator wizard species classes backgrounds ability scores equipment validation">
+          <div class="project-panel-top"><div><p class="project-label">D&D App Section</p><h2>Character Creator</h2><div class="tags"><span>Wizard Flow</span><span>Validation</span><span>Rules Logic</span><span>Character Data</span></div></div><strong class="project-badge">Core System</strong></div>
+          <p>A multi-step character creation system for building characters through species, class, background, ability scores, language choices, equipment, and spells.</p>
+          <img src="images/dnd-character-creator.jpg" class="project-image" alt="D&D app character creator preview" />
+          <div class="detail-box"><h3>Features</h3><ul><li>Step-by-step creation flow</li><li>Species, class, and background selection</li><li>Ability score assignment and validation</li><li>Starting equipment and spell selection logic</li><li>Database-backed options instead of hardcoded assumptions</li></ul></div>
+          <div class="detail-box"><h3>Why It Matters</h3><p>This section demonstrates complex frontend state management, database-driven content, validation logic, and the ability to translate tabletop rules into structured application workflows.</p></div>
+        </article>
+
+        <article id="dnd-character-sheet" class="project-panel" hidden data-title="dnd character sheet inventory actions features spells defenses resources automation">
+          <div class="project-panel-top"><div><p class="project-label">D&D App Section</p><h2>Character Sheet</h2><div class="tags"><span>Player Tools</span><span>Inventory</span><span>Actions</span><span>Automation</span></div></div><strong class="project-badge">Player System</strong></div>
+          <p>The character sheet is the player-facing hub for viewing character data, actions, defenses, features, inventory, spells, and progression-related information.</p>
+          <img src="images/dnd-character-sheet.jpg" class="project-image" alt="D&D app character sheet preview" />
+          <div class="detail-box"><h3>Features</h3><ul><li>Character stats, features, senses, defenses, and resources</li><li>Inventory and equipment display</li><li>Spell and action sections</li><li>Foundation for future automation such as spell slots, rests, resources, and combat actions</li></ul></div>
+        </article>
+
+        <article id="dnd-achievements" class="project-panel" hidden data-title="dnd achievement system categories rewards cosmetics unlocks points progression">
+          <div class="project-panel-top"><div><p class="project-label">D&D App Section</p><h2>Achievement System</h2><div class="tags"><span>Progression</span><span>Rewards</span><span>Cosmetics</span><span>Unlocks</span></div></div><strong class="project-badge">Gamification</strong></div>
+          <p>A progression and reward system that tracks achievement categories, points, unlocks, rewards, cosmetics, and player milestones.</p>
+          <img src="images/dnd-achievements.jpg" class="project-image" alt="D&D app achievement system preview" />
+          <div class="detail-box"><h3>Features</h3><ul><li>Achievement categories and progress tracking</li><li>Reward and cosmetic unlock support</li><li>Points-based progression</li><li>Designed for future automatic triggers from gameplay events</li></ul></div>
+        </article>
+
+        <article id="dnd-database" class="project-panel" hidden data-title="dnd supabase database postgresql schema design authentication permissions migrations">
+          <div class="project-panel-top"><div><p class="project-label">D&D App Section</p><h2>Supabase & Database Design</h2><div class="tags"><span>Supabase</span><span>PostgreSQL</span><span>Schema Design</span><span>Permissions</span></div></div><strong class="project-badge">Backend</strong></div>
+          <p>The backend uses Supabase and PostgreSQL to store character data, rules content, items, spells, features, achievements, campaign data, and application state.</p>
+          <div class="detail-box"><h3>What This Shows</h3><ul><li>Database-backed app architecture</li><li>Schema design for complex game rules and player data</li><li>Permission troubleshooting and migrations</li><li>Long-term data organization across many related systems</li></ul></div>
+          <div class="detail-box"><h3>Why It Matters</h3><p>This section demonstrates backend thinking, database modeling, debugging, and the ability to build a system that can grow over time instead of relying only on static frontend data.</p></div>
         </article>
 
         <article id="website" class="project-panel" hidden data-title="notxes portfolio website html css branding">
