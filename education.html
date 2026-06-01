@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Matthew Sexton | Cyber Defense</title>
-  <meta name="description" content="Cyber Defense graduate, homelab builder, IT support technician, and full-stack project builder." />
+  <title>Matthew Sexton | Education</title>
+  <meta name="description" content="Education background, degrees, and academic achievements of Matthew Sexton." />
 
   <style>
     * { box-sizing: border-box; }
@@ -107,7 +107,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 12px;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
 
     .stat {
@@ -131,43 +131,6 @@
       line-height: 1.1;
     }
 
-    .hero-actions {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-
-    .action-card {
-      display: block;
-      padding: 18px;
-      border-radius: 16px;
-      background: rgba(18, 25, 49, 0.82);
-      border: 1px solid rgba(100, 181, 255, 0.28);
-      transition: 0.18s ease;
-    }
-
-    .action-card:hover {
-      transform: translateY(-2px);
-      background: rgba(100, 181, 255, 0.1);
-      border-color: rgba(100, 181, 255, 0.62);
-    }
-
-    .action-card span {
-      display: block;
-      color: #64b5ff;
-      font-size: 0.76rem;
-      font-weight: 900;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
-
-    .action-card strong {
-      color: #fff;
-      font-size: 1.05rem;
-    }
-
     .workspace {
       display: grid;
       grid-template-columns: 360px minmax(0, 1fr);
@@ -175,43 +138,54 @@
       align-items: start;
     }
 
-    .side-panel,
-    .main-panel {
+    .education-list,
+    .education-detail {
       padding: 18px;
     }
 
-    .side-panel {
+    .education-list {
       position: sticky;
       top: 16px;
     }
 
-    .side-panel h2,
-    .main-panel h2,
-    .section-title {
+    .education-list h2,
+    .education-detail h2 {
       margin: 0 0 14px;
       color: #f3f7ff;
     }
 
-    .side-panel p,
+    .education-list .muted,
     .muted {
       color: #a8b0c5;
     }
 
-    .focus-item {
+    .edu-btn {
       display: block;
+      width: 100%;
       padding: 14px;
       margin-top: 10px;
+      text-align: left;
+      cursor: pointer;
       border: 1px solid rgba(100, 181, 255, 0.22);
       border-radius: 12px;
       background: rgba(255, 255, 255, 0.025);
+      transition: 0.18s ease;
+      font: inherit;
     }
 
-    .focus-item strong {
+    .edu-btn:hover,
+    .edu-btn.active {
+      background: rgba(100, 181, 255, 0.12);
+      border-color: rgba(100, 181, 255, 0.62);
+    }
+
+    .edu-btn span {
       display: block;
       color: #ffffff;
+      font-weight: 900;
     }
 
-    .focus-item small {
+    .edu-btn small {
       display: block;
       margin-top: 4px;
       color: #64b5ff;
@@ -221,14 +195,54 @@
       letter-spacing: 0.04em;
     }
 
-    .main-panel h2 {
-      font-size: clamp(1.8rem, 3.6vw, 3.2rem);
-      line-height: 1.08;
-      letter-spacing: -0.04em;
+    .edu-panel[hidden] {
+      display: none !important;
     }
 
-    .badge {
-      display: inline-block;
+    .edu-panel-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+
+    .edu-label {
+      margin: 0 0 8px;
+      color: #64b5ff;
+      font-size: 0.75rem;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .edu-panel h2 {
+      margin: 0 0 10px;
+      color: #f3f7ff;
+      font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+      line-height: 1.08;
+      font-weight: 900;
+      letter-spacing: -0.035em;
+    }
+
+    .edu-badge {
+      white-space: nowrap;
+      color: #dbeafe;
+      border: 1px solid rgba(100, 181, 255, 0.48);
+      background: rgba(100, 181, 255, 0.08);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-weight: 900;
+    }
+
+    .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .tags span {
       color: #64b5ff;
       border: 1px solid rgba(100, 181, 255, 0.34);
       background: rgba(100, 181, 255, 0.08);
@@ -237,7 +251,6 @@
       font-size: 0.75rem;
       font-weight: 900;
       text-transform: uppercase;
-      margin: 0 6px 8px 0;
     }
 
     .detail-box {
@@ -258,28 +271,8 @@
       color: #dce4f5;
     }
 
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 16px;
-    }
-
-    .feature-card {
-      padding: 16px;
-      border: 1px solid rgba(100, 181, 255, 0.22);
-      border-radius: 14px;
-      background: rgba(5, 10, 22, 0.42);
-    }
-
-    .feature-card h3 {
-      margin: 0 0 8px;
-      color: #f3f7ff;
-    }
-
-    .feature-card p {
+    .detail-box ul {
       margin: 0;
-      color: #a8b0c5;
     }
 
     .cta-row {
@@ -307,146 +300,192 @@
       border-color: transparent;
     }
 
-    .section-block {
-      margin-top: 16px;
-    }
-
     footer {
-      padding: 24px 0;
       border-top: 1px solid rgba(100, 181, 255, 0.18);
+      padding: 24px 0;
     }
 
     @media (max-width: 1000px) {
       .stats,
-      .hero-actions,
-      .workspace,
-      .feature-grid {
+      .workspace {
         grid-template-columns: 1fr;
       }
 
-      .side-panel {
+      .education-list {
         position: static;
       }
     }
   </style>
 </head>
-
 <body>
   <header>
     <div class="shell">
       <nav>
         <div class="brand">Matthew Sexton</div>
         <div class="nav-links">
-          <a href="#about">About</a>
+          <a href="index.html">Home</a>
           <a href="projects.html">Projects</a>
-          <a href="#resume">Resume</a>
+          <a href="index.html#resume">Resume</a>
           <a href="education.html">Education</a>
-          <a href="#contact">Contact</a>
+          <a href="index.html#contact">Contact</a>
         </div>
       </nav>
 
       <section class="hero">
-        <p class="eyebrow">Cyber Defense Portfolio</p>
-        <h1>Cyber Defense Graduate Building Real Systems</h1>
-        <p>Hands-on cybersecurity, infrastructure, and full-stack development projects built through production IT support, enterprise-style homelab work, and long-term application development.</p>
+        <p class="eyebrow">Academic Background</p>
+        <h1>Education</h1>
+        <p>Formal cybersecurity education combined with practical homelab development, IT support experience, and continuous hands-on technical learning.</p>
       </section>
     </div>
   </header>
 
   <main class="shell">
     <section class="stats">
-      <div class="stat card-glass"><span>Education</span><strong>B.S. Cyber Defense</strong></div>
-      <div class="stat card-glass"><span>Experience</span><strong>IT Support Technician</strong></div>
-      <div class="stat card-glass"><span>Focus</span><strong>SOC / Infrastructure / Dev</strong></div>
-    </section>
-
-    <section class="hero-actions">
-      <a class="action-card" href="projects.html"><span>Portfolio</span><strong>View Projects</strong></a>
-      <a class="action-card" href="images/resume.pdf" target="_blank"><span>Resume</span><strong>View Resume</strong></a>
-      <a class="action-card" href="https://github.com/notxes" target="_blank" rel="noopener noreferrer"><span>Code</span><strong>GitHub</strong></a>
-      <a class="action-card" href="https://www.linkedin.com/in/matthew-sexton-858699362/" target="_blank" rel="noopener noreferrer"><span>Network</span><strong>LinkedIn</strong></a>
+      <div class="stat card-glass"><span>Degree</span><strong>B.S. Cyber Defense</strong></div>
+      <div class="stat card-glass"><span>Prior Degree</span><strong>A.A.S. Cybersecurity</strong></div>
+      <div class="stat card-glass"><span>Learning Focus</span><strong>Security / Infrastructure / SOC</strong></div>
     </section>
 
     <section class="workspace">
-      <aside class="side-panel card-glass">
-        <h2>Current Focus</h2>
-        <p>What I’m actively building and improving.</p>
+      <aside class="education-list card-glass">
+        <h2>Education List</h2>
+        <p class="muted">Select an item to view the breakdown.</p>
 
-        <div class="focus-item"><strong>Cybersecurity Homelab</strong><small>Proxmox • OPNsense • VLANs</small></div>
-        <div class="focus-item"><strong>Security Monitoring</strong><small>Security Onion • SOC workflows</small></div>
-        <div class="focus-item"><strong>D&D Full-Stack App</strong><small>Next.js • Supabase • PostgreSQL</small></div>
-        <div class="focus-item"><strong>Professional Growth</strong><small>SOC / Security Analyst path</small></div>
+        <button class="edu-btn active" type="button" data-edu="davenport">
+          <span>Bachelor of Science in Cyber Defense</span>
+          <small>Davenport University</small>
+        </button>
+
+        <button class="edu-btn" type="button" data-edu="delta">
+          <span>Associate in Applied Science in Cybersecurity</span>
+          <small>Delta College</small>
+        </button>
+
+        <button class="edu-btn" type="button" data-edu="continuous">
+          <span>Continuous Learning</span>
+          <small>Homelab • Net+ • SOC skills</small>
+        </button>
       </aside>
 
-      <section class="main-panel card-glass" id="about">
-        <p class="eyebrow">About Me</p>
-        <h2>Practical Cybersecurity, Infrastructure, and Application Building</h2>
-        <div>
-          <span class="badge">Cyber Defense</span>
-          <span class="badge">Homelab</span>
-          <span class="badge">IT Support</span>
-          <span class="badge">Full-Stack Projects</span>
-        </div>
-
-        <p class="muted">
-          I am a Cyber Defense graduate with hands-on IT support experience and a focus on practical cybersecurity, defensive security, infrastructure, and long-term technical project building.
-        </p>
-
-        <div class="detail-box">
-          <h3>What I Do</h3>
-          <ul>
-            <li>Support Windows and Linux systems in a production IT environment</li>
-            <li>Build segmented lab networks using Proxmox, OPNsense, VLANs, and Active Directory</li>
-            <li>Use Security Onion and monitoring tools to practice SOC-style investigation workflows</li>
-            <li>Build a custom full-stack D&D app using Next.js, Supabase, PostgreSQL, and TypeScript</li>
-          </ul>
-        </div>
-
-        <div class="feature-grid section-block" id="projects">
-          <div class="feature-card">
-            <h3>Cybersecurity Homelab</h3>
-            <p>Enterprise-style segmented lab with Red Team, Blue Team, victim, DMZ, and IoT networks.</p>
+      <section class="education-detail card-glass">
+        <article id="davenport" class="edu-panel">
+          <div class="edu-panel-top">
+            <div>
+              <p class="edu-label">Bachelor's Degree</p>
+              <h2>Bachelor of Science in Cyber Defense</h2>
+              <div class="tags">
+                <span>Davenport University</span>
+                <span>Cyber Defense</span>
+                <span>Information Assurance</span>
+              </div>
+            </div>
+            <strong class="edu-badge">3.90 GPA</strong>
           </div>
-          <div class="feature-card">
-            <h3>D&D Campaign App</h3>
-            <p>Full-stack software platform with character tools, achievements, inventory, campaigns, and backend systems.</p>
-          </div>
-          <div class="feature-card">
-            <h3>Security Onion SOC Lab</h3>
-            <p>Monitoring and detection environment for visibility, alerts, packet analysis, and investigation practice.</p>
-          </div>
-        </div>
 
-        <div class="detail-box section-block" id="skills">
-          <h3>Skills</h3>
-          <p>
-            Infrastructure: Proxmox, VLANs, OPNsense, Cisco switching, DNS, VPNs, Active Directory.<br>
-            Security: Security Onion, segmentation, monitoring, access control, traffic analysis, lab simulations.<br>
-            Development: HTML, CSS, Next.js, TypeScript, Supabase, PostgreSQL, schema design, UI organization.
-          </p>
-        </div>
+          <p class="muted">Completed a bachelor's degree focused on defensive security, enterprise infrastructure, risk management, and practical cybersecurity operations.</p>
 
-        <div class="detail-box section-block" id="resume">
-          <h3>Resume</h3>
-          <p>Download my current resume for experience, education, technical skills, and project background.</p>
+          <div class="detail-box">
+            <h3>Concentrations</h3>
+            <ul>
+              <li>Health Care Information Assurance Specialty</li>
+              <li>Information Assurance Specialty</li>
+            </ul>
+          </div>
+
+          <div class="detail-box">
+            <h3>Academic Highlights</h3>
+            <ul>
+              <li>3.90 GPA</li>
+              <li>Cyber Defense program focus</li>
+              <li>Focused on blue team operations and security fundamentals</li>
+              <li>Applied classroom knowledge through homelab projects</li>
+            </ul>
+          </div>
+
           <div class="cta-row">
-            <a class="btn primary" href="images/resume.pdf" target="_blank">View Resume</a>
-            <a class="btn" href="images/resume.pdf" download>Download PDF</a>
+            <a class="btn primary" href="images/davenport-degree.jpg" target="_blank">View Diploma</a>
           </div>
-        </div>
+        </article>
 
-        <div class="detail-box section-block" id="contact">
-          <h3>Contact</h3>
-          <p>
-            GitHub: <a href="https://github.com/notxes" target="_blank" rel="noopener noreferrer">github.com/notxes</a><br>
-            LinkedIn: <a href="https://www.linkedin.com/in/matthew-sexton-858699362/" target="_blank" rel="noopener noreferrer">linkedin.com/in/matthew-sexton-858699362/</a><br>
-            Email: <a href="mailto:msexton@notxes.com">msexton@notxes.com</a>
-          </p>
-        </div>
+        <article id="delta" class="edu-panel" hidden>
+          <div class="edu-panel-top">
+            <div>
+              <p class="edu-label">Associate Degree</p>
+              <h2>Associate in Applied Science in Cybersecurity</h2>
+              <div class="tags">
+                <span>Delta College</span>
+                <span>Cybersecurity</span>
+                <span>Networking</span>
+              </div>
+            </div>
+            <strong class="edu-badge">Foundation</strong>
+          </div>
+
+          <p class="muted">Completed an associate degree focused on cybersecurity, networking, systems support, and foundational IT skills.</p>
+
+          <div class="detail-box">
+            <h3>Academic Highlights</h3>
+            <ul>
+              <li>Built strong technical fundamentals before transfer</li>
+              <li>Focused on networking, security, and systems support</li>
+              <li>Prepared for advanced cyber defense studies</li>
+            </ul>
+          </div>
+
+          <div class="cta-row">
+            <a class="btn" href="images/delta-degree.jpg" target="_blank">View Diploma</a>
+          </div>
+        </article>
+
+        <article id="continuous" class="edu-panel" hidden>
+          <div class="edu-panel-top">
+            <div>
+              <p class="edu-label">Ongoing Development</p>
+              <h2>Continuous Learning</h2>
+              <div class="tags">
+                <span>Homelab</span>
+                <span>Network+</span>
+                <span>SOC Skills</span>
+                <span>Hands-On Practice</span>
+              </div>
+            </div>
+            <strong class="edu-badge">Active</strong>
+          </div>
+
+          <p class="muted">Beyond formal education, I continue learning through homelab development, self-study, practical troubleshooting, and hands-on cybersecurity projects.</p>
+
+          <div class="detail-box">
+            <h3>Current Focus Areas</h3>
+            <ul>
+              <li>Security Onion</li>
+              <li>VLAN Segmentation</li>
+              <li>Proxmox Virtualization</li>
+              <li>Active Directory</li>
+              <li>Network Security</li>
+              <li>SOC Workflows</li>
+              <li>Incident Response</li>
+              <li>Network+ exam preparation</li>
+            </ul>
+          </div>
+        </article>
       </section>
     </section>
   </main>
 
   <footer><div class="shell"></div></footer>
+
+  <script>
+    const eduButtons = document.querySelectorAll('.edu-btn');
+    const eduPanels = document.querySelectorAll('.edu-panel');
+
+    function showEducation(id) {
+      eduPanels.forEach(panel => panel.hidden = panel.id !== id);
+      eduButtons.forEach(button => button.classList.toggle('active', button.dataset.edu === id));
+    }
+
+    eduButtons.forEach(button => {
+      button.addEventListener('click', () => showEducation(button.dataset.edu));
+    });
+  </script>
 </body>
 </html>
