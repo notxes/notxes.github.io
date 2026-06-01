@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Matthew Sexton | Projects</title>
-  <meta name="description" content="Cybersecurity, homelab, and network security projects by Matthew Sexton." />
+  <meta name="description" content="Cybersecurity, homelab, app development, and network security projects by Matthew Sexton." />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -16,7 +16,7 @@
           <a href="index.html">Home</a>
           <a href="projects.html">Projects</a>
           <a href="index.html#resume">Resume</a>
-           <a href="education.html">Education</a>
+          <a href="education.html">Education</a>
           <a href="index.html#contact">Contact</a>
         </div>
       </nav>
@@ -24,102 +24,197 @@
   </header>
 
   <main class="container">
-    <section id="projects-page" class="projects-page">
-      <h1>Projects</h1>
+    <section class="projects-hero">
+      <p class="eyebrow">Portfolio Projects</p>
+      <h1>Projects Built Around Security, Infrastructure, and Real Systems</h1>
       <p class="projects-intro">
-        A collection of hands-on cybersecurity, networking, and homelab projects focused on segmentation, monitoring, detection, and practical enterprise-style security design.
+        A focused collection of hands-on cybersecurity, networking, full-stack development, and homelab projects. These projects show practical experience with segmentation, monitoring, detection, application logic, infrastructure design, and enterprise-style troubleshooting.
       </p>
+    </section>
 
-      <div class="project-detail-card">
+    <section class="featured-projects">
+      <div class="section-heading">
+        <h2>Featured Projects</h2>
+        <p>Each project represents practical work, not just coursework or theory.</p>
+      </div>
+
+      <div class="project-card-grid">
+        <article class="project-card featured-card">
+          <div class="project-card-image">
+            <img src="images/dnd-app-dashboard.jpg" alt="D&D application dashboard preview" />
+          </div>
+          <div class="project-card-content">
+            <div class="project-card-topline">
+              <span class="project-status active">Active Development</span>
+              <span class="project-type">Full-Stack App</span>
+            </div>
+            <h3>D&D Campaign Management App</h3>
+            <p>
+              A custom D&D 5.5 / 2024 rules application built with character creation, campaign tools, inventory systems, spell logic, feature automation, and database-driven game mechanics.
+            </p>
+            <div class="tech-tags">
+              <span>Next.js</span>
+              <span>Supabase</span>
+              <span>PostgreSQL</span>
+              <span>TypeScript</span>
+              <span>UI/UX</span>
+            </div>
+            <a class="project-button" href="#dnd-app">View Project</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-card-image">
+            <img src="images/homelab-diagram.png" alt="Cybersecurity homelab network diagram" />
+          </div>
+          <div class="project-card-content">
+            <div class="project-card-topline">
+              <span class="project-status active">Active Lab</span>
+              <span class="project-type">Cybersecurity</span>
+            </div>
+            <h3>Enterprise Segmented Cybersecurity Homelab</h3>
+            <p>
+              A segmented enterprise-style lab using VLANs, firewall rules, attacker systems, victim networks, monitoring infrastructure, and controlled attack/defense scenarios.
+            </p>
+            <div class="tech-tags">
+              <span>Proxmox</span>
+              <span>OPNsense</span>
+              <span>VLANs</span>
+              <span>Security Onion</span>
+              <span>Active Directory</span>
+            </div>
+            <a class="project-button" href="#homelab">View Project</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-card-image">
+            <img src="images/security-onion-dashboard.jpg" alt="Security Onion dashboard preview" />
+          </div>
+          <div class="project-card-content">
+            <div class="project-card-topline">
+              <span class="project-status active">Monitoring</span>
+              <span class="project-type">SOC Lab</span>
+            </div>
+            <h3>Security Onion Monitoring Environment</h3>
+            <p>
+              A Security Onion deployment designed to monitor segmented lab traffic, review alerts, investigate events, and understand SOC-style visibility workflows.
+            </p>
+            <div class="tech-tags">
+              <span>Security Onion</span>
+              <span>Zeek</span>
+              <span>Suricata</span>
+              <span>SPAN</span>
+              <span>Ubuntu</span>
+            </div>
+            <a class="project-button" href="#security-onion">View Project</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-card-image">
+            <img src="images/school-network-diagram.jpg" alt="School network security design diagram" />
+          </div>
+          <div class="project-card-content">
+            <div class="project-card-topline">
+              <span class="project-status complete">Completed</span>
+              <span class="project-type">Network Design</span>
+            </div>
+            <h3>School Network Security Design</h3>
+            <p>
+              A layered school network security design focused on segmentation, wireless security, endpoint protection, access control, and defense-in-depth concepts.
+            </p>
+            <div class="tech-tags">
+              <span>Cisco Packet Tracer</span>
+              <span>VLANs</span>
+              <span>Firewall Design</span>
+              <span>Wireless</span>
+            </div>
+            <a class="project-button" href="#school-network">View Project</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="project-details-section">
+      <div class="section-heading">
+        <h2>Project Details</h2>
+        <p>More detail for recruiters, hiring managers, or anyone reviewing the technical work behind each project.</p>
+      </div>
+
+      <article id="dnd-app" class="project-detail-card compact-detail-card">
+        <h2>D&D Campaign Management App</h2>
+        <h3>Overview</h3>
+        <p>
+          Built a custom full-stack D&D application focused on campaign management, character creation, player tools, and automation for complex tabletop mechanics. The app is designed around D&D 5.5 / 2024 rules and uses database-driven logic instead of hardcoded assumptions wherever possible.
+        </p>
+
+        <h3>Technologies Used</h3>
+        <ul>
+          <li>Next.js and React for the frontend</li>
+          <li>Supabase and PostgreSQL for backend data storage</li>
+          <li>TypeScript for application logic</li>
+          <li>Authentication, protected routes, and role-aware user flows</li>
+          <li>Custom database tables for characters, items, spells, features, achievements, and campaign systems</li>
+        </ul>
+
+        <h3>What I Did</h3>
+        <ul>
+          <li>Designed and built a multi-step character creator</li>
+          <li>Created database-backed systems for species, classes, backgrounds, spells, inventory, and equipment</li>
+          <li>Implemented character sheet features such as actions, senses, defenses, inventory, and spell display</li>
+          <li>Built logic for campaign-specific rules, item handling, equipment validation, and progression systems</li>
+          <li>Worked through schema migrations, permission issues, frontend bugs, and data consistency problems</li>
+        </ul>
+
+        <h3>Results and Learning Outcomes</h3>
+        <p>
+          This project demonstrates full-stack development, long-term debugging, database design, UI organization, complex rule modeling, and project ownership. It also shows the ability to translate a complicated rules system into structured application logic.
+        </p>
+      </article>
+
+      <article id="homelab" class="project-detail-card compact-detail-card">
         <h2>Enterprise Segmented Cybersecurity Homelab</h2>
         <h3>Overview</h3>
         <p>
           Designed and built a segmented cybersecurity homelab to simulate enterprise network architecture and real-world attack and defense scenarios. The environment supports both attacker and defender workflows, enabling hands-on practice with network security, monitoring, incident response, and adversary simulation in a controlled lab.
         </p>
 
-        <img src="images/homelab-diagram.png" class="hero-image">
-       
+        <img src="images/homelab-diagram.png" class="hero-image" alt="Enterprise cybersecurity homelab network diagram" />
+
         <h3>Technologies Used</h3>
         <ul>
-          <li>Proxmox (Multi-Node Virtualization)</li>
-          <li>OPNsense (Firewall, Routing, VPN)</li>
-          <li>VLAN Segmentation</li>
-          <li>Security Onion (Network Monitoring and Detection)</li>
-          <li>Active Directory (Windows Server Environment)</li>
-          <li>Kali Linux (Offensive Testing and Attack Simulation)</li>
-          <li>Pi-hole (DNS Management)</li>
-          <li>WireGuard (Secure Remote Access)</li>
-          <li>Cisco Switching (VLAN and Network Infrastructure) </li>
+          <li>Proxmox for multi-node virtualization</li>
+          <li>OPNsense for firewall, routing, and VPN services</li>
+          <li>VLAN segmentation for isolated network zones</li>
+          <li>Security Onion for monitoring and detection</li>
+          <li>Active Directory for Windows domain simulation</li>
+          <li>Kali Linux for offensive testing and attack simulation</li>
+          <li>Pi-hole for DNS management</li>
+          <li>WireGuard for secure remote access</li>
+          <li>Cisco switching for VLAN and infrastructure configuration</li>
         </ul>
 
         <h3>Architecture and Design</h3>
         <ul>
           <li>VLAN 10 → Management Network</li>
           <li>VLAN 20 → Red Team / Attacker Systems</li>
-          <li>VLAN 21 → Victim Environment (Active Directory + Endpoints)</li>
+          <li>VLAN 21 → Victim Environment with Active Directory and endpoints</li>
           <li>VLAN 30 → Blue Team / Monitoring Infrastructure</li>
           <li>VLAN 40 → DMZ / Public-Facing Services</li>
           <li>VLAN 50 → IoT / Untrusted Devices</li>
-          <li>Inter-VLAN traffic is routed through OPNsense and controlled via firewall policies</li>
-          <li>Port mirroring (SPAN) configured to forward traffic to Security Onion for monitoring</li>
-          <li>Virtual networking implemented using Proxmox bridges with VLAN tagging</li>
-          <li>Segmentation designed to enforce isolation and simulate real enterprise trust boundaries</li>
-        </ul>
-        
-        <h3>What I Did</h3>
-        <ul>
-          <li>Built and managed a multi-node Proxmox environment to support segmented infrastructure</li>
-          <li>Designed VLAN architecture to separate attacker, victim, SOC, DMZ, IoT, and management networks</li>
-          <li>Configured OPNsense firewall rules to control inter-VLAN traffic and restrict lateral movement</li>
-          <li>Deployed Security Onion for network visibility, alerting, and traffic analysis</li>
-          <li>Implemented an Active Directory lab environment with Windows clients for attack simulation</li>
-          <li>Set up attacker systems (Kali Linux) and victim machines to simulate real-world scenarios</li>
-          <li>Configured DNS services, VPN access (WireGuard), and supporting infrastructure</li>
-          <li>Conducted simulated attack activity to observe detection, logging, and response workflows</li>
+          <li>Inter-VLAN traffic routed through OPNsense and controlled through firewall policies</li>
+          <li>SPAN traffic forwarded to Security Onion for monitoring</li>
         </ul>
 
         <h3>Results and Learning Outcomes</h3>
         <p>
-         This project strengthened my understanding of network segmentation, traffic flow, and firewall policy design in a realistic environment. By building isolated VLANs for management, attacker, victim, SOC, DMZ, and IoT systems, I gained practical experience with enforcing trust boundaries and reducing attack surface.
-         Hands-on monitoring with Security Onion improved my ability to analyze network traffic and understand detection workflows, while configuring firewall rules reinforced how proper segmentation limits lateral movement and enhances overall security posture.
+          This project strengthened my understanding of network segmentation, firewall policy design, traffic flow, trust boundaries, and monitoring visibility. It also helped connect attack simulation to defensive detection and incident response workflows.
         </p>
+      </article>
 
-   <div class="project-screenshots">
-  <h3>Screenshots</h3>
-
-  <div class="screenshot-grid">
-
-    <figure>
-      <img src="images/proxmox-lab-infra.jpg" alt="Infrastructure Host">
-      <figcaption>Infrastructure host running core services, management workloads, and directory services.</figcaption>
-    </figure>
-
-    <figure>
-      <img src="images/proxmox-lab-blue.jpg" alt="Blue Team Host">
-      <figcaption>Blue Team host supporting monitoring, Security Onion, and victim systems.</figcaption>
-    </figure>
-
-    <figure>
-      <img src="images/proxmox-lab-red.jpg" alt="Red Team Host">
-      <figcaption>Red Team host dedicated to Kali Linux and offensive testing systems.</figcaption>
-    </figure>
-
-    <figure>
-      <img src="images/opnsense-vlans.jpg" alt="OPNsense VLAN interfaces">
-      <figcaption>OPNsense VLAN interface configuration for segmented network architecture.</figcaption>
-    </figure>
-
-    <figure>
-      <img src="images/opnsense-firewall-rules.jpg" alt="OPNsense firewall rules for lab segmentation">
-      <figcaption>Firewall policy design controlling inter-VLAN traffic and restricting lateral movement.</figcaption>
-    </figure>
-
-  </div>
-</div>
-
-      <div class="project-detail-card">
+      <article id="security-onion" class="project-detail-card compact-detail-card">
         <h2>Security Onion Monitoring Environment</h2>
-
         <h3>Overview</h3>
         <p>
           Deployed a Security Onion monitoring environment to observe network traffic across lab segments and better understand SOC workflows such as alerting, traffic analysis, event investigation, and visibility tuning.
@@ -135,42 +230,23 @@
           <li>Ubuntu Server</li>
         </ul>
 
-        <h3>Architecture and Design</h3>
-        <ul>
-          <li>Configured separate management and monitoring interfaces</li>
-          <li>Mirrored traffic from selected VLANs to the monitoring interface</li>
-          <li>Used a SPAN port to feed lab traffic into Security Onion</li>
-          <li>Monitored segmented activity to improve visibility into attacker and victim communications</li>
-        </ul>
-
         <h3>What I Did</h3>
         <ul>
           <li>Installed and configured Security Onion in a standalone lab deployment</li>
-          <li>Set up network monitoring for segmented lab traffic</li>
-          <li>Verified packet capture and log ingestion</li>
-          <li>Reviewed dashboards, alerts, and SOC-style workflows</li>
-          <li>Used simulated attack traffic to understand what activity was visible and how alerts were generated</li>
-          <li>Troubleshot interface, span, and traffic visibility issues during deployment</li>
+          <li>Configured separate management and monitoring interfaces</li>
+          <li>Used mirrored traffic from selected VLANs to monitor lab activity</li>
+          <li>Reviewed dashboards, alerts, packet capture, and logs</li>
+          <li>Troubleshot interface, SPAN, and visibility issues</li>
         </ul>
 
         <h3>Results and Learning Outcomes</h3>
         <p>
-          This project helped me better understand how network monitoring tools ingest traffic, generate alerts, and support investigation workflows. It also improved my troubleshooting skills around mirrored traffic, interface configuration, and visibility across segmented environments.
+          This project improved my understanding of how monitoring tools ingest traffic, generate alerts, and support investigations. It also improved troubleshooting skills around mirrored traffic and segmented visibility.
         </p>
+      </article>
 
-        <div class="project-screenshots">
-          <h3>Screenshots</h3>
-          <div class="screenshot-grid">
-            <img src="images/security-onion-dashboard.jpg" alt="Security Onion dashboard">
-            <img src="images/security-onion-alerts.jpg" alt="Security Onion alerts and monitoring view">
-            <img src="images/security-onion-hunt.jpg" alt="Security Onion investigation view">
-          </div>
-        </div>
-      </div>
-
-      <div class="project-detail-card">
+      <article id="school-network" class="project-detail-card compact-detail-card">
         <h2>School Network Security Design</h2>
-
         <h3>Overview</h3>
         <p>
           Created a layered school network security design as part of a capstone project. The design focused on segmentation, endpoint protection, secure wireless access, and enterprise-style architecture built in Cisco Packet Tracer.
@@ -186,34 +262,11 @@
           <li>Windows Deployment Concepts</li>
         </ul>
 
-        <h3>Architecture and Design</h3>
-        <ul>
-          <li>Separated traffic for students, staff, administrators, and guests</li>
-          <li>Applied layered security principles and defense in depth</li>
-          <li>Included switching, routing, and wireless design considerations</li>
-          <li>Considered endpoint protection, patching, MFA, and access control</li>
-        </ul>
-
-        <h3>What I Did</h3>
-        <ul>
-          <li>Focused on the cybersecurity and protection side of the design</li>
-          <li>Helped define segmentation and layered defense strategies</li>
-          <li>Contributed recommendations for endpoint security and hardening</li>
-          <li>Supported the overall technical and business design of the environment</li>
-        </ul>
-
         <h3>Results and Learning Outcomes</h3>
         <p>
-          This project improved my understanding of secure network design in a collaborative environment and helped me connect classroom concepts to practical decisions involving segmentation, access control, wireless security, and defense in depth.
+          This project improved my understanding of secure network design in a collaborative environment and helped connect classroom concepts to practical decisions involving segmentation, access control, wireless security, and defense in depth.
         </p>
-
-        <div class="project-screenshots">
-          <h3>Screenshots</h3>
-          <div class="screenshot-grid">
-            <img src="images/school-network-diagram.jpg" alt="School network security design diagram">
-          </div>
-        </div>
-      </div>
+      </article>
     </section>
   </main>
 
