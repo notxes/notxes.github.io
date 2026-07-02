@@ -350,6 +350,48 @@
       background: rgba(5, 10, 22, 0.42);
     }
 
+
+
+    .glance-box {
+      padding: 18px;
+      margin-bottom: 18px;
+    }
+
+    .glance-box h2 {
+      margin: 0 0 14px;
+      color: #f3f7ff;
+    }
+
+    .glance-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+
+    .glance-card {
+      padding: 16px;
+      border: 1px solid rgba(100, 181, 255, 0.22);
+      border-radius: 14px;
+      background: rgba(5, 10, 22, 0.42);
+    }
+
+    .glance-card span {
+      display: block;
+      color: #64b5ff;
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .glance-card strong {
+      display: block;
+      margin-top: 8px;
+      color: #ffffff;
+      font-size: 1.75rem;
+      line-height: 1;
+    }
+
     .inventory-table-wrap {
       overflow-x: auto;
       margin-top: 12px;
@@ -407,7 +449,8 @@
       .stats,
       .category-grid,
       .workspace,
-      .spec-grid {
+      .spec-grid,
+      .glance-grid {
         grid-template-columns: 1fr;
       }
 
@@ -464,11 +507,22 @@
       </div>
     </section>
 
+    <section class="glance-box card-glass">
+      <h2>Lab at a Glance</h2>
+      <div class="glance-grid">
+        <div class="glance-card"><span>Compute Systems</span><strong>5</strong></div>
+        <div class="glance-card"><span>Endpoints</span><strong>8</strong></div>
+        <div class="glance-card"><span>Network Devices</span><strong>3</strong></div>
+        <div class="glance-card"><span>Storage</span><strong>1</strong></div>
+        <div class="glance-card"><span>Virtualization Hosts</span><strong>2</strong></div>
+      </div>
+    </section>
+
     <section class="categories card-glass">
       <h2>Categories</h2>
 
       <div class="category-grid">
-        <button class="category-btn active" type="button" data-category="hardware">
+        <button class="category-btn active" type="button" data-category="compute">
           <span>Compute</span>
           <small>Servers + endpoints</small>
         </button>
@@ -503,19 +557,19 @@
     <section class="workspace">
       <aside class="lab-list card-glass">
         <h2>Lab Sections</h2>
-        <p class="muted" id="listHint">Hardware</p>
+        <p class="muted" id="listHint">Compute</p>
 
-        <button class="lab-btn active" type="button" data-category="hardware" data-lab="hardware-overview">
-          <span>Hardware Overview</span>
-          <small>Physical lab inventory</small>
+        <button class="lab-btn active" type="button" data-category="compute" data-lab="compute-overview">
+          <span>Compute Overview</span>
+          <small>Servers + endpoints</small>
         </button>
 
-        <button class="lab-btn" type="button" data-category="hardware" data-lab="gpu-systems">
+        <button class="lab-btn" type="button" data-category="compute" data-lab="gpu-systems">
           <span>GPU Systems</span>
           <small>AI + research workstations</small>
         </button>
 
-        <button class="lab-btn" type="button" data-category="hardware" data-lab="endpoints">
+        <button class="lab-btn" type="button" data-category="compute" data-lab="endpoints">
           <span>Endpoint Fleet</span>
           <small>Laptops + mini PCs</small>
         </button>
@@ -536,7 +590,7 @@
         </button>
 
         <button class="lab-btn" type="button" data-category="services" data-lab="core-services" hidden>
-          <span>Core Services</span>
+          <span>Hosted Services</span>
           <small>AD, DNS, app hosting</small>
         </button>
 
@@ -562,11 +616,11 @@
       </aside>
 
       <section class="lab-detail card-glass">
-        <article id="hardware-overview" class="lab-panel">
+        <article id="compute-overview" class="lab-panel">
           <div class="lab-panel-top">
             <div>
               <p class="lab-label">Compute</p>
-              <h2>Physical Lab Inventory</h2>
+              <h2>Compute Inventory</h2>
 
               <div class="tags">
                 <span>Servers</span>
@@ -580,7 +634,7 @@
             <strong class="lab-badge">Active Lab</strong>
           </div>
 
-          <p class="muted">This lab is built as a practical enterprise-style environment using dedicated servers, mini PCs, GPU systems, Raspberry Pis, laptops, and virtual infrastructure.</p>
+          <p class="muted">This lab compute layer is built from dedicated servers, mini PCs, GPU systems, Raspberry Pis, laptops, and virtual infrastructure.</p>
 
           <div class="spec-grid">
             <div class="spec-card">
@@ -1000,7 +1054,7 @@ Managed Switch
           <div class="lab-panel-top">
             <div>
               <p class="lab-label">Services</p>
-              <h2>Core Infrastructure Services</h2>
+              <h2>Hosted Services</h2>
 
               <div class="tags">
                 <span>Active Directory</span>
@@ -1014,7 +1068,7 @@ Managed Switch
             <strong class="lab-badge">Production + Lab</strong>
           </div>
 
-          <p class="muted">The core server hosts long-running services that support both personal infrastructure and development projects.</p>
+          <p class="muted">These hosted services support personal infrastructure, application development, identity practice, DNS, databases, and lab workflows.</p>
 
           <div class="spec-grid">
             <div class="spec-card">
@@ -1171,6 +1225,7 @@ Managed Switch
             <h3>Next Priorities</h3>
             <ul>
               <li>Maintain a complete hardware and service inventory on this page</li>
+              <li>Build a clean network diagram for the website</li>
               <li>Add monitoring dashboards for hosts, services, and network health</li>
               <li>Deploy the RTX 3060 Ubuntu AI server with Ollama and Open WebUI</li>
               <li>Deploy the RTX 20-series Windows research workstation</li>
@@ -1199,7 +1254,7 @@ Managed Switch
     const listHint = document.getElementById('listHint');
 
     const categoryLabels = {
-      hardware: 'Compute',
+      compute: 'Compute',
       infrastructure: 'Infrastructure',
       network: 'Network',
       services: 'Services',
