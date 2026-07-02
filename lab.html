@@ -152,7 +152,7 @@
 
     .category-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(6, 1fr);
       gap: 10px;
     }
 
@@ -469,8 +469,13 @@
 
       <div class="category-grid">
         <button class="category-btn active" type="button" data-category="hardware">
-          <span>Hardware</span>
+          <span>Compute</span>
           <small>Servers + endpoints</small>
+        </button>
+
+        <button class="category-btn" type="button" data-category="infrastructure">
+          <span>Infrastructure</span>
+          <small>Firewall + NAS + Wi-Fi</small>
         </button>
 
         <button class="category-btn" type="button" data-category="network">
@@ -515,6 +520,11 @@
           <small>Laptops + mini PCs</small>
         </button>
 
+        <button class="lab-btn" type="button" data-category="infrastructure" data-lab="network-infrastructure" hidden>
+          <span>Network Infrastructure</span>
+          <small>Firewall, switch, AP, NAS</small>
+        </button>
+
         <button class="lab-btn" type="button" data-category="network" data-lab="network-architecture" hidden>
           <span>Network Architecture</span>
           <small>OPNsense + switching</small>
@@ -555,7 +565,7 @@
         <article id="hardware-overview" class="lab-panel">
           <div class="lab-panel-top">
             <div>
-              <p class="lab-label">Hardware</p>
+              <p class="lab-label">Compute</p>
               <h2>Physical Lab Inventory</h2>
 
               <div class="tags">
@@ -714,6 +724,17 @@
                     <td><span class="status-pill">Active</span></td>
                   </tr>
                   <tr>
+                    <td>NAS / Backup Storage</td>
+                    <td>Central storage, VM backups, ISO library, shared files, and project backup storage</td>
+                    <td>UGREEN NAS OS</td>
+                    <td>Appliance</td>
+                    <td>Unknown</td>
+                    <td>None</td>
+                    <td>2 × 2 TB HDD + 1 × 2 TB NVMe</td>
+                    <td>VLAN 10 / Management</td>
+                    <td><span class="status-pill">Active</span></td>
+                  </tr>
+                  <tr>
                     <td>Endpoint Fleet</td>
                     <td>Windows 11, Windows 10, Ubuntu, and CachyOS laptops / Surface systems</td>
                     <td>Mixed</td>
@@ -825,6 +846,58 @@
           </div>
         </article>
 
+        <article id="network-infrastructure" class="lab-panel" hidden>
+          <div class="lab-panel-top">
+            <div>
+              <p class="lab-label">Infrastructure</p>
+              <h2>Network Infrastructure</h2>
+
+              <div class="tags">
+                <span>OPNsense</span>
+                <span>Cisco Catalyst</span>
+                <span>Ubiquiti</span>
+                <span>NAS</span>
+              </div>
+            </div>
+
+            <strong class="lab-badge">Core Network</strong>
+          </div>
+
+          <p class="muted">Core network infrastructure supports routing, segmentation, switching, wireless access, and centralized storage for the lab.</p>
+
+          <div class="spec-grid">
+            <div class="spec-card">
+              <h3>OPNsense Firewall</h3>
+              <p>Handles firewall policy, routing, VLAN segmentation, VPN access, and controlled inter-VLAN communication.</p>
+            </div>
+
+            <div class="spec-card">
+              <h3>Cisco Catalyst 2960 48-Port Switch</h3>
+              <p>Managed switching for VLANs, trunking, endpoint connectivity, and SPAN/mirrored traffic for monitoring visibility.</p>
+            </div>
+
+            <div class="spec-card">
+              <h3>Ubiquiti U7 Access Point</h3>
+              <p>Wireless access for trusted devices and lab administration without exposing sensitive network details publicly.</p>
+            </div>
+
+            <div class="spec-card">
+              <h3>UGREEN 2-Bay NAS</h3>
+              <p>Central storage with 2 × 2 TB HDD and 1 × 2 TB NVMe for VM backups, ISO storage, shared files, and project backups.</p>
+            </div>
+          </div>
+
+          <div class="detail-box">
+            <h3>Infrastructure Purpose</h3>
+            <ul>
+              <li>Provide segmented network access for lab, management, security, and endpoint systems</li>
+              <li>Support realistic switching, VLAN, and firewall administration practice</li>
+              <li>Centralize backup and file storage for lab workloads</li>
+              <li>Give the environment a more complete enterprise-style network foundation</li>
+            </ul>
+          </div>
+        </article>
+
         <article id="network-architecture" class="lab-panel" hidden>
           <div class="lab-panel-top">
             <div>
@@ -850,7 +923,9 @@
             <h3>Network Summary</h3>
             <ul>
               <li>OPNsense handles routing, VPN access, VLAN interfaces, and inter-VLAN firewall policy.</li>
-              <li>Cisco switching separates systems by trust boundary and lab function.</li>
+              <li>Cisco Catalyst switching separates systems by trust boundary and lab function.</li>
+              <li>The Ubiquiti U7 access point supports wireless access for trusted devices and lab administration.</li>
+              <li>The UGREEN NAS provides centralized storage for VM backups, ISO files, shared lab storage, and project backups.</li>
               <li>Security Onion receives monitored traffic for alerting, visibility, and SOC-style investigation practice.</li>
               <li>Red Team, Victim, Blue Team, DMZ, IoT, LAN, and Management zones are separated instead of running as a flat network.</li>
             </ul>
@@ -1125,7 +1200,8 @@ Managed Switch
     const listHint = document.getElementById('listHint');
 
     const categoryLabels = {
-      hardware: 'Hardware',
+      hardware: 'Compute',
+      infrastructure: 'Infrastructure',
       network: 'Network',
       services: 'Services',
       security: 'Security',
