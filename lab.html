@@ -341,6 +341,63 @@
       color: #a8b0c5;
     }
 
+    .project-image {
+      width: 100%;
+      display: block;
+      margin-top: 16px;
+      border: 1px solid rgba(100, 181, 255, 0.22);
+      border-radius: 14px;
+      background: rgba(5, 10, 22, 0.42);
+    }
+
+    .inventory-table-wrap {
+      overflow-x: auto;
+      margin-top: 12px;
+    }
+
+    .inventory-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 1180px;
+    }
+
+    .inventory-table th,
+    .inventory-table td {
+      padding: 12px;
+      border-bottom: 1px solid rgba(100, 181, 255, 0.18);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .inventory-table th {
+      color: #64b5ff;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 900;
+    }
+
+    .inventory-table td {
+      color: #dce4f5;
+    }
+
+    .inventory-table tr:hover {
+      background: rgba(100, 181, 255, 0.06);
+    }
+
+    .status-pill {
+      display: inline-block;
+      border: 1px solid rgba(100, 181, 255, 0.34);
+      background: rgba(100, 181, 255, 0.08);
+      color: #64b5ff;
+      border-radius: 999px;
+      padding: 4px 8px;
+      font-size: 0.75rem;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+
     footer {
       border-top: 1px solid rgba(100, 181, 255, 0.18);
       padding: 24px 0;
@@ -517,23 +574,158 @@
 
           <div class="spec-grid">
             <div class="spec-card">
-              <h3>Core Server</h3>
-              <p>Runs primary infrastructure services such as personal Active Directory, application hosting, databases, and supporting backend systems.</p>
+              <h3>SX-MAIN</h3>
+              <p>Ryzen 9 7950X, 128 GB DDR5, RTX 5070, and 4 × 2 TB NVMe. Runs personal Active Directory, D&amp;D app hosting, databases, and core infrastructure.</p>
             </div>
 
             <div class="spec-card">
-              <h3>Proxmox Hosts</h3>
-              <p>Used for virtualized Red Team, Blue Team, victim, Windows, and Linux lab systems.</p>
+              <h3>SX-RED / SX-BLUE</h3>
+              <p>Dedicated Proxmox hosts for Red Team, Blue Team, victim, Windows, and Linux lab systems.</p>
             </div>
 
             <div class="spec-card">
-              <h3>GPU Systems</h3>
-              <p>Dedicated RTX 3060 and RTX 20-series systems for AI, security research, reverse engineering, and GPU-assisted workloads.</p>
+              <h3>SX-AI / SX-RE</h3>
+              <p>Dedicated RTX 3060 and RTX 2060 systems for AI, security research, reverse engineering, and GPU-assisted workloads.</p>
             </div>
 
             <div class="spec-card">
-              <h3>Endpoint Fleet</h3>
-              <p>Windows, Ubuntu, and CachyOS laptops and Surface devices used for endpoint testing, administration, and daily lab interaction.</p>
+              <h3>SX-DAILY / SX-WORK / Laptops</h3>
+              <p>Mini PCs, Windows, Ubuntu, and CachyOS laptops and Surface devices used for endpoint testing, administration, and daily lab interaction.</p>
+            </div>
+          </div>
+
+          <div class="detail-box">
+            <h3>Asset Inventory</h3>
+            <p class="muted">High-level inventory for major lab systems. Sensitive details such as public IPs, exact firewall rules, and credentials are intentionally excluded.</p>
+
+            <div class="inventory-table-wrap">
+              <table class="inventory-table">
+                <thead>
+                  <tr>
+                    <th>Host / Device</th>
+                    <th>Role</th>
+                    <th>OS / Platform</th>
+                    <th>CPU</th>
+                    <th>RAM</th>
+                    <th>GPU</th>
+                    <th>Storage</th>
+                    <th>VLAN / Zone</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>SX-MAIN</td>
+                    <td>Core server, personal AD, D&amp;D app, databases, and primary infrastructure</td>
+                    <td>Server infrastructure</td>
+                    <td>Ryzen 9 7950X, 16c/32t</td>
+                    <td>128 GB DDR5</td>
+                    <td>NVIDIA RTX 5070</td>
+                    <td>4 × 2 TB NVMe</td>
+                    <td>VLAN 10 / Management</td>
+                    <td><span class="status-pill">Active</span></td>
+                  </tr>
+                  <tr>
+                    <td>SX-RED</td>
+                    <td>Red Team Proxmox host for attacker systems and offensive lab VMs</td>
+                    <td>Proxmox</td>
+                    <td>Ryzen 7 8745HS</td>
+                    <td>32 GB DDR5</td>
+                    <td>Integrated</td>
+                    <td>1 TB NVMe</td>
+                    <td>VLAN 20 / Red Team</td>
+                    <td><span class="status-pill">Active</span></td>
+                  </tr>
+                  <tr>
+                    <td>SX-BLUE</td>
+                    <td>Blue Team / SOC Proxmox host for Security Onion and monitoring workloads</td>
+                    <td>Proxmox</td>
+                    <td>Intel i9-13900HK, 14c/20t</td>
+                    <td>32 GB DDR5</td>
+                    <td>Integrated</td>
+                    <td>1 TB SSD</td>
+                    <td>VLAN 30 / Blue Team</td>
+                    <td><span class="status-pill">Active</span></td>
+                  </tr>
+                  <tr>
+                    <td>SX-AI</td>
+                    <td>AI server, Ollama, Open WebUI, Docker, GPU compute, and Hashcat lab use</td>
+                    <td>Ubuntu Server 24.04 LTS</td>
+                    <td>Intel i7</td>
+                    <td>64 GB DDR4</td>
+                    <td>NVIDIA RTX 3060</td>
+                    <td>1 TB NVMe</td>
+                    <td>VLAN 10 / Management</td>
+                    <td><span class="status-pill">Planned</span></td>
+                  </tr>
+                  <tr>
+                    <td>SX-RE</td>
+                    <td>Security research, reverse engineering, digital forensics, and isolated lab VMs</td>
+                    <td>Windows 11 Pro</td>
+                    <td>Unknown</td>
+                    <td>32 GB DDR4</td>
+                    <td>NVIDIA RTX 2060</td>
+                    <td>2 TB NVMe</td>
+                    <td>VLAN 20 / Red Team</td>
+                    <td><span class="status-pill">Planned</span></td>
+                  </tr>
+                  <tr>
+                    <td>SX-PI-CORE</td>
+                    <td>Passbolt, Pi-hole, Nginx, network alerts, and lightweight infrastructure services</td>
+                    <td>Raspberry Pi OS</td>
+                    <td>ARM</td>
+                    <td>16 GB</td>
+                    <td>None</td>
+                    <td>Unknown</td>
+                    <td>VLAN 10 / Management</td>
+                    <td><span class="status-pill">Active</span></td>
+                  </tr>
+                  <tr>
+                    <td>SX-PI-02</td>
+                    <td>Utility Pi for backup DNS, monitoring, honeypot, or subnet-router use</td>
+                    <td>Raspberry Pi OS / TBD</td>
+                    <td>ARM</td>
+                    <td>8 GB</td>
+                    <td>None</td>
+                    <td>Unknown</td>
+                    <td>VLAN 10 / Management</td>
+                    <td><span class="status-pill">Available</span></td>
+                  </tr>
+                  <tr>
+                    <td>SX-DAILY</td>
+                    <td>Daily driver mini PC</td>
+                    <td>Windows / Linux</td>
+                    <td>Ryzen 5 3500U</td>
+                    <td>16 GB</td>
+                    <td>Integrated</td>
+                    <td>512 GB SSD</td>
+                    <td>Trusted endpoint</td>
+                    <td><span class="status-pill">Active</span></td>
+                  </tr>
+                  <tr>
+                    <td>SX-WORK</td>
+                    <td>Work / admin mini PC</td>
+                    <td>Windows</td>
+                    <td>Ryzen 5 3500U</td>
+                    <td>16 GB</td>
+                    <td>Integrated</td>
+                    <td>512 GB SSD</td>
+                    <td>Trusted endpoint</td>
+                    <td><span class="status-pill">Active</span></td>
+                  </tr>
+                  <tr>
+                    <td>Endpoint Fleet</td>
+                    <td>Windows 11, Windows 10, Ubuntu, and CachyOS laptops / Surface systems</td>
+                    <td>Mixed</td>
+                    <td>Mixed</td>
+                    <td>12–16 GB</td>
+                    <td>Mixed</td>
+                    <td>Mixed</td>
+                    <td>Varies</td>
+                    <td><span class="status-pill">Available</span></td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
 
@@ -570,20 +762,23 @@
           <div class="detail-box">
             <h3>RTX 3060 System</h3>
             <ul>
+              <li>Hostname: SX-AI</li>
               <li>Planned OS: Ubuntu Server 24.04 LTS</li>
+              <li>Hardware: Intel i7, 64 GB DDR4, NVIDIA RTX 3060, 1 TB NVMe</li>
               <li>Role: AI server, local model hosting, Docker workloads, GPU compute, and Hashcat lab use</li>
               <li>Planned services: Ollama, Open WebUI, Docker, SSH, monitoring agent</li>
-              <li>Potential RAM target: 64 GB DDR4 if hardware compatibility is stable</li>
             </ul>
           </div>
 
           <div class="detail-box">
             <h3>RTX 20-Series System</h3>
             <ul>
+              <li>Hostname: SX-RE</li>
               <li>Planned OS: Windows 11 Pro</li>
+              <li>Hardware: CPU unknown, 32 GB DDR4, NVIDIA RTX 2060, 2 TB NVMe</li>
               <li>Role: security research workstation, reverse engineering, digital forensics, and malware-analysis lab work</li>
               <li>Planned tools: VMware Workstation Pro, FLARE-VM, Ghidra, x64dbg, Wireshark, Burp Suite, VS Code</li>
-              <li>Network placement: Red Team or isolated research VLAN with restricted access to trusted services</li>
+              <li>Network placement: VLAN 20 / Red Team or isolated research VLAN with restricted access to trusted services</li>
             </ul>
           </div>
         </article>
@@ -649,6 +844,18 @@
 
           <p class="muted">The lab network is designed around segmentation, controlled inter-VLAN access, monitoring visibility, and separation between production, lab, offensive, defensive, and IoT systems.</p>
 
+          <img src="images/homelab-diagram.png" class="project-image" alt="Enterprise cybersecurity homelab network diagram" />
+
+          <div class="detail-box">
+            <h3>Network Summary</h3>
+            <ul>
+              <li>OPNsense handles routing, VPN access, VLAN interfaces, and inter-VLAN firewall policy.</li>
+              <li>Cisco switching separates systems by trust boundary and lab function.</li>
+              <li>Security Onion receives monitored traffic for alerting, visibility, and SOC-style investigation practice.</li>
+              <li>Red Team, Victim, Blue Team, DMZ, IoT, LAN, and Management zones are separated instead of running as a flat network.</li>
+            </ul>
+          </div>
+
           <div class="detail-box diagram-box">Internet
   │
   ▼
@@ -656,6 +863,7 @@ OPNsense Firewall
   │
   ▼
 Managed Switch
+  ├── VLAN 1   LAN / General Devices
   ├── VLAN 10  Management / Infrastructure
   ├── VLAN 20  Red Team / Research
   ├── VLAN 21  Victim Systems
@@ -823,8 +1031,9 @@ Managed Switch
             </ul>
           </div>
 
-          <div class="detail-box warning-note">
-            This section should use sanitized screenshots only. Avoid showing public IPs, private firewall details, credentials, VPN endpoints, or sensitive internal configuration.
+          <div class="detail-box">
+            <h3>Current Focus</h3>
+            <p>Expanding centralized monitoring, log aggregation, and detection engineering through Security Onion while documenting SOC-style investigation and incident response workflows.</p>
           </div>
         </article>
 
@@ -858,8 +1067,9 @@ Managed Switch
             </ul>
           </div>
 
-          <div class="detail-box warning-note">
-            Offensive tooling is used only inside authorized lab environments and isolated systems designed for testing and learning.
+          <div class="detail-box">
+            <h3>Research Focus</h3>
+            <p>Used to validate defensive controls, analyze software, practice reverse engineering, and improve detection capabilities in an isolated lab environment.</p>
           </div>
         </article>
 
@@ -885,7 +1095,7 @@ Managed Switch
           <div class="detail-box">
             <h3>Next Priorities</h3>
             <ul>
-              <li>Create a complete hardware and service inventory</li>
+              <li>Maintain a complete hardware and service inventory on this page</li>
               <li>Build a clean network diagram for the website</li>
               <li>Add monitoring dashboards for hosts, services, and network health</li>
               <li>Deploy the RTX 3060 Ubuntu AI server with Ollama and Open WebUI</li>
