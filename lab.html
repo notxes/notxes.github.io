@@ -574,22 +574,22 @@
 
           <div class="spec-grid">
             <div class="spec-card">
-              <h3>SX-MAIN</h3>
+              <h3>Core Server</h3>
               <p>Ryzen 9 7950X, 128 GB DDR5, RTX 5070, and 4 × 2 TB NVMe. Runs personal Active Directory, D&amp;D app hosting, databases, and core infrastructure.</p>
             </div>
 
             <div class="spec-card">
-              <h3>SX-RED / SX-BLUE</h3>
+              <h3>Red / Blue Virtualization Hosts</h3>
               <p>Dedicated Proxmox hosts for Red Team, Blue Team, victim, Windows, and Linux lab systems.</p>
             </div>
 
             <div class="spec-card">
-              <h3>SX-AI / SX-RE</h3>
+              <h3>GPU Systems</h3>
               <p>Dedicated RTX 3060 and RTX 2060 systems for AI, security research, reverse engineering, and GPU-assisted workloads.</p>
             </div>
 
             <div class="spec-card">
-              <h3>SX-DAILY / SX-WORK / Laptops</h3>
+              <h3>Endpoint Fleet</h3>
               <p>Mini PCs, Windows, Ubuntu, and CachyOS laptops and Surface devices used for endpoint testing, administration, and daily lab interaction.</p>
             </div>
           </div>
@@ -615,7 +615,7 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>SX-MAIN</td>
+                    <td>Core Server</td>
                     <td>Core server, personal AD, D&amp;D app, databases, and primary infrastructure</td>
                     <td>Server infrastructure</td>
                     <td>Ryzen 9 7950X, 16c/32t</td>
@@ -626,7 +626,7 @@
                     <td><span class="status-pill">Active</span></td>
                   </tr>
                   <tr>
-                    <td>SX-RED</td>
+                    <td>Red Team Host</td>
                     <td>Red Team Proxmox host for attacker systems and offensive lab VMs</td>
                     <td>Proxmox</td>
                     <td>Ryzen 7 8745HS</td>
@@ -637,7 +637,7 @@
                     <td><span class="status-pill">Active</span></td>
                   </tr>
                   <tr>
-                    <td>SX-BLUE</td>
+                    <td>Blue Team Host</td>
                     <td>Blue Team / SOC Proxmox host for Security Onion and monitoring workloads</td>
                     <td>Proxmox</td>
                     <td>Intel i9-13900HK, 14c/20t</td>
@@ -648,7 +648,7 @@
                     <td><span class="status-pill">Active</span></td>
                   </tr>
                   <tr>
-                    <td>SX-AI</td>
+                    <td>AI Server</td>
                     <td>AI server, Ollama, Open WebUI, Docker, GPU compute, and Hashcat lab use</td>
                     <td>Ubuntu Server 24.04 LTS</td>
                     <td>Intel i7</td>
@@ -659,7 +659,7 @@
                     <td><span class="status-pill">Planned</span></td>
                   </tr>
                   <tr>
-                    <td>SX-RE</td>
+                    <td>Research Workstation</td>
                     <td>Security research, reverse engineering, digital forensics, and isolated lab VMs</td>
                     <td>Windows 11 Pro</td>
                     <td>Unknown</td>
@@ -670,7 +670,7 @@
                     <td><span class="status-pill">Planned</span></td>
                   </tr>
                   <tr>
-                    <td>SX-PI-CORE</td>
+                    <td>Primary Raspberry Pi</td>
                     <td>Passbolt, Pi-hole, Nginx, network alerts, and lightweight infrastructure services</td>
                     <td>Raspberry Pi OS</td>
                     <td>ARM</td>
@@ -681,7 +681,7 @@
                     <td><span class="status-pill">Active</span></td>
                   </tr>
                   <tr>
-                    <td>SX-PI-02</td>
+                    <td>Utility Raspberry Pi</td>
                     <td>Utility Pi for backup DNS, monitoring, honeypot, or subnet-router use</td>
                     <td>Raspberry Pi OS / TBD</td>
                     <td>ARM</td>
@@ -692,7 +692,7 @@
                     <td><span class="status-pill">Available</span></td>
                   </tr>
                   <tr>
-                    <td>SX-DAILY</td>
+                    <td>Daily Mini PC</td>
                     <td>Daily driver mini PC</td>
                     <td>Windows / Linux</td>
                     <td>Ryzen 5 3500U</td>
@@ -703,7 +703,7 @@
                     <td><span class="status-pill">Active</span></td>
                   </tr>
                   <tr>
-                    <td>SX-WORK</td>
+                    <td>Work Mini PC</td>
                     <td>Work / admin mini PC</td>
                     <td>Windows</td>
                     <td>Ryzen 5 3500U</td>
@@ -762,7 +762,7 @@
           <div class="detail-box">
             <h3>RTX 3060 System</h3>
             <ul>
-              <li>Hostname: SX-AI</li>
+              <li>Public label: AI Server</li>
               <li>Planned OS: Ubuntu Server 24.04 LTS</li>
               <li>Hardware: Intel i7, 64 GB DDR4, NVIDIA RTX 3060, 1 TB NVMe</li>
               <li>Role: AI server, local model hosting, Docker workloads, GPU compute, and Hashcat lab use</li>
@@ -773,7 +773,7 @@
           <div class="detail-box">
             <h3>RTX 20-Series System</h3>
             <ul>
-              <li>Hostname: SX-RE</li>
+              <li>Public label: Research Workstation</li>
               <li>Planned OS: Windows 11 Pro</li>
               <li>Hardware: CPU unknown, 32 GB DDR4, NVIDIA RTX 2060, 2 TB NVMe</li>
               <li>Role: security research workstation, reverse engineering, digital forensics, and malware-analysis lab work</li>
