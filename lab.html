@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matthew Sexton | Homelab</title>
+  <meta name="description" content="Enterprise-style cybersecurity homelab specifications, hardware, network segmentation, hosted services, monitoring, and roadmap for Matthew Sexton." />
+
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(100, 181, 255, 0.18), transparent 36%),
+        radial-gradient(circle at top left, rgba(80, 120, 255, 0.12), transparent 32%),
+        linear-gradient(180deg, #09101d 0%, #0f1830 100%);
+      color: #e8ecf4;
+      line-height: 1.6;
+    }
+
+    body, h1, h2, h3, p, li, span, small, strong, a, button, select {
+      color: #e8ecf4;
+    }
+
+    a { text-decoration: none; }
+    a:hover { color: #64b5ff; }
+    button, select { font: inherit; }
+
+    .shell {
+      width: min(1280px, 94%);
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 28px 0 34px;
+      border-bottom: 1px solid rgba(100, 181, 255, 0.18);
+      background: rgba(8, 15, 30, 0.45);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .brand {
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      color: #ffffff;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: #dce4f5;
+      opacity: 0.9;
+    }
+
+    .nav-links a.active {
+      color: #64b5ff;
+      opacity: 1;
+      font-weight: 800;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 18px 0 4px;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: #64b5ff;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+    }
+
+    .hero h1 {
+      margin: 0 0 14px;
+      color: #f3f7ff;
+      font-size: clamp(3rem, 7vw, 5.4rem);
+      line-height: 0.98;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+    }
+
+    .hero p {
+      margin: 0 auto;
+      max-width: 850px;
+      color: #a8b0c5;
+      font-size: 1.03rem;
+    }
+
+    main { padding: 24px 0 70px; }
+
+    .card-glass {
+      background: rgba(18, 25, 49, 0.82);
+      border: 1px solid rgba(100, 181, 255, 0.28);
+      border-radius: 16px;
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.28);
+      backdrop-filter: blur(8px);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .stat { padding: 18px; }
+
+    .stat span {
+      display: block;
+      color: #64b5ff;
+      font-size: 0.76rem;
+      font-weight: 900;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .stat strong {
+      display: block;
+      margin-top: 8px;
+      color: #ffffff;
+      font-size: 1.45rem;
+      line-height: 1.1;
+    }
+
+    .categories {
+      padding: 18px;
+      margin-bottom: 18px;
+    }
+
+    .categories h2,
+    .lab-list h2 {
+      margin: 0 0 14px;
+      color: #f3f7ff;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+
+    .category-btn,
+    .lab-btn {
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+      border: 1px solid rgba(100, 181, 255, 0.22);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.025);
+      transition: 0.18s ease;
+    }
+
+    .category-btn { padding: 14px; }
+
+    .category-btn:hover,
+    .lab-btn:hover,
+    .category-btn.active,
+    .lab-btn.active {
+      background: rgba(100, 181, 255, 0.12);
+      border-color: rgba(100, 181, 255, 0.62);
+    }
+
+    .category-btn span,
+    .lab-btn span {
+      display: block;
+      color: #ffffff;
+      font-weight: 900;
+    }
+
+    .category-btn small,
+    .lab-btn small {
+      display: block;
+      margin-top: 4px;
+      color: #64b5ff;
+      font-weight: 800;
+    }
+
+    .workspace {
+      display: grid;
+      grid-template-columns: 360px minmax(0, 1fr);
+      gap: 16px;
+      align-items: start;
+    }
+
+    .lab-list,
+    .lab-detail {
+      padding: 18px;
+    }
+
+    .lab-list {
+      position: sticky;
+      top: 16px;
+    }
+
+    .muted { color: #a8b0c5; }
+
+    .lab-btn {
+      display: block;
+      padding: 14px;
+      margin-top: 10px;
+    }
+
+    .lab-btn[hidden],
+    .lab-panel[hidden] {
+      display: none !important;
+    }
+
+    .lab-btn small {
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      letter-spacing: 0.04em;
+    }
+
+    .lab-panel-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+
+    .lab-label {
+      margin: 0 0 8px;
+      color: #64b5ff;
+      font-size: 0.75rem;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .lab-panel h2 {
+      margin: 0 0 10px;
+      color: #f3f7ff;
+      font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+      line-height: 1.08;
+      font-weight: 900;
+      letter-spacing: -0.035em;
+    }
+
+    .lab-badge {
+      white-space: nowrap;
+      color: #dbeafe;
+      border: 1px solid rgba(100, 181, 255, 0.48);
+      background: rgba(100, 181, 255, 0.08);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-weight: 900;
+    }
+
+    .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .tags span {
+      color: #64b5ff;
+      border: 1px solid rgba(100, 181, 255, 0.34);
+      background: rgba(100, 181, 255, 0.08);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 0.75rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .detail-box {
+      margin-top: 16px;
+      padding: 16px;
+      border: 1px solid rgba(100, 181, 255, 0.22);
+      border-radius: 14px;
+      background: rgba(5, 10, 22, 0.42);
+    }
+
+    .detail-box h3 {
+      margin: 0 0 10px;
+      color: #f3f7ff;
+    }
+
+    .detail-box p,
+    .detail-box li {
+      color: #dce4f5;
+    }
+
+    .detail-box ul { margin: 0; }
+    .detail-box p:last-child { margin-bottom: 0; }
+
+    .spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .spec-card {
+      padding: 16px;
+      border: 1px solid rgba(100, 181, 255, 0.22);
+      border-radius: 14px;
+      background: rgba(5, 10, 22, 0.42);
+    }
+
+    .spec-card h3 {
+      margin: 0 0 8px;
+      color: #f3f7ff;
+    }
+
+    .spec-card p {
+      margin: 0;
+      color: #a8b0c5;
+    }
+
+    .diagram-box {
+      overflow: auto;
+      font-family: Consolas, Monaco, monospace;
+      white-space: pre;
+      color: #dce4f5;
+      line-height: 1.4;
+    }
+
+    .warning-note {
+      border-left: 4px solid #64b5ff;
+      padding-left: 12px;
+      color: #a8b0c5;
+    }
+
+    footer {
+      border-top: 1px solid rgba(100, 181, 255, 0.18);
+      padding: 24px 0;
+    }
+
+    @media (max-width: 1100px) {
+      .stats,
+      .category-grid,
+      .workspace,
+      .spec-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .lab-list { position: static; }
+      .lab-panel-top { flex-direction: column; }
+      .lab-badge { white-space: normal; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="shell">
+      <nav>
+        <div class="brand">Matthew Sexton</div>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="projects.html">Projects</a>
+          <a class="active" href="lab.html">Lab</a>
+          <a href="index.html#resume">Resume</a>
+          <a href="education.html">Education</a>
+          <a href="index.html#contact">Contact</a>
+        </div>
+      </nav>
+
+      <section class="hero">
+        <p class="eyebrow">Enterprise Lab Environment</p>
+        <h1>Cybersecurity Homelab</h1>
+        <p>Multi-zone enterprise-style lab built around virtualization, VLAN segmentation, Active Directory, monitoring, offensive testing, application hosting, and AI infrastructure.</p>
+      </section>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="stats">
+      <div class="stat card-glass">
+        <span>Lab Type</span>
+        <strong>Enterprise-Style</strong>
+      </div>
+
+      <div class="stat card-glass">
+        <span>Core Focus</span>
+        <strong>Security / Infrastructure</strong>
+      </div>
+
+      <div class="stat card-glass">
+        <span>Network Design</span>
+        <strong>Segmented VLANs</strong>
+      </div>
+
+      <div class="stat card-glass">
+        <span>Status</span>
+        <strong>Active Build</strong>
+      </div>
+    </section>
+
+    <section class="categories card-glass">
+      <h2>Categories</h2>
+
+      <div class="category-grid">
+        <button class="category-btn active" type="button" data-category="hardware">
+          <span>Hardware</span>
+          <small>Servers + endpoints</small>
+        </button>
+
+        <button class="category-btn" type="button" data-category="network">
+          <span>Network</span>
+          <small>VLANs + firewall</small>
+        </button>
+
+        <button class="category-btn" type="button" data-category="services">
+          <span>Services</span>
+          <small>Hosted systems</small>
+        </button>
+
+        <button class="category-btn" type="button" data-category="security">
+          <span>Security</span>
+          <small>SOC + research</small>
+        </button>
+
+        <button class="category-btn" type="button" data-category="roadmap">
+          <span>Roadmap</span>
+          <small>Planned improvements</small>
+        </button>
+      </div>
+    </section>
+
+    <section class="workspace">
+      <aside class="lab-list card-glass">
+        <h2>Lab Sections</h2>
+        <p class="muted" id="listHint">Hardware</p>
+
+        <button class="lab-btn active" type="button" data-category="hardware" data-lab="hardware-overview">
+          <span>Hardware Overview</span>
+          <small>Physical lab inventory</small>
+        </button>
+
+        <button class="lab-btn" type="button" data-category="hardware" data-lab="gpu-systems">
+          <span>GPU Systems</span>
+          <small>AI + research workstations</small>
+        </button>
+
+        <button class="lab-btn" type="button" data-category="hardware" data-lab="endpoints">
+          <span>Endpoint Fleet</span>
+          <small>Laptops + mini PCs</small>
+        </button>
+
+        <button class="lab-btn" type="button" data-category="network" data-lab="network-architecture" hidden>
+          <span>Network Architecture</span>
+          <small>OPNsense + switching</small>
+        </button>
+
+        <button class="lab-btn" type="button" data-category="network" data-lab="vlan-design" hidden>
+          <span>VLAN Design</span>
+          <small>Segmentation model</small>
+        </button>
+
+        <button class="lab-btn" type="button" data-category="services" data-lab="core-services" hidden>
+          <span>Core Services</span>
+          <small>AD, DNS, app hosting</small>
+        </button>
+
+        <button class="lab-btn" type="button" data-category="services" data-lab="pi-services" hidden>
+          <span>Raspberry Pi Services</span>
+          <small>Pi-hole, Passbolt, Nginx</small>
+        </button>
+
+        <button class="lab-btn" type="button" data-category="security" data-lab="blue-team" hidden>
+          <span>Blue Team Environment</span>
+          <small>Security Onion + monitoring</small>
+        </button>
+
+        <button class="lab-btn" type="button" data-category="security" data-lab="red-team" hidden>
+          <span>Red Team Environment</span>
+          <small>Kali + research systems</small>
+        </button>
+
+        <button class="lab-btn" type="button" data-category="roadmap" data-lab="future-roadmap" hidden>
+          <span>Future Roadmap</span>
+          <small>Next improvements</small>
+        </button>
+      </aside>
+
+      <section class="lab-detail card-glass">
+        <article id="hardware-overview" class="lab-panel">
+          <div class="lab-panel-top">
+            <div>
+              <p class="lab-label">Hardware</p>
+              <h2>Physical Lab Inventory</h2>
+
+              <div class="tags">
+                <span>Servers</span>
+                <span>Mini PCs</span>
+                <span>GPU Workstations</span>
+                <span>Raspberry Pis</span>
+                <span>Laptops</span>
+              </div>
+            </div>
+
+            <strong class="lab-badge">Active Lab</strong>
+          </div>
+
+          <p class="muted">This lab is built as a practical enterprise-style environment using dedicated servers, mini PCs, GPU systems, Raspberry Pis, laptops, and virtual infrastructure.</p>
+
+          <div class="spec-grid">
+            <div class="spec-card">
+              <h3>Core Server</h3>
+              <p>Runs primary infrastructure services such as personal Active Directory, application hosting, databases, and supporting backend systems.</p>
+            </div>
+
+            <div class="spec-card">
+              <h3>Proxmox Hosts</h3>
+              <p>Used for virtualized Red Team, Blue Team, victim, Windows, and Linux lab systems.</p>
+            </div>
+
+            <div class="spec-card">
+              <h3>GPU Systems</h3>
+              <p>Dedicated RTX 3060 and RTX 20-series systems for AI, security research, reverse engineering, and GPU-assisted workloads.</p>
+            </div>
+
+            <div class="spec-card">
+              <h3>Endpoint Fleet</h3>
+              <p>Windows, Ubuntu, and CachyOS laptops and Surface devices used for endpoint testing, administration, and daily lab interaction.</p>
+            </div>
+          </div>
+
+          <div class="detail-box">
+            <h3>Purpose</h3>
+            <ul>
+              <li>Practice enterprise infrastructure design in a controlled environment</li>
+              <li>Run Windows, Linux, monitoring, and application workloads</li>
+              <li>Support cybersecurity testing without disrupting production systems</li>
+              <li>Document hands-on systems administration, networking, and security engineering experience</li>
+            </ul>
+          </div>
+        </article>
+
+        <article id="gpu-systems" class="lab-panel" hidden>
+          <div class="lab-panel-top">
+            <div>
+              <p class="lab-label">Hardware</p>
+              <h2>GPU Compute and Research Systems</h2>
+
+              <div class="tags">
+                <span>RTX 3060</span>
+                <span>RTX 20-Series</span>
+                <span>Ubuntu Server</span>
+                <span>Windows 11 Pro</span>
+              </div>
+            </div>
+
+            <strong class="lab-badge">Specialized Systems</strong>
+          </div>
+
+          <p class="muted">The GPU systems are separated by role so each machine supports a specific lab function instead of duplicating existing virtualization infrastructure.</p>
+
+          <div class="detail-box">
+            <h3>RTX 3060 System</h3>
+            <ul>
+              <li>Planned OS: Ubuntu Server 24.04 LTS</li>
+              <li>Role: AI server, local model hosting, Docker workloads, GPU compute, and Hashcat lab use</li>
+              <li>Planned services: Ollama, Open WebUI, Docker, SSH, monitoring agent</li>
+              <li>Potential RAM target: 64 GB DDR4 if hardware compatibility is stable</li>
+            </ul>
+          </div>
+
+          <div class="detail-box">
+            <h3>RTX 20-Series System</h3>
+            <ul>
+              <li>Planned OS: Windows 11 Pro</li>
+              <li>Role: security research workstation, reverse engineering, digital forensics, and malware-analysis lab work</li>
+              <li>Planned tools: VMware Workstation Pro, FLARE-VM, Ghidra, x64dbg, Wireshark, Burp Suite, VS Code</li>
+              <li>Network placement: Red Team or isolated research VLAN with restricted access to trusted services</li>
+            </ul>
+          </div>
+        </article>
+
+        <article id="endpoints" class="lab-panel" hidden>
+          <div class="lab-panel-top">
+            <div>
+              <p class="lab-label">Hardware</p>
+              <h2>Endpoint and Admin Device Fleet</h2>
+
+              <div class="tags">
+                <span>Windows 11</span>
+                <span>Windows 10</span>
+                <span>Ubuntu</span>
+                <span>CachyOS</span>
+              </div>
+            </div>
+
+            <strong class="lab-badge">Endpoint Testing</strong>
+          </div>
+
+          <p class="muted">The endpoint fleet provides realistic client systems for administration, testing, troubleshooting, and domain/lab scenarios.</p>
+
+          <div class="spec-grid">
+            <div class="spec-card">
+              <h3>Windows 11 Laptops</h3>
+              <p>Two 16 GB systems for endpoint testing, Windows administration, domain scenarios, and general lab workflows.</p>
+            </div>
+
+            <div class="spec-card">
+              <h3>Windows 10 Laptop</h3>
+              <p>12 GB system useful for legacy endpoint testing, compatibility checks, and client troubleshooting practice.</p>
+            </div>
+
+            <div class="spec-card">
+              <h3>Ubuntu Laptop</h3>
+              <p>12 GB Linux system for SSH, administration, scripting, Ansible, and Linux endpoint testing.</p>
+            </div>
+
+            <div class="spec-card">
+              <h3>CachyOS Surface Pros</h3>
+              <p>Older Surface Pro systems used as lightweight Linux admin, testing, or portable lab devices.</p>
+            </div>
+          </div>
+        </article>
+
+        <article id="network-architecture" class="lab-panel" hidden>
+          <div class="lab-panel-top">
+            <div>
+              <p class="lab-label">Network</p>
+              <h2>Network Architecture</h2>
+
+              <div class="tags">
+                <span>OPNsense</span>
+                <span>Cisco Switching</span>
+                <span>VLANs</span>
+                <span>Firewall Rules</span>
+              </div>
+            </div>
+
+            <strong class="lab-badge">Segmented</strong>
+          </div>
+
+          <p class="muted">The lab network is designed around segmentation, controlled inter-VLAN access, monitoring visibility, and separation between production, lab, offensive, defensive, and IoT systems.</p>
+
+          <div class="detail-box diagram-box">Internet
+  │
+  ▼
+OPNsense Firewall
+  │
+  ▼
+Managed Switch
+  ├── VLAN 10  Management / Infrastructure
+  ├── VLAN 20  Red Team / Research
+  ├── VLAN 21  Victim Systems
+  ├── VLAN 30  Blue Team / SOC
+  ├── VLAN 40  DMZ / Public-Facing Lab Services
+  └── VLAN 50  IoT / Camera / Smart Devices</div>
+
+          <div class="detail-box">
+            <h3>Design Goals</h3>
+            <ul>
+              <li>Limit lateral movement between zones</li>
+              <li>Keep production services separate from attack and victim systems</li>
+              <li>Route and control traffic through firewall policies</li>
+              <li>Provide visibility for monitoring and detection tools</li>
+            </ul>
+          </div>
+        </article>
+
+        <article id="vlan-design" class="lab-panel" hidden>
+          <div class="lab-panel-top">
+            <div>
+              <p class="lab-label">Network</p>
+              <h2>VLAN Segmentation Model</h2>
+
+              <div class="tags">
+                <span>Management</span>
+                <span>Red Team</span>
+                <span>Victims</span>
+                <span>Blue Team</span>
+                <span>DMZ</span>
+                <span>IoT</span>
+              </div>
+            </div>
+
+            <strong class="lab-badge">Firewall Controlled</strong>
+          </div>
+
+          <p class="muted">VLANs are used to organize systems by trust level and function. Traffic between zones is controlled through firewall rules instead of allowing flat network access.</p>
+
+          <div class="detail-box">
+            <h3>Example VLAN Roles</h3>
+            <ul>
+              <li><strong>Management / Infrastructure:</strong> trusted administration, servers, and core services</li>
+              <li><strong>Red Team:</strong> Kali, research systems, attack tooling, and security testing workstations</li>
+              <li><strong>Victim:</strong> Windows and Linux targets used for lab scenarios</li>
+              <li><strong>Blue Team / SOC:</strong> Security Onion, monitoring, sensors, and investigation tools</li>
+              <li><strong>DMZ:</strong> exposed or semi-exposed services that should not directly trust internal systems</li>
+              <li><strong>IoT:</strong> cameras, smart devices, and lower-trust home network devices</li>
+            </ul>
+          </div>
+
+          <div class="detail-box">
+            <h3>Security Purpose</h3>
+            <p>Segmentation allows the lab to simulate enterprise boundaries while reducing the risk of research, testing, vulnerable machines, or IoT systems reaching trusted infrastructure.</p>
+          </div>
+        </article>
+
+        <article id="core-services" class="lab-panel" hidden>
+          <div class="lab-panel-top">
+            <div>
+              <p class="lab-label">Services</p>
+              <h2>Core Infrastructure Services</h2>
+
+              <div class="tags">
+                <span>Active Directory</span>
+                <span>DNS</span>
+                <span>D&D App</span>
+                <span>Databases</span>
+                <span>Nginx</span>
+              </div>
+            </div>
+
+            <strong class="lab-badge">Production + Lab</strong>
+          </div>
+
+          <p class="muted">The core server hosts long-running services that support both personal infrastructure and development projects.</p>
+
+          <div class="spec-grid">
+            <div class="spec-card">
+              <h3>Active Directory</h3>
+              <p>Personal domain services for Windows administration, identity practice, endpoint testing, and domain-based workflows.</p>
+            </div>
+
+            <div class="spec-card">
+              <h3>D&D Application</h3>
+              <p>Full-stack application environment supporting character tools, campaign systems, inventory, achievements, and backend database work.</p>
+            </div>
+
+            <div class="spec-card">
+              <h3>Databases</h3>
+              <p>Database-backed project infrastructure for application development, schema design, and backend systems practice.</p>
+            </div>
+
+            <div class="spec-card">
+              <h3>Reverse Proxy</h3>
+              <p>Nginx-based routing for internal services, application access, and controlled service exposure.</p>
+            </div>
+          </div>
+        </article>
+
+        <article id="pi-services" class="lab-panel" hidden>
+          <div class="lab-panel-top">
+            <div>
+              <p class="lab-label">Services</p>
+              <h2>Raspberry Pi Infrastructure</h2>
+
+              <div class="tags">
+                <span>Pi-hole</span>
+                <span>Passbolt</span>
+                <span>Nginx</span>
+                <span>Alerts</span>
+              </div>
+            </div>
+
+            <strong class="lab-badge">Lightweight Services</strong>
+          </div>
+
+          <p class="muted">Raspberry Pi systems provide lightweight supporting infrastructure for network services, password management, and alerting.</p>
+
+          <div class="detail-box">
+            <h3>Primary Raspberry Pi</h3>
+            <ul>
+              <li>Passbolt password manager</li>
+              <li>Pi-hole DNS filtering</li>
+              <li>Nginx reverse proxy services</li>
+              <li>Network alerting and notifications</li>
+            </ul>
+          </div>
+
+          <div class="detail-box">
+            <h3>Secondary Raspberry Pi</h3>
+            <ul>
+              <li>Available for backup DNS, monitoring, honeypot, Tailscale subnet routing, or lightweight utility services</li>
+            </ul>
+          </div>
+        </article>
+
+        <article id="blue-team" class="lab-panel" hidden>
+          <div class="lab-panel-top">
+            <div>
+              <p class="lab-label">Security</p>
+              <h2>Blue Team Monitoring Environment</h2>
+
+              <div class="tags">
+                <span>Security Onion</span>
+                <span>SOC</span>
+                <span>Detection</span>
+                <span>Traffic Analysis</span>
+              </div>
+            </div>
+
+            <strong class="lab-badge">Defensive Security</strong>
+          </div>
+
+          <p class="muted">The Blue Team environment provides visibility into lab activity and supports investigation practice across security events, alerts, and network traffic.</p>
+
+          <div class="detail-box">
+            <h3>Capabilities</h3>
+            <ul>
+              <li>Security Onion monitoring and alert review</li>
+              <li>Traffic visibility for lab networks</li>
+              <li>Detection practice from attack and victim scenarios</li>
+              <li>SOC-style investigation workflows</li>
+              <li>Future expansion for Wazuh, Grafana, Loki, or centralized observability</li>
+            </ul>
+          </div>
+
+          <div class="detail-box warning-note">
+            This section should use sanitized screenshots only. Avoid showing public IPs, private firewall details, credentials, VPN endpoints, or sensitive internal configuration.
+          </div>
+        </article>
+
+        <article id="red-team" class="lab-panel" hidden>
+          <div class="lab-panel-top">
+            <div>
+              <p class="lab-label">Security</p>
+              <h2>Red Team and Research Environment</h2>
+
+              <div class="tags">
+                <span>Kali</span>
+                <span>Windows Research</span>
+                <span>Burp Suite</span>
+                <span>Reverse Engineering</span>
+              </div>
+            </div>
+
+            <strong class="lab-badge">Controlled Lab Use</strong>
+          </div>
+
+          <p class="muted">The Red Team environment is used for authorized lab testing, attack simulation, web application testing, reverse engineering practice, and defensive validation.</p>
+
+          <div class="detail-box">
+            <h3>Systems and Tools</h3>
+            <ul>
+              <li>Kali Linux for security testing within the lab</li>
+              <li>Windows 11 Pro research workstation on the RTX 20-series system</li>
+              <li>VMware Workstation Pro for isolated research VMs</li>
+              <li>FLARE-VM, Ghidra, x64dbg, Wireshark, Burp Suite, and VS Code</li>
+              <li>Victim systems isolated on dedicated lab networks</li>
+            </ul>
+          </div>
+
+          <div class="detail-box warning-note">
+            Offensive tooling is used only inside authorized lab environments and isolated systems designed for testing and learning.
+          </div>
+        </article>
+
+        <article id="future-roadmap" class="lab-panel" hidden>
+          <div class="lab-panel-top">
+            <div>
+              <p class="lab-label">Roadmap</p>
+              <h2>Planned Lab Improvements</h2>
+
+              <div class="tags">
+                <span>Documentation</span>
+                <span>Monitoring</span>
+                <span>Automation</span>
+                <span>AI</span>
+              </div>
+            </div>
+
+            <strong class="lab-badge">In Progress</strong>
+          </div>
+
+          <p class="muted">The lab roadmap focuses on making the environment easier to manage, monitor, rebuild, and explain as a professional portfolio project.</p>
+
+          <div class="detail-box">
+            <h3>Next Priorities</h3>
+            <ul>
+              <li>Create a complete hardware and service inventory</li>
+              <li>Build a clean network diagram for the website</li>
+              <li>Add monitoring dashboards for hosts, services, and network health</li>
+              <li>Deploy the RTX 3060 Ubuntu AI server with Ollama and Open WebUI</li>
+              <li>Deploy the RTX 20-series Windows research workstation</li>
+              <li>Document firewall segmentation and lab access rules at a safe, high level</li>
+              <li>Explore Ansible or Terraform for repeatable lab deployment</li>
+            </ul>
+          </div>
+
+          <div class="detail-box">
+            <h3>Portfolio Goal</h3>
+            <p>Present the homelab as proof of practical experience with virtualization, networking, Windows administration, Linux systems, monitoring, application hosting, and security operations.</p>
+          </div>
+        </article>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell"></div>
+  </footer>
+
+  <script>
+    const categoryButtons = document.querySelectorAll('.category-btn');
+    const labButtons = document.querySelectorAll('.lab-btn');
+    const labPanels = document.querySelectorAll('.lab-panel');
+    const listHint = document.getElementById('listHint');
+
+    const categoryLabels = {
+      hardware: 'Hardware',
+      network: 'Network',
+      services: 'Services',
+      security: 'Security',
+      roadmap: 'Roadmap'
+    };
+
+    function showLab(id) {
+      labPanels.forEach(panel => {
+        panel.hidden = panel.id !== id;
+      });
+
+      labButtons.forEach(button => {
+        button.classList.toggle('active', button.dataset.lab === id);
+      });
+    }
+
+    function showCategory(category) {
+      categoryButtons.forEach(button => {
+        button.classList.toggle('active', button.dataset.category === category);
+      });
+
+      labButtons.forEach(button => {
+        button.hidden = button.dataset.category !== category;
+      });
+
+      if (listHint) {
+        listHint.textContent = categoryLabels[category] || 'Lab Sections';
+      }
+
+      const firstItem = Array.from(labButtons).find(button => button.dataset.category === category);
+
+      if (firstItem) {
+        showLab(firstItem.dataset.lab);
+      }
+    }
+
+    categoryButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        showCategory(button.dataset.category);
+      });
+    });
+
+    labButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        showLab(button.dataset.lab);
+      });
+    });
+  </script>
+</body>
+</html>
