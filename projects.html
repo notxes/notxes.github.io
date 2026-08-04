@@ -308,24 +308,6 @@
 
     .thesis-grid .detail-box { margin-top: 0; }
 
-    .milestone-list {
-      display: grid;
-      gap: 10px;
-      margin-top: 12px;
-    }
-
-    .milestone {
-      display: grid;
-      grid-template-columns: 110px 1fr;
-      gap: 12px;
-      padding: 12px;
-      border: 1px solid rgba(100, 181, 255, 0.18);
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.025);
-    }
-
-    .milestone strong { color: #64b5ff; }
-
     .file-library {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -364,7 +346,6 @@
 
     @media (max-width: 760px) {
       .thesis-grid, .file-library { grid-template-columns: 1fr; }
-      .milestone { grid-template-columns: 1fr; }
     }
 
     footer { border-top: 1px solid rgba(100, 181, 255, 0.18); padding: 24px 0; }
@@ -602,18 +583,6 @@
           </div>
 
           <div class="detail-box">
-            <h3>Research Milestones</h3>
-            <div class="milestone-list">
-              <div class="milestone"><strong>Research Design</strong><span>Finalize scope, research question, literature foundation, variables, and repeatable experiment procedure.</span></div>
-              <div class="milestone"><strong>Environment Documentation</strong><span>Document assets, snapshots, VLANs, firewall states, logging sources, and baseline connectivity.</span></div>
-              <div class="milestone"><strong>Baseline Testing</strong><span>Run flat-network baseline trials and preserve all technical evidence.</span></div>
-              <div class="milestone"><strong>Segmented Testing</strong><span>Apply least-privilege segmentation and repeat the same standardized trials.</span></div>
-              <div class="milestone"><strong>Analysis</strong><span>Analyze reachability, containment, blocked actions, detections, and timing differences.</span></div>
-              <div class="milestone"><strong>Final Deliverables</strong><span>Complete conclusions, limitations, recommendations, final paper, and portfolio case study.</span></div>
-            </div>
-          </div>
-
-          <div class="detail-box">
             <h3>Documents & Downloads</h3>
             <div class="file-library">
               <a class="file-card" href="images/thesis-overview.pdf" target="_blank" rel="noopener"><strong>Thesis Overview</strong><small>PDF • Project overview and research scope</small></a>
@@ -628,15 +597,6 @@
           <div class="detail-box">
             <h3>Supplemental GRC & Security Program</h3>
             <p>This companion security program uses the same controlled environment and evidence to connect technical testing with governance, risk management, incident response, security operations, resilience, compliance mapping, and assurance.</p>
-
-            <div class="detail-box">
-              <h3>Policy Handbook & Document Structure</h3>
-              <p>The program uses a central policy handbook as an index, while each policy, standard, procedure, playbook, plan, matrix, and workbook remains a separate document with its own purpose, owner, version, and review cycle.</p>
-              <div class="file-library">
-                <a class="file-card" href="images/grc-policy-handbook.pdf" target="_blank" rel="noopener"><strong>Information Security Policy Handbook</strong><small>PDF • Program overview, document hierarchy, ownership, and policy index</small></a>
-                <a class="file-card" href="images/grc-project-charter.pdf" target="_blank" rel="noopener"><strong>Project Charter & Scope</strong><small>PDF • Organization profile, scope, assumptions, boundaries, and objectives</small></a>
-              </div>
-            </div>
 
             <div class="thesis-grid">
               <div class="detail-box">
@@ -1161,7 +1121,7 @@
   </script>
 </body>
 </html>
-projects-thesis-grc-no-phases.html
+projects-thesis-grc-clean-final.html
 HTML
 
 
