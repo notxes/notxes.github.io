@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -604,12 +604,12 @@
           <div class="detail-box">
             <h3>Research Milestones</h3>
             <div class="milestone-list">
-              <div class="milestone"><strong>Phase 1</strong><span>Finalize scope, research question, literature foundation, variables, and repeatable experiment procedure.</span></div>
-              <div class="milestone"><strong>Phase 2</strong><span>Document assets, snapshots, VLANs, firewall states, logging sources, and baseline connectivity.</span></div>
-              <div class="milestone"><strong>Phase 3</strong><span>Run flat-network baseline trials and preserve all technical evidence.</span></div>
-              <div class="milestone"><strong>Phase 4</strong><span>Apply least-privilege segmentation and repeat the same standardized trials.</span></div>
-              <div class="milestone"><strong>Phase 5</strong><span>Analyze reachability, containment, blocked actions, detections, and timing differences.</span></div>
-              <div class="milestone"><strong>Phase 6</strong><span>Complete conclusions, limitations, recommendations, final paper, and portfolio case study.</span></div>
+              <div class="milestone"><strong>Research Design</strong><span>Finalize scope, research question, literature foundation, variables, and repeatable experiment procedure.</span></div>
+              <div class="milestone"><strong>Environment Documentation</strong><span>Document assets, snapshots, VLANs, firewall states, logging sources, and baseline connectivity.</span></div>
+              <div class="milestone"><strong>Baseline Testing</strong><span>Run flat-network baseline trials and preserve all technical evidence.</span></div>
+              <div class="milestone"><strong>Segmented Testing</strong><span>Apply least-privilege segmentation and repeat the same standardized trials.</span></div>
+              <div class="milestone"><strong>Analysis</strong><span>Analyze reachability, containment, blocked actions, detections, and timing differences.</span></div>
+              <div class="milestone"><strong>Final Deliverables</strong><span>Complete conclusions, limitations, recommendations, final paper, and portfolio case study.</span></div>
             </div>
           </div>
 
@@ -627,119 +627,182 @@
 
           <div class="detail-box">
             <h3>Supplemental GRC & Security Program</h3>
-            <p>This companion security program translates the technical findings into governance, risk, compliance, and operational documentation for a resource-constrained municipal environment.</p>
+            <p>This companion security program uses the same controlled environment and evidence to connect technical testing with governance, risk management, incident response, security operations, resilience, compliance mapping, and assurance.</p>
+
+            <div class="detail-box">
+              <h3>Policy Handbook & Document Structure</h3>
+              <p>The program uses a central policy handbook as an index, while each policy, standard, procedure, playbook, plan, matrix, and workbook remains a separate document with its own purpose, owner, version, and review cycle.</p>
+              <div class="file-library">
+                <a class="file-card" href="images/grc-policy-handbook.pdf" target="_blank" rel="noopener"><strong>Information Security Policy Handbook</strong><small>PDF • Program overview, document hierarchy, ownership, and policy index</small></a>
+                <a class="file-card" href="images/grc-project-charter.pdf" target="_blank" rel="noopener"><strong>Project Charter & Scope</strong><small>PDF • Organization profile, scope, assumptions, boundaries, and objectives</small></a>
+              </div>
+            </div>
 
             <div class="thesis-grid">
               <div class="detail-box">
-                <h3>1. Governance</h3>
-                <p>Defines who owns the security program, how decisions are made, and what rules guide the organization.</p>
+                <h3>Foundation & Architecture</h3>
                 <ul>
-                  <li>Security Program Charter</li>
+                  <li>Project charter, organization profile, scope, assumptions, and boundaries</li>
+                  <li>VM and network asset inventory</li>
+                  <li>Current-state flat network diagram</li>
+                  <li>Target segmented network diagram</li>
+                  <li>System categorization and data-classification matrix</li>
+                  <li>Business impact analysis for core services</li>
+                </ul>
+              </div>
+
+              <div class="detail-box">
+                <h3>Risk Management</h3>
+                <ul>
+                  <li>Risk-assessment methodology and scoring scales</li>
+                  <li>Risk register with treatment and residual-risk fields</li>
+                  <li>Risk treatment plan</li>
+                  <li>NIST CSF 2.0 current and target profile</li>
+                  <li>Risk-acceptance and security-exception forms</li>
+                </ul>
+              </div>
+
+              <div class="detail-box">
+                <h3>Governance Policies & Standards</h3>
+                <ul>
                   <li>Information Security Policy</li>
-                  <li>Acceptable Use Policy</li>
-                  <li>Security Roles and Responsibilities</li>
-                  <li>Policy Review and Approval Record</li>
-                </ul>
-              </div>
-
-              <div class="detail-box">
-                <h3>2. Risk Management</h3>
-                <p>Documents identified risks, their likelihood and impact, and how each risk will be treated.</p>
-                <ul>
-                  <li>Cybersecurity Risk Assessment</li>
-                  <li>Risk Register</li>
-                  <li>Risk Treatment Plan</li>
-                  <li>Control Gap Analysis</li>
-                  <li>Security Improvement Roadmap</li>
-                </ul>
-              </div>
-
-              <div class="detail-box">
-                <h3>3. Technical Policies & Standards</h3>
-                <p>Turns the research findings into repeatable technical requirements for the environment.</p>
-                <ul>
-                  <li>Access Control Policy</li>
                   <li>Network Segmentation Standard</li>
+                  <li>Access Control Policy</li>
                   <li>Logging and Monitoring Standard</li>
-                  <li>Vulnerability and Patch Management Policy</li>
+                  <li>Vulnerability and Patch Management Standard</li>
+                  <li>Change Management Procedure and change-ticket template</li>
                   <li>Backup and Recovery Policy</li>
-                  <li>Secure Configuration Standard</li>
                 </ul>
               </div>
 
               <div class="detail-box">
-                <h3>4. Incident & Operational Processes</h3>
-                <p>Explains how security events, changes, and recovery activities would be handled.</p>
+                <h3>Incident Response</h3>
                 <ul>
                   <li>Incident Response Plan</li>
-                  <li>Credential Compromise Playbook</li>
-                  <li>Lateral Movement Response Playbook</li>
-                  <li>Change Management Procedure</li>
-                  <li>Firewall Rule Review Procedure</li>
-                  <li>Business Continuity and Disaster Recovery Plan</li>
+                  <li>Incident severity, declaration, roles, escalation, and notification matrix</li>
+                  <li>Evidence-handling procedure and chain-of-custody form</li>
+                  <li>Credential Theft and Lateral Movement Playbook</li>
+                  <li>Containment, eradication, recovery, timeline, and lessons-learned templates</li>
                 </ul>
               </div>
 
               <div class="detail-box">
-                <h3>5. Compliance & Control Mapping</h3>
-                <p>Maps implemented and recommended safeguards to a selected cybersecurity framework.</p>
+                <h3>Security Operations</h3>
                 <ul>
-                  <li>NIST Cybersecurity Framework Mapping</li>
-                  <li>NIST SP 800-53 or CIS Controls Crosswalk</li>
-                  <li>Control Implementation Status</li>
-                  <li>Evidence Requirements</li>
-                  <li>Exceptions and Compensating Controls</li>
+                  <li>Security Onion alert-triage procedure</li>
+                  <li>Zeek, Suricata, Windows, and OPNsense investigation guide</li>
+                  <li>Alert-severity matrix</li>
+                  <li>Detection use-case catalog</li>
+                  <li>Daily and weekly monitoring checklists</li>
+                  <li>False-positive log and case-management template</li>
                 </ul>
               </div>
 
               <div class="detail-box">
-                <h3>6. Evidence & Records</h3>
-                <p>Provides supporting records showing that controls, procedures, and testing activities were documented and reviewed.</p>
+                <h3>Testing & Assurance</h3>
                 <ul>
-                  <li>Asset Inventory</li>
-                  <li>Network and Data-Flow Diagrams</li>
-                  <li>Firewall Rule Review Records</li>
-                  <li>Change and Test Records</li>
-                  <li>Incident Exercise Results</li>
-                  <li>Corrective Action Tracking</li>
+                  <li>Security test plan and rules of engagement</li>
+                  <li>Test-case matrix, pretest checklist, and evidence log</li>
+                  <li>Pilot-trial summary and deviation records</li>
+                  <li>Findings register and POA&amp;M/corrective-action tracker</li>
+                  <li>Control-effectiveness assessment</li>
+                  <li>Retest report and final residual-risk decisions</li>
+                </ul>
+              </div>
+
+              <div class="detail-box">
+                <h3>Business Continuity & Disaster Recovery</h3>
+                <ul>
+                  <li>Combined Business Continuity and Disaster Recovery Plan</li>
+                  <li>RTO/RPO worksheet and recovery-priority matrix</li>
+                  <li>Backup schedule and restoration checklist</li>
+                  <li>Backup-testing procedure and recovery-test report</li>
+                  <li>Credential-compromise tabletop exercise and after-action report</li>
+                  <li>Incident and continuity communications plan</li>
+                </ul>
+              </div>
+
+              <div class="detail-box">
+                <h3>Compliance & Control Mapping</h3>
+                <ul>
+                  <li>NIST CSF 2.0 profile and gap summary</li>
+                  <li>NIST SP 800-53 and CIS Controls crosswalk</li>
+                  <li>NIST SP 800-61 incident-response cross-reference</li>
+                  <li>NIST SP 800-207 least-privilege design cross-reference</li>
+                  <li>CJIS Security Policy considerations memo</li>
+                  <li>Control implementation and evidence-status tracking</li>
+                </ul>
+              </div>
+
+              <div class="detail-box">
+                <h3>Final Assessment & Portfolio</h3>
+                <ul>
+                  <li>Main repeated-trial evidence set</li>
+                  <li>Executive security assessment report</li>
+                  <li>Final risk register and treatment decisions</li>
+                  <li>Sanitized findings, diagrams, metrics, and selected evidence</li>
+                  <li>Website case study and downloadable portfolio artifacts</li>
                 </ul>
               </div>
             </div>
 
             <div class="detail-box">
-              <h3>GRC Document Library</h3>
+              <h3>Core GRC Documents</h3>
               <div class="file-library">
-                <a class="file-card" href="images/grc-security-program-charter.pdf" target="_blank" rel="noopener"><strong>Security Program Charter</strong><small>PDF • Purpose, authority, scope, and ownership</small></a>
-                <a class="file-card" href="images/grc-information-security-policy.pdf" target="_blank" rel="noopener"><strong>Information Security Policy</strong><small>PDF • Organization-wide security expectations</small></a>
-                <a class="file-card" href="images/grc-acceptable-use-policy.pdf" target="_blank" rel="noopener"><strong>Acceptable Use Policy</strong><small>PDF • Authorized use of systems and resources</small></a>
-                <a class="file-card" href="images/grc-roles-responsibilities.pdf" target="_blank" rel="noopener"><strong>Roles & Responsibilities</strong><small>PDF • Security ownership and accountability</small></a>
+                <a class="file-card" href="images/grc-project-charter.pdf" target="_blank" rel="noopener"><strong>Project Charter & Scope</strong><small>PDF • Organization profile, assumptions, boundaries, and objectives</small></a>
+                <a class="file-card" href="images/grc-asset-inventory.xlsx" target="_blank" rel="noopener"><strong>Asset Inventory</strong><small>XLSX • Systems, network assets, criticality, and recovery priority</small></a>
+                <a class="file-card" href="images/grc-architecture-diagrams.pdf" target="_blank" rel="noopener"><strong>Architecture Diagrams</strong><small>PDF • Flat and segmented network designs</small></a>
+                <a class="file-card" href="images/grc-classification-matrix.xlsx" target="_blank" rel="noopener"><strong>Classification Matrix</strong><small>XLSX • System categorization and data classification</small></a>
+                <a class="file-card" href="images/grc-business-impact-analysis.xlsx" target="_blank" rel="noopener"><strong>Business Impact Analysis</strong><small>XLSX • Service impact, dependencies, and recovery priorities</small></a>
+                <a class="file-card" href="images/grc-risk-methodology.pdf" target="_blank" rel="noopener"><strong>Risk Methodology</strong><small>PDF • Likelihood, impact, scoring, and treatment criteria</small></a>
+                <a class="file-card" href="images/grc-risk-register.xlsx" target="_blank" rel="noopener"><strong>Risk Register & Treatment Plan</strong><small>XLSX • Inherent risk, controls, treatment, and residual risk</small></a>
+                <a class="file-card" href="images/grc-nist-csf-profile.xlsx" target="_blank" rel="noopener"><strong>NIST CSF 2.0 Profile</strong><small>XLSX • Current state, target state, gaps, and priorities</small></a>
 
-                <a class="file-card" href="images/grc-risk-assessment.pdf" target="_blank" rel="noopener"><strong>Cybersecurity Risk Assessment</strong><small>PDF • Threats, vulnerabilities, likelihood, and impact</small></a>
-                <a class="file-card" href="images/grc-risk-register.xlsx" target="_blank" rel="noopener"><strong>Risk Register</strong><small>XLSX • Risks, owners, ratings, and treatment status</small></a>
-                <a class="file-card" href="images/grc-risk-treatment-plan.pdf" target="_blank" rel="noopener"><strong>Risk Treatment Plan</strong><small>PDF • Mitigation actions, priorities, and timelines</small></a>
-                <a class="file-card" href="images/grc-security-roadmap.pdf" target="_blank" rel="noopener"><strong>Security Improvement Roadmap</strong><small>PDF • Phased implementation recommendations</small></a>
+                <a class="file-card" href="images/grc-information-security-policy.pdf" target="_blank" rel="noopener"><strong>Information Security Policy</strong><small>PDF • Top-level security requirements</small></a>
+                <a class="file-card" href="images/grc-network-segmentation-standard.pdf" target="_blank" rel="noopener"><strong>Network Segmentation Standard</strong><small>PDF • Allowed flows, prohibited flows, logging, and exceptions</small></a>
+                <a class="file-card" href="images/grc-access-control-policy.pdf" target="_blank" rel="noopener"><strong>Access Control Policy</strong><small>PDF • Least privilege, administrative access, and account controls</small></a>
+                <a class="file-card" href="images/grc-logging-monitoring-standard.pdf" target="_blank" rel="noopener"><strong>Logging & Monitoring Standard</strong><small>PDF • Data sources, retention, review, and detection requirements</small></a>
 
-                <a class="file-card" href="images/grc-access-control-policy.pdf" target="_blank" rel="noopener"><strong>Access Control Policy</strong><small>PDF • Least privilege, accounts, and administrative access</small></a>
-                <a class="file-card" href="images/grc-network-segmentation-standard.pdf" target="_blank" rel="noopener"><strong>Network Segmentation Standard</strong><small>PDF • Trust zones, traffic rules, and reviews</small></a>
-                <a class="file-card" href="images/grc-logging-monitoring-standard.pdf" target="_blank" rel="noopener"><strong>Logging & Monitoring Standard</strong><small>PDF • Log sources, retention, review, and alerting</small></a>
-                <a class="file-card" href="images/grc-vulnerability-patch-policy.pdf" target="_blank" rel="noopener"><strong>Vulnerability & Patch Policy</strong><small>PDF • Assessment, prioritization, and remediation</small></a>
-                <a class="file-card" href="images/grc-backup-recovery-policy.pdf" target="_blank" rel="noopener"><strong>Backup & Recovery Policy</strong><small>PDF • Backup scope, testing, retention, and recovery</small></a>
-                <a class="file-card" href="images/grc-secure-configuration-standard.pdf" target="_blank" rel="noopener"><strong>Secure Configuration Standard</strong><small>PDF • Baselines, hardening, and configuration reviews</small></a>
+                <a class="file-card" href="images/grc-incident-response-plan.pdf" target="_blank" rel="noopener"><strong>Incident Response Plan</strong><small>PDF • Roles, phases, escalation, evidence, and recovery</small></a>
+                <a class="file-card" href="images/grc-incident-governance-matrix.xlsx" target="_blank" rel="noopener"><strong>Incident Governance Matrix</strong><small>XLSX • Severity, declaration, roles, escalation, and notification</small></a>
+                <a class="file-card" href="images/grc-evidence-handling.pdf" target="_blank" rel="noopener"><strong>Evidence Handling & Chain of Custody</strong><small>PDF • Evidence identifiers, preservation, hashes, and custody records</small></a>
+                <a class="file-card" href="images/grc-credential-lateral-movement-playbook.pdf" target="_blank" rel="noopener"><strong>Credential Theft & Lateral Movement Playbook</strong><small>PDF • Detect, validate, contain, eradicate, recover, and review</small></a>
+                <a class="file-card" href="images/grc-ir-template-pack.docx" target="_blank" rel="noopener"><strong>Incident Response Template Pack</strong><small>DOCX • Containment, recovery, timeline, and lessons learned</small></a>
 
-                <a class="file-card" href="images/grc-incident-response-plan.pdf" target="_blank" rel="noopener"><strong>Incident Response Plan</strong><small>PDF • Roles, phases, escalation, and evidence handling</small></a>
-                <a class="file-card" href="images/grc-credential-compromise-playbook.pdf" target="_blank" rel="noopener"><strong>Credential Compromise Playbook</strong><small>PDF • Containment and recovery steps</small></a>
-                <a class="file-card" href="images/grc-lateral-movement-playbook.pdf" target="_blank" rel="noopener"><strong>Lateral Movement Playbook</strong><small>PDF • Detection, isolation, investigation, and recovery</small></a>
-                <a class="file-card" href="images/grc-change-management-procedure.pdf" target="_blank" rel="noopener"><strong>Change Management Procedure</strong><small>PDF • Requests, approvals, testing, and rollback</small></a>
-                <a class="file-card" href="images/grc-business-continuity-dr-plan.pdf" target="_blank" rel="noopener"><strong>BC/DR Plan</strong><small>PDF • Continuity priorities and recovery procedures</small></a>
+                <a class="file-card" href="images/grc-security-onion-triage.pdf" target="_blank" rel="noopener"><strong>Security Onion Triage Procedure</strong><small>PDF • Alert validation, enrichment, escalation, and closure</small></a>
+                <a class="file-card" href="images/grc-investigation-guide.pdf" target="_blank" rel="noopener"><strong>Investigation Guide</strong><small>PDF • Zeek, Suricata, Windows, and OPNsense workflows</small></a>
+                <a class="file-card" href="images/grc-detection-catalog.xlsx" target="_blank" rel="noopener"><strong>Detection Use-Case Catalog</strong><small>XLSX • Logic, data sources, severity, response, and false positives</small></a>
 
-                <a class="file-card" href="images/grc-control-mapping.xlsx" target="_blank" rel="noopener"><strong>Control Mapping</strong><small>XLSX • NIST or CIS framework crosswalk</small></a>
-                <a class="file-card" href="images/grc-control-status.xlsx" target="_blank" rel="noopener"><strong>Control Implementation Status</strong><small>XLSX • Planned, partial, implemented, or not applicable</small></a>
-                <a class="file-card" href="images/grc-asset-inventory.xlsx" target="_blank" rel="noopener"><strong>Asset Inventory</strong><small>XLSX • Systems, owners, roles, and classifications</small></a>
-                <a class="file-card" href="images/grc-change-test-records.pdf" target="_blank" rel="noopener"><strong>Change & Test Records</strong><small>PDF • Configuration changes, validation, and rollback</small></a>
-                <a class="file-card" href="images/grc-incident-exercise-results.pdf" target="_blank" rel="noopener"><strong>Incident Exercise Results</strong><small>PDF • Exercise observations and corrective actions</small></a>
+                <a class="file-card" href="images/grc-security-test-plan.pdf" target="_blank" rel="noopener"><strong>Security Test Plan & Rules of Engagement</strong><small>PDF • Authorized scope, procedures, controls, and boundaries</small></a>
+                <a class="file-card" href="images/grc-test-assurance-workbook.xlsx" target="_blank" rel="noopener"><strong>Test & Evidence Workbook</strong><small>XLSX • Test cases, readiness, runs, and evidence log</small></a>
+                <a class="file-card" href="images/grc-pilot-summary.pdf" target="_blank" rel="noopener"><strong>Pilot Trial Summary</strong><small>PDF • Repeatability, deviations, visibility, and reset validation</small></a>
+                <a class="file-card" href="images/grc-findings-poam.xlsx" target="_blank" rel="noopener"><strong>Findings & POA&amp;M</strong><small>XLSX • Findings, remediation, owners, due dates, and status</small></a>
+
+                <a class="file-card" href="images/grc-business-continuity-dr-plan.pdf" target="_blank" rel="noopener"><strong>Business Continuity & DR Plan</strong><small>PDF • Continuity strategy and technical restoration</small></a>
+                <a class="file-card" href="images/grc-bcdr-workbook.xlsx" target="_blank" rel="noopener"><strong>BC/DR Workbook</strong><small>XLSX • RTO/RPO, recovery priority, backup schedule, and restoration</small></a>
+
+                <a class="file-card" href="images/grc-control-crosswalk.xlsx" target="_blank" rel="noopener"><strong>Control Crosswalk</strong><small>XLSX • NIST SP 800-53 and CIS Controls mapping</small></a>
+                <a class="file-card" href="images/grc-control-effectiveness-assessment.pdf" target="_blank" rel="noopener"><strong>Control-Effectiveness Assessment</strong><small>PDF • Baseline versus segmented control results</small></a>
+                <a class="file-card" href="images/grc-retest-report.pdf" target="_blank" rel="noopener"><strong>Retest Report</strong><small>PDF • Corrective-action validation and finding disposition</small></a>
+                <a class="file-card" href="images/grc-executive-security-assessment.pdf" target="_blank" rel="noopener"><strong>Executive Security Assessment</strong><small>PDF • Risks, results, limitations, and recommendations</small></a>
               </div>
             </div>
 
+            <div class="detail-box">
+              <h3>Supporting GRC Artifacts</h3>
+              <div class="file-library">
+                <a class="file-card" href="images/grc-vulnerability-patch-standard.pdf" target="_blank" rel="noopener"><strong>Vulnerability & Patch Management Standard</strong><small>PDF • Assessment, prioritization, remediation, and verification</small></a>
+                <a class="file-card" href="images/grc-change-management-procedure.pdf" target="_blank" rel="noopener"><strong>Change Management Procedure</strong><small>PDF • Requests, approvals, testing, rollback, and validation</small></a>
+                <a class="file-card" href="images/grc-backup-recovery-policy.pdf" target="_blank" rel="noopener"><strong>Backup & Recovery Policy</strong><small>PDF • Backup scope, retention, testing, and recovery</small></a>
+                <a class="file-card" href="images/grc-risk-exception-forms.docx" target="_blank" rel="noopener"><strong>Risk Acceptance & Exception Forms</strong><small>DOCX • Ownership, expiration, compensating controls, and approval</small></a>
+                <a class="file-card" href="images/grc-monitoring-checklists.xlsx" target="_blank" rel="noopener"><strong>Monitoring Checklists</strong><small>XLSX • Daily and weekly ingestion, alert, health, and clock checks</small></a>
+                <a class="file-card" href="images/grc-case-management-templates.xlsx" target="_blank" rel="noopener"><strong>Case & False-Positive Templates</strong><small>XLSX • Case records, evidence links, tuning, and closure</small></a>
+                <a class="file-card" href="images/grc-recovery-test-report.pdf" target="_blank" rel="noopener"><strong>Recovery Test Report</strong><small>PDF • Restoration timing, defects, and corrective actions</small></a>
+                <a class="file-card" href="images/grc-tabletop-after-action.pdf" target="_blank" rel="noopener"><strong>Tabletop & After-Action Report</strong><small>PDF • Scenario decisions, observations, and improvements</small></a>
+                <a class="file-card" href="images/grc-nist-focused-cross-reference.pdf" target="_blank" rel="noopener"><strong>NIST 800-61 & 800-207 Cross-Reference</strong><small>PDF • IR lifecycle and least-privilege design references</small></a>
+                <a class="file-card" href="images/grc-cjis-considerations.pdf" target="_blank" rel="noopener"><strong>CJIS Considerations Memo</strong><small>PDF • Public-sector security considerations</small></a>
+              </div>
+            </div>
           </div>
 
           <div class="detail-box">
@@ -1098,7 +1161,7 @@
   </script>
 </body>
 </html>
-projects-thesis-grc-cleaned.html
+projects-thesis-grc-no-phases.html
 HTML
 
 
