@@ -298,6 +298,75 @@
       font-weight: 800;
     }
 
+
+    .thesis-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .thesis-grid .detail-box { margin-top: 0; }
+
+    .milestone-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .milestone {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 12px;
+      padding: 12px;
+      border: 1px solid rgba(100, 181, 255, 0.18);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .milestone strong { color: #64b5ff; }
+
+    .file-library {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .file-card {
+      display: block;
+      padding: 13px;
+      border: 1px solid rgba(100, 181, 255, 0.28);
+      border-radius: 12px;
+      background: rgba(100, 181, 255, 0.06);
+      transition: 0.18s ease;
+    }
+
+    .file-card:hover {
+      border-color: rgba(100, 181, 255, 0.7);
+      background: rgba(100, 181, 255, 0.12);
+    }
+
+    .file-card strong { display: block; color: #ffffff; }
+    .file-card small { display: block; margin-top: 4px; color: #a8b0c5; }
+
+    .upload-note {
+      margin-top: 12px;
+      padding: 12px;
+      border-left: 3px solid #64b5ff;
+      background: rgba(100, 181, 255, 0.06);
+      color: #dce4f5;
+    }
+
+    .status-list { padding-left: 0; list-style: none; }
+    .status-list li { margin: 8px 0; }
+    .status-list li::before { content: "○"; color: #64b5ff; margin-right: 9px; font-weight: 900; }
+
+    @media (max-width: 760px) {
+      .thesis-grid, .file-library { grid-template-columns: 1fr; }
+      .milestone { grid-template-columns: 1fr; }
+    }
+
     footer { border-top: 1px solid rgba(100, 181, 255, 0.18); padding: 24px 0; }
 
     .image-lightbox {
@@ -387,14 +456,15 @@
 
   <main class="shell">
     <section class="stats">
-      <div class="stat card-glass"><span>Total Projects</span><strong>6</strong></div>
-      <div class="stat card-glass"><span>Active Builds</span><strong>5</strong></div>
+      <div class="stat card-glass"><span>Total Projects</span><strong>7</strong></div>
+      <div class="stat card-glass"><span>Active Builds</span><strong>6</strong></div>
       <div class="stat card-glass"><span>Focus</span><strong>Security / Infrastructure / Dev</strong></div>
     </section>
 
     <section class="controls">
       <input class="control" id="projectSearch" type="text" placeholder="Search projects..." />
       <select class="control" id="projectSelect">
+        <option value="masters-thesis">Master’s Thesis — Network Segmentation & Lateral Movement</option>
         <option value="homelab">Enterprise Segmented Cybersecurity Homelab</option>
         <option value="security-onion">Security Onion Monitoring Environment</option>
         <option value="firewall">OPNsense Firewall & VLAN Policy Design</option>
@@ -424,7 +494,7 @@
     <section class="categories card-glass">
       <h2>Categories</h2>
       <div class="category-grid">
-        <button class="category-btn active" type="button" data-category="cybersecurity"><span>Cybersecurity</span><small>2 projects</small></button>
+        <button class="category-btn active" type="button" data-category="cybersecurity"><span>Cybersecurity</span><small>3 projects</small></button>
         <button class="category-btn" type="button" data-category="firewall"><span>Firewall</span><small>1 project</small></button>
         <button class="category-btn" type="button" data-category="proxmox"><span>Proxmox Server</span><small>1 project</small></button>
         <button class="category-btn" type="button" data-category="dnd"><span>D&D App</span><small>17 systems</small></button>
@@ -436,7 +506,8 @@
         <h2>Project List</h2>
         <p class="muted" id="listHint">Cybersecurity projects</p>
 
-        <button class="project-btn active" type="button" data-category="cybersecurity" data-project="homelab"><span>Enterprise Segmented Cybersecurity Homelab</span><small>Cybersecurity • Active lab</small></button>
+        <button class="project-btn active" type="button" data-category="cybersecurity" data-project="masters-thesis"><span>Master’s Thesis — Network Segmentation & Lateral Movement</span><small>Graduate research • In progress</small></button>
+        <button class="project-btn" type="button" data-category="cybersecurity" data-project="homelab"><span>Enterprise Segmented Cybersecurity Homelab</span><small>Cybersecurity • Active lab</small></button>
         <button class="project-btn" type="button" data-category="cybersecurity" data-project="security-onion"><span>Security Onion Monitoring Environment</span><small>SOC lab • Detection</small></button>
         <button class="project-btn" type="button" data-category="firewall" data-project="firewall" hidden><span>OPNsense Firewall & VLAN Policy Design</span><small>Firewall • Segmentation</small></button>
         <button class="project-btn" type="button" data-category="proxmox" data-project="proxmox" hidden><span>Proxmox Multi-Node Virtualization Lab</span><small>Infrastructure • Virtualization</small></button>
@@ -462,7 +533,158 @@
       </aside>
 
       <section class="project-detail card-glass">
-        <article id="homelab" class="project-panel" data-title="enterprise segmented cybersecurity homelab cybersecurity vlan security onion active directory">
+
+        <article id="masters-thesis" class="project-panel" data-title="masters thesis graduate research network segmentation credential lateral movement pass the hash active directory opnsense security onion zeek suricata grc governance risk compliance incident response">
+          <div class="project-panel-top">
+            <div>
+              <p class="project-label">Graduate Research • In Progress</p>
+              <h2>Master’s Thesis — Network Segmentation & Credential-Based Lateral Movement</h2>
+              <div class="tags"><span>Research</span><span>Active Directory</span><span>OPNsense</span><span>Security Onion</span><span>GRC</span></div>
+            </div>
+            <strong class="project-badge">Featured Project</strong>
+          </div>
+
+          <p>This controlled technical study evaluates whether VLAN-based segmentation and least-privilege inter-VLAN firewall rules reduce credential-based lateral movement in a simulated municipal Active Directory environment while maintaining useful monitoring visibility.</p>
+
+          <!-- Replace this image with your sanitized thesis architecture diagram. -->
+          <img src="images/thesis-architecture.png" class="project-image" alt="Sanitized thesis lab architecture comparing flat and segmented network designs" />
+
+          <div class="thesis-grid">
+            <div class="detail-box">
+              <h3>Research Question</h3>
+              <p>To what extent does VLAN-based network segmentation with least-privilege inter-VLAN access control reduce successful credential-based lateral movement compared with a flatter network design in a controlled Active Directory cyber range?</p>
+            </div>
+            <div class="detail-box">
+              <h3>Current Status</h3>
+              <ul class="status-list">
+                <li>Research scope and technical direction defined</li>
+                <li>Existing Red, Blue, Victim, and infrastructure lab being documented</li>
+                <li>Security Onion, Zeek, and Suricata visibility being validated</li>
+                <li>Experiment run sheet and evidence structure in development</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="detail-box">
+            <h3>Study Design</h3>
+            <ul>
+              <li><strong>Baseline condition:</strong> a flatter network with broader reachability between selected systems.</li>
+              <li><strong>Experimental condition:</strong> segmented VLANs with explicit least-privilege OPNsense rules.</li>
+              <li><strong>Attack scenario:</strong> controlled credential-based lateral movement, including Pass-the-Hash where appropriate.</li>
+              <li><strong>Primary measurements:</strong> reachable services, successful and blocked movement attempts, detection outcome, alert timing, and detection latency.</li>
+              <li><strong>Repetition:</strong> multiple standardized runs under each condition using restored snapshots and documented procedures.</li>
+            </ul>
+          </div>
+
+          <div class="thesis-grid">
+            <div class="detail-box">
+              <h3>Technical Environment</h3>
+              <ul>
+                <li>Proxmox virtualization hosts and isolated virtual machines</li>
+                <li>Windows Server Active Directory and Windows 11 victim endpoints</li>
+                <li>OPNsense routing, VLANs, firewall rules, and trust boundaries</li>
+                <li>Security Onion with Zeek and Suricata monitoring</li>
+                <li>Kali Linux / Red Team system for controlled testing</li>
+                <li>Windows event logs, network telemetry, and packet evidence</li>
+              </ul>
+            </div>
+            <div class="detail-box">
+              <h3>Evidence Collected</h3>
+              <ul>
+                <li>Experiment run records and timestamps</li>
+                <li>Firewall allow/deny evidence</li>
+                <li>Security Onion alerts and Hunt results</li>
+                <li>Zeek connection and protocol logs</li>
+                <li>Suricata detections and metadata</li>
+                <li>Windows authentication and security events</li>
+                <li>Sanitized screenshots, diagrams, and configuration excerpts</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="detail-box">
+            <h3>Research Milestones</h3>
+            <div class="milestone-list">
+              <div class="milestone"><strong>Phase 1</strong><span>Finalize scope, research question, literature foundation, variables, and repeatable experiment procedure.</span></div>
+              <div class="milestone"><strong>Phase 2</strong><span>Document assets, snapshots, VLANs, firewall states, logging sources, and baseline connectivity.</span></div>
+              <div class="milestone"><strong>Phase 3</strong><span>Run flat-network baseline trials and preserve all technical evidence.</span></div>
+              <div class="milestone"><strong>Phase 4</strong><span>Apply least-privilege segmentation and repeat the same standardized trials.</span></div>
+              <div class="milestone"><strong>Phase 5</strong><span>Analyze reachability, containment, blocked actions, detections, and timing differences.</span></div>
+              <div class="milestone"><strong>Phase 6</strong><span>Complete conclusions, limitations, recommendations, final paper, and portfolio case study.</span></div>
+            </div>
+          </div>
+
+          <div class="detail-box">
+            <h3>Documents & Downloads</h3>
+            <p>Place sanitized public files in a <code>documents/thesis/</code> folder beside this page, then replace the example filenames below. You only need to copy the file into that folder and update the matching <code>href</code>.</p>
+            <div class="file-library">
+              <!-- Example: href="documents/thesis/thesis-overview.pdf" -->
+              <a class="file-card" href="documents/thesis/thesis-overview.pdf" target="_blank" rel="noopener"><strong>Thesis Overview</strong><small>PDF • Replace with your approved public overview</small></a>
+              <a class="file-card" href="documents/thesis/lab-architecture.pdf" target="_blank" rel="noopener"><strong>Sanitized Architecture</strong><small>PDF • Network diagrams and trust boundaries</small></a>
+              <a class="file-card" href="documents/thesis/experiment-methodology.pdf" target="_blank" rel="noopener"><strong>Experiment Methodology</strong><small>PDF • Procedure, variables, and controls</small></a>
+              <a class="file-card" href="documents/thesis/results-summary.pdf" target="_blank" rel="noopener"><strong>Results Summary</strong><small>PDF • Add after analysis is complete</small></a>
+              <a class="file-card" href="documents/thesis/sanitized-evidence.zip" target="_blank" rel="noopener"><strong>Sanitized Evidence Package</strong><small>ZIP • Selected logs, screenshots, and run records</small></a>
+              <a class="file-card" href="documents/thesis/final-thesis.pdf" target="_blank" rel="noopener"><strong>Final Thesis</strong><small>PDF • Publish only after approval</small></a>
+            </div>
+            <div class="upload-note"><strong>Important:</strong> Do not publish real credentials, public IP addresses, complete MAC addresses, VPN keys, sensitive firewall exports, unsanitized logs, or university-controlled drafts.</div>
+          </div>
+
+          <div class="detail-box">
+            <h3>Supplemental GRC & Security Program</h3>
+            <p>This companion portfolio package translates the technical findings into governance, risk, compliance, and operational security documentation for a fictional resource-constrained municipal environment. It is supplemental work and is not presented as part of the formal thesis experiment unless specifically incorporated into the approved study.</p>
+            <div class="thesis-grid">
+              <div>
+                <h3>Governance & Policy</h3>
+                <ul>
+                  <li>Information Security Policy</li>
+                  <li>Network Segmentation Standard</li>
+                  <li>Access Control and Least-Privilege Standard</li>
+                  <li>Logging and Monitoring Standard</li>
+                  <li>Acceptable Use and Administrative Access guidance</li>
+                </ul>
+              </div>
+              <div>
+                <h3>Risk & Operations</h3>
+                <ul>
+                  <li>Risk register and treatment plan</li>
+                  <li>Asset inventory and data-flow documentation</li>
+                  <li>Incident Response Plan and playbooks</li>
+                  <li>Change-management and firewall-rule review records</li>
+                  <li>Control mapping and implementation roadmap</li>
+                </ul>
+              </div>
+            </div>
+            <div class="file-library">
+              <a class="file-card" href="documents/thesis/grc/security-program-overview.pdf" target="_blank" rel="noopener"><strong>Security Program Overview</strong><small>PDF • Scope, assumptions, and governance model</small></a>
+              <a class="file-card" href="documents/thesis/grc/risk-register.xlsx" target="_blank" rel="noopener"><strong>Risk Register</strong><small>XLSX • Sanitized risks, owners, and treatment actions</small></a>
+              <a class="file-card" href="documents/thesis/grc/incident-response-plan.pdf" target="_blank" rel="noopener"><strong>Incident Response Plan</strong><small>PDF • Roles, phases, escalation, and evidence handling</small></a>
+              <a class="file-card" href="documents/thesis/grc/network-segmentation-standard.pdf" target="_blank" rel="noopener"><strong>Network Segmentation Standard</strong><small>PDF • Trust zones, rule principles, and review requirements</small></a>
+              <a class="file-card" href="documents/thesis/grc/control-mapping.xlsx" target="_blank" rel="noopener"><strong>Control Mapping</strong><small>XLSX • Map safeguards to NIST or another selected framework</small></a>
+              <a class="file-card" href="documents/thesis/grc/change-records.pdf" target="_blank" rel="noopener"><strong>Change & Test Records</strong><small>PDF • Firewall changes, approvals, validation, and rollback</small></a>
+            </div>
+          </div>
+
+          <div class="detail-box">
+            <h3>Results & Findings</h3>
+            <p>This section is intentionally reserved for validated findings. Add charts and conclusions only after repeated testing is complete. Recommended visuals include reachable-service counts, successful versus blocked attempts, alert coverage, and detection-latency comparisons.</p>
+            <!-- Optional result images:
+            <img src="images/thesis-reachability-chart.png" class="project-image" alt="Reachable services before and after segmentation">
+            <img src="images/thesis-detection-latency-chart.png" class="project-image" alt="Detection latency comparison">
+            -->
+          </div>
+
+          <div class="detail-box">
+            <h3>Limitations & Ethical Boundaries</h3>
+            <ul>
+              <li>All testing occurs in an isolated, controlled cyber range.</li>
+              <li>No production organization, employee, resident, or real municipal network is used as a research subject.</li>
+              <li>Results apply to the defined lab design, tools, configurations, and attack scenarios.</li>
+              <li>Public evidence is sanitized to avoid exposing reusable offensive details or sensitive infrastructure information.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article id="homelab" class="project-panel" hidden data-title="enterprise segmented cybersecurity homelab cybersecurity vlan security onion active directory">
           <div class="project-panel-top"><div><p class="project-label">Active Lab</p><h2>Enterprise Segmented Cybersecurity Homelab</h2><div class="tags"><span>Cybersecurity</span><span>VLANs</span><span>Security Onion</span><span>Active Directory</span></div></div><strong class="project-badge">Core Project</strong></div>
           <p>Designed and built a segmented cybersecurity homelab to simulate enterprise network architecture and real-world attack and defense scenarios.</p>
           <img src="images/homelab-diagram.png" class="project-image" alt="Enterprise cybersecurity homelab network diagram" />
@@ -659,6 +881,11 @@
 
   <script>
         const screenshots = {
+      thesis: [
+        { src: 'images/thesis-architecture.png', alt: 'Sanitized thesis architecture', caption: 'Sanitized thesis architecture' },
+        { src: 'images/thesis-flat-baseline.png', alt: 'Flat-network baseline design', caption: 'Flat-network baseline design' },
+        { src: 'images/thesis-segmented-design.png', alt: 'Segmented least-privilege design', caption: 'Segmented least-privilege design' }
+      ],
       'security-onion': [
         { src: 'images/security-onion-dashboard.jpg', alt: 'Security Onion dashboard', caption: 'Security Onion dashboard' },
         { src: 'images/security-onion-alerts.jpg', alt: 'Security Onion alerts', caption: 'Security Onion alerts' },
@@ -675,7 +902,7 @@
       ]
     };
 
-    const screenshotIndex = { 'security-onion': 0, firewall: 0, proxmox: 0 };
+    const screenshotIndex = { thesis: 0, 'security-onion': 0, firewall: 0, proxmox: 0 };
 
     function renderScreenshot(viewerId) {
       const viewerShots = screenshots[viewerId];
@@ -798,3 +1025,4 @@
   </script>
 </body>
 </html>
+
