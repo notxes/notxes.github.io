@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,7 +38,7 @@
     .nav-links { display: flex; flex-wrap: wrap; gap: 13px 23px; }
     .nav-links a { color: #cfdbef; font-size: .91rem; text-decoration: none; }
     .nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--accent); }
-    .hero { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(270px, .75fr); gap: 45px; padding: 82px 0 88px; align-items: center; }
+    .hero { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(270px, .75fr); gap: 36px; padding: 65px 0 70px; align-items: center; }
     .eyebrow { margin: 0 0 12px; font-size: .78rem; color: var(--accent); text-transform: uppercase; letter-spacing: .15em; font-weight: 850; }
     h1 { margin: 0 0 22px; font-size: clamp(2.55rem, 5.4vw, 4.55rem); line-height: 1.075; letter-spacing: -.05em; }
     h2 { margin: 0 0 13px; font-size: clamp(1.65rem, 3.3vw, 2.2rem); line-height: 1.2; letter-spacing: -.025em; }
@@ -57,11 +58,18 @@
     .snapshot p { margin: 0; color: #dce6f5; font-size: .95rem; }
     .chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 18px; }
     .chip { border: 1px solid rgba(116,187,255,.37); border-radius: 999px; padding: 5px 10px; background: rgba(116,186,255,.07); color: #b9dfff; font-size: .76rem; line-height: 1.3; }
-    main { padding: 55px 0 86px; }
-    .section { margin-bottom: 76px; }
+    main { padding: 48px 0 70px; }
+    .section { margin-bottom: 62px; }
     .section-intro { color: var(--muted); max-width: 760px; }
     .feature-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 17px; margin-top: 26px; }
-    .feature { padding: 25px; display: flex; flex-direction: column; min-height: 236px; }
+    .feature { overflow: hidden; display: flex; flex-direction: column; min-width: 0; }
+    .feature-preview { position: relative; height: 178px; display: grid; place-items: center;
+      background: linear-gradient(135deg, #122745 0%, #0a1426 75%); border-bottom: 1px solid var(--line); }
+    .feature-preview img { position: absolute; inset: 0; display: block; width: 100%; height: 100%;
+      object-fit: contain; padding: 8px; }
+    .feature-preview img[hidden] { display: none; }
+    .feature-preview span { color: #a3bedf; font-size: .85rem; letter-spacing: .04em; text-align: center; padding: 12px; }
+    .feature-body { padding: 23px; display: flex; flex-direction: column; flex: 1; }
     .feature-label { color: var(--accent); font-size: .75rem; font-weight: 820; letter-spacing: .1em; text-transform: uppercase; margin: 0 0 11px; }
     .feature h3 { font-size: 1.22rem; }
     .feature p { color: var(--muted); margin-bottom: 19px; }
@@ -94,9 +102,9 @@
     @media (max-width: 640px) {
       main { padding-top: 39px; }
       .feature-grid, .split, .contact-grid { grid-template-columns: 1fr; }
-      .feature { min-height: 0; }
+      .feature-preview { height: 185px; }
       .section { margin-bottom: 56px; }
-      .feature, .info, .capability, .contact-card, .snapshot, .research-strip { padding: 21px; }
+      .feature-body, .info, .capability, .contact-card, .snapshot, .research-strip { padding: 21px; }
       .nav-links { column-gap: 14px; row-gap: 9px; }
       .nav-links a { font-size: .86rem; }
     }
@@ -153,31 +161,55 @@
     <section class="section" id="projects" aria-labelledby="projects-title">
       <p class="eyebrow">Featured work</p>
       <h2 id="projects-title">Technical projects</h2>
-      <p class="section-intro">Documented work from my personal lab, with real configurations, network diagrams, and monitoring screenshots on the project pages.</p>
+      <p class="section-intro">Hands-on technical projects featuring network diagrams, monitoring screenshots, and explanations of the systems I configured.</p>
       <div class="feature-grid">
         <article class="feature card">
-          <p class="feature-label">Security monitoring</p>
-          <h3>Security Onion Monitoring Environment</h3>
-          <p>Deployed Security Onion with Zeek and Suricata to monitor mirrored lab traffic and practice event review and network investigation.</p>
-          <a href="projects.html#security-onion">Explore Security Onion →</a>
+          <div class="feature-preview">
+            <span aria-hidden="true">Security Onion dashboard</span>
+            <img src="images/security-onion-dashboard.jpg" alt="Security Onion monitoring dashboard" loading="lazy" decoding="async">
+          </div>
+          <div class="feature-body">
+            <p class="feature-label">Security monitoring</p>
+            <h3>Security Onion Monitoring Environment</h3>
+            <p>Deployed Security Onion with Zeek and Suricata to monitor mirrored lab traffic and practice event review and network investigation.</p>
+            <a href="projects.html#security-onion">Explore Security Onion →</a>
+          </div>
         </article>
         <article class="feature card">
-          <p class="feature-label">Network infrastructure</p>
-          <h3>Segmented Cybersecurity Homelab</h3>
-          <p>Built an enterprise-style lab with separate network zones, Cisco switching, Active Directory, Windows and Linux systems, and supporting services.</p>
-          <a href="projects.html#homelab">Explore the homelab →</a>
+          <div class="feature-preview">
+            <span aria-hidden="true">Network architecture diagram</span>
+            <img src="images/homelab-diagram.png" alt="Homelab network architecture diagram" loading="lazy" decoding="async">
+          </div>
+          <div class="feature-body">
+            <p class="feature-label">Network infrastructure</p>
+            <h3>Segmented Cybersecurity Homelab</h3>
+            <p>Built an enterprise-style lab with separate network zones, Cisco switching, Active Directory, Windows and Linux systems, and supporting services.</p>
+            <a href="projects.html#homelab">Explore the homelab →</a>
+          </div>
         </article>
         <article class="feature card">
-          <p class="feature-label">Network security</p>
-          <h3>OPNsense Firewall &amp; VLAN Design</h3>
-          <p>Configured routing, inter-VLAN firewall rules, and controlled trust boundaries across management, red-team, blue-team, victim, and IoT networks.</p>
-          <a href="projects.html#firewall">Explore firewall project →</a>
+          <div class="feature-preview">
+            <span aria-hidden="true">OPNsense firewall configuration</span>
+            <img src="images/opnsense-vlans.jpg" alt="OPNsense VLAN configuration interface" loading="lazy" decoding="async">
+          </div>
+          <div class="feature-body">
+            <p class="feature-label">Network security</p>
+            <h3>OPNsense Firewall &amp; VLAN Design</h3>
+            <p>Configured routing, inter-VLAN firewall rules, and controlled trust boundaries across management, red-team, blue-team, victim, and IoT networks.</p>
+            <a href="projects.html#firewall">Explore firewall project →</a>
+          </div>
         </article>
         <article class="feature card">
-          <p class="feature-label">Virtualization</p>
-          <h3>Proxmox Infrastructure</h3>
-          <p>Managed multiple virtualization hosts, VLAN-aware network bridges, and virtual machines used for infrastructure and cybersecurity exercises.</p>
-          <a href="projects.html#proxmox">Explore Proxmox project →</a>
+          <div class="feature-preview">
+            <span aria-hidden="true">Proxmox infrastructure</span>
+            <img src="images/proxmox-lab-infra.jpg" alt="Proxmox virtual infrastructure dashboard" loading="lazy" decoding="async">
+          </div>
+          <div class="feature-body">
+            <p class="feature-label">Virtualization</p>
+            <h3>Proxmox Infrastructure</h3>
+            <p>Managed multiple virtualization hosts, VLAN-aware network bridges, and virtual machines used for infrastructure and cybersecurity exercises.</p>
+            <a href="projects.html#proxmox">Explore Proxmox project →</a>
+          </div>
         </article>
       </div>
     </section>
@@ -207,10 +239,10 @@
       <h2 id="about-title">Professional experience &amp; education</h2>
       <div class="split">
         <div class="info card">
-          <h3>IT Help Desk / Network Technician</h3>
+          <h3>Help Desk Technician</h3>
           <p class="fine">County government IT · Professional experience</p>
           <p>Support users and troubleshoot endpoint, application, account, and network issues in an operational environment. Work with Windows administration, Active Directory, network services, and day-to-day IT support.</p>
-          <p class="fine">Cybersecurity monitoring and attack simulation projects shown on this site are independent lab work, not professional SOC employment.</p>
+          <p class="fine">Additional hands-on work in network security, virtualization, and threat monitoring through independent technical projects.</p>
         </div>
         <div class="info card">
           <h3>Education &amp; ongoing research</h3>
@@ -229,7 +261,7 @@
         <div>
           <p class="eyebrow">Graduate research · In progress</p>
           <h2 id="research-title">Network Segmentation &amp; Lateral Movement</h2>
-          <p>My master's research explores how VLAN segmentation and least-privilege firewall rules affect credential-based lateral movement in a controlled Active Directory environment. Research methods and GRC workstreams are documented separately; experimental findings are not yet final.</p>
+          <p>In-progress master's research on VLAN segmentation, least-privilege firewall policies, and credential-based lateral movement in a controlled Active Directory lab.</p>
         </div>
         <a class="button" href="research.html">View research →</a>
       </div>
@@ -266,5 +298,13 @@
       <span><a href="projects.html">Projects</a> · <a href="research.html">Research</a> · <a href="#contact">Contact</a></span>
     </div>
   </footer>
+  <script>
+    // If an optional project screenshot is missing, display its text fallback.
+    document.querySelectorAll('.feature-preview img').forEach(img => {
+      function hideMissingImage() { img.hidden = true; }
+      img.addEventListener('error', hideMissingImage);
+      if (img.complete && !img.naturalWidth) hideMissingImage();
+    });
+  </script>
 </body>
 </html>
