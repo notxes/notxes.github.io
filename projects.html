@@ -1,1134 +1,674 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Matthew Sexton | Projects</title>
-  <meta name="description" content="Cybersecurity, homelab, app development, and network security projects by Matthew Sexton." />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matthew Sexton | Technical Projects</title>
+<meta name="description" content="Hands-on cybersecurity, network infrastructure, virtualization, and systems administration projects.">
 
-  <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
-      background:
-        radial-gradient(circle at top right, rgba(100, 181, 255, 0.18), transparent 36%),
-        radial-gradient(circle at top left, rgba(80, 120, 255, 0.12), transparent 32%),
-        linear-gradient(180deg, #09101d 0%, #0f1830 100%);
-      color: #e8ecf4;
-      line-height: 1.6;
-    }
-
-    body, h1, h2, h3, p, li, span, small, strong, a, button, input, select { color: #e8ecf4; }
-    a { text-decoration: none; }
-    button, input, select { font: inherit; }
-
-    .shell { width: min(1280px, 94%); margin: 0 auto; }
-
-    header {
-      padding: 28px 0 30px;
-      border-bottom: 1px solid rgba(100, 181, 255, 0.18);
-      background: rgba(8, 15, 30, 0.45);
-    }
-
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: wrap;
-      margin-bottom: 34px;
-    }
-
-    .brand { font-weight: 900; letter-spacing: 0.04em; }
-    .nav-links { display: flex; gap: 18px; flex-wrap: wrap; }
-    .nav-links a { color: #e8ecf4; opacity: 0.9; }
-    .nav-links a:hover { color: #64b5ff; }
-
-    .hero { text-align: center; padding: 12px 0 6px; }
-
-    .eyebrow {
-      margin: 0 0 10px;
-      color: #64b5ff;
-      font-weight: 900;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      font-size: 0.78rem;
-    }
-
-    .hero h1 {
-      margin: 0 0 10px;
-      color: #f3f7ff;
-      font-size: clamp(3rem, 7vw, 5.4rem);
-      line-height: 0.95;
-      font-weight: 900;
-      letter-spacing: -0.04em;
-    }
-
-    .hero p { margin: 0 auto; max-width: 780px; color: #a8b0c5; }
-    main { padding: 24px 0 70px; }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-bottom: 14px;
-    }
-
-    .card-glass {
-      background: rgba(18, 25, 49, 0.82);
-      border: 1px solid rgba(100, 181, 255, 0.28);
-      border-radius: 16px;
-      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.28);
-      backdrop-filter: blur(8px);
-    }
-
-    .stat { padding: 18px; }
-    .stat span {
-      display: block;
-      color: #64b5ff;
-      font-size: 0.76rem;
-      font-weight: 900;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-    }
-    .stat strong { display: block; margin-top: 8px; color: #ffffff; font-size: 1.45rem; line-height: 1.1; }
-
-    .controls {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-
-    .control {
-      width: 100%;
-      padding: 13px 15px;
-      outline: none;
-      background: rgba(18, 25, 49, 0.82);
-      border: 1px solid rgba(100, 181, 255, 0.28);
-      border-radius: 12px;
-      color: #e8ecf4;
-    }
-    .control::placeholder { color: #a8b0c5; }
-
-    .categories { padding: 18px; margin-bottom: 18px; }
-    .categories h2, .project-list h2 { margin: 0 0 14px; color: #f3f7ff; }
-
-    .category-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-    }
-
-    .category-btn, .project-btn {
-      width: 100%;
-      text-align: left;
-      cursor: pointer;
-      border: 1px solid rgba(100, 181, 255, 0.22);
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.025);
-      transition: 0.18s ease;
-    }
-
-    .category-btn { padding: 14px; }
-
-    .category-btn:hover, .project-btn:hover, .category-btn.active, .project-btn.active {
-      background: rgba(100, 181, 255, 0.12);
-      border-color: rgba(100, 181, 255, 0.62);
-    }
-
-    .category-btn span { display: block; color: #ffffff; font-weight: 900; }
-    .category-btn small { display: block; margin-top: 4px; color: #64b5ff; font-weight: 800; }
-
-    .workspace {
-      display: grid;
-      grid-template-columns: 360px minmax(0, 1fr);
-      gap: 16px;
-      align-items: start;
-    }
-
-    .project-list { padding: 16px; position: sticky; top: 16px; }
-    .project-list .muted { margin: -6px 0 14px; color: #a8b0c5; }
-
-    .project-btn { display: block; padding: 14px; margin-top: 10px; }
-    .project-btn[hidden] { display: none !important; }
-    .project-btn span { display: block; color: #ffffff; font-weight: 900; }
-    .project-btn small {
-      display: block;
-      margin-top: 4px;
-      color: #64b5ff;
-      text-transform: uppercase;
-      font-size: 0.7rem;
-      font-weight: 900;
-      letter-spacing: 0.04em;
-    }
-
-    .project-detail { padding: 22px; min-height: 620px; }
-    .project-panel[hidden] { display: none !important; }
-
-    .project-panel-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      align-items: flex-start;
-      margin-bottom: 14px;
-    }
-
-    .project-label {
-      margin: 0 0 8px;
-      color: #64b5ff;
-      font-size: 0.75rem;
-      font-weight: 900;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-    }
-
-    .project-panel h2 {
-      margin: 0 0 10px;
-      color: #f3f7ff;
-      font-size: clamp(1.8rem, 3.4vw, 2.8rem);
-      line-height: 1.08;
-      font-weight: 900;
-      letter-spacing: -0.035em;
-    }
-
-    .project-badge {
-      white-space: nowrap;
-      color: #dbeafe;
-      border: 1px solid rgba(100, 181, 255, 0.48);
-      background: rgba(100, 181, 255, 0.08);
-      border-radius: 999px;
-      padding: 8px 12px;
-      font-weight: 900;
-    }
-
-    .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
-    .tags span {
-      color: #64b5ff;
-      border: 1px solid rgba(100, 181, 255, 0.34);
-      background: rgba(100, 181, 255, 0.08);
-      border-radius: 999px;
-      padding: 6px 10px;
-      font-size: 0.75rem;
-      font-weight: 900;
-      text-transform: uppercase;
-    }
-
-    .project-panel p, .project-panel li { color: #dce4f5; }
-
-    .project-image {
-      display: block;
-      width: 100%;
-      max-height: 480px;
-      object-fit: contain;
-      margin: 18px 0;
-      border-radius: 16px;
-      border: 1px solid rgba(100, 181, 255, 0.28);
-      background: rgba(255, 255, 255, 0.05);
-      padding: 8px;
-    }
-
-    .detail-box {
-      margin-top: 16px;
-      padding: 16px;
-      border: 1px solid rgba(100, 181, 255, 0.22);
-      border-radius: 14px;
-      background: rgba(5, 10, 22, 0.42);
-    }
-    .detail-box h3 { margin: 0 0 10px; color: #f3f7ff; }
-    .detail-box ul { margin: 0; }
-    .detail-box p:last-child { margin-bottom: 0; }
-
-        .screenshot-viewer {
-      margin-top: 18px;
-      border: 1px solid rgba(100, 181, 255, 0.22);
-      border-radius: 16px;
-      background: rgba(5, 10, 22, 0.42);
-      padding: 14px;
-    }
-
-    .screenshot-stage {
-      position: relative;
-      display: grid;
-      grid-template-columns: 44px 1fr 44px;
-      gap: 10px;
-      align-items: center;
-    }
-
-        .screenshot-stage img {
-      width: 100%;
-      max-height: 650px;
-      object-fit: contain;
-      border-radius: 12px;
-      border: 1px solid rgba(100, 181, 255, 0.22);
-      background: rgba(255, 255, 255, 0.05);
-      padding: 6px;
-      cursor: zoom-in;
-    }
-
-    .shot-arrow {
-      height: 44px;
-      width: 44px;
-      border-radius: 999px;
-      border: 1px solid rgba(100, 181, 255, 0.36);
-      background: rgba(100, 181, 255, 0.09);
-      color: #e8ecf4;
-      cursor: pointer;
-      font-size: 1.4rem;
-      font-weight: 900;
-    }
-
-    .shot-arrow:hover {
-      background: rgba(100, 181, 255, 0.18);
-    }
-
-    .screenshot-caption {
-      margin: 10px 0 0;
-      color: #a8b0c5;
-      font-size: 0.95rem;
-      text-align: center;
-    }
-
-    .screenshot-count {
-      color: #64b5ff;
-      font-weight: 800;
-    }
-
-
-    .thesis-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 16px;
-    }
-
-    .thesis-grid .detail-box { margin-top: 0; }
-
-    .file-library {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 12px;
-    }
-
-    .file-card {
-      display: block;
-      padding: 13px;
-      border: 1px solid rgba(100, 181, 255, 0.28);
-      border-radius: 12px;
-      background: rgba(100, 181, 255, 0.06);
-      transition: 0.18s ease;
-    }
-
-    .file-card:hover {
-      border-color: rgba(100, 181, 255, 0.7);
-      background: rgba(100, 181, 255, 0.12);
-    }
-
-    .file-card strong { display: block; color: #ffffff; }
-    .file-card small { display: block; margin-top: 4px; color: #a8b0c5; }
-
-    .upload-note {
-      margin-top: 12px;
-      padding: 12px;
-      border-left: 3px solid #64b5ff;
-      background: rgba(100, 181, 255, 0.06);
-      color: #dce4f5;
-    }
-
-    .status-list { padding-left: 0; list-style: none; }
-    .status-list li { margin: 8px 0; }
-    .status-list li::before { content: "○"; color: #64b5ff; margin-right: 9px; font-weight: 900; }
-
-    @media (max-width: 760px) {
-      .thesis-grid, .file-library { grid-template-columns: 1fr; }
-    }
-
-    footer { border-top: 1px solid rgba(100, 181, 255, 0.18); padding: 24px 0; }
-
-    .image-lightbox {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 28px;
-      background: rgba(0, 0, 0, 0.92);
-    }
-
-    .image-lightbox.open {
-      display: flex;
-    }
-
-    .image-lightbox img {
-      max-width: 96vw;
-      max-height: 88vh;
-      object-fit: contain;
-      border-radius: 14px;
-      border: 1px solid rgba(100, 181, 255, 0.35);
-      background: rgba(255, 255, 255, 0.04);
-      padding: 8px;
-    }
-
-    .lightbox-close {
-      position: fixed;
-      top: 18px;
-      right: 22px;
-      width: 44px;
-      height: 44px;
-      border-radius: 999px;
-      border: 1px solid rgba(100, 181, 255, 0.4);
-      background: rgba(18, 25, 49, 0.92);
-      color: #e8ecf4;
-      cursor: pointer;
-      font-size: 1.8rem;
-      line-height: 1;
-      font-weight: 900;
-    }
-
-    .lightbox-caption {
-      position: fixed;
-      left: 50%;
-      bottom: 18px;
-      transform: translateX(-50%);
-      max-width: 90vw;
-      color: #dce4f5;
-      background: rgba(18, 25, 49, 0.9);
-      border: 1px solid rgba(100, 181, 255, 0.28);
-      border-radius: 999px;
-      padding: 8px 14px;
-      font-size: 0.95rem;
-      text-align: center;
-    }
-
-    @media (max-width: 1000px) {
-      .stats, .controls, .category-grid, .workspace { grid-template-columns: 1fr; }
-      .project-list { position: static; }
-    }
-  </style>
+<style>
+:root {
+  --bg: #09101d;
+  --panel: #141e33;
+  --accent: #74baff;
+  --text: #edf3ff;
+  --muted: #b4c4df;
+  --border: rgba(114,176,247,.25);
+}
+* {box-sizing:border-box}
+html {scroll-behavior:smooth}
+body {
+  margin:0;
+  background:radial-gradient(circle at 85% 0%,#1c3154,transparent 38%),var(--bg);
+  color:var(--text);
+  font:16px/1.65 Arial,sans-serif;
+}
+a {color:var(--accent);text-decoration:none}
+a:hover {color:#cce8ff}
+button {font:inherit;cursor:pointer}
+a:focus-visible,button:focus-visible {
+  outline:3px solid var(--accent);
+  outline-offset:3px;
+}
+.container {width:min(1150px,92%);margin:auto}
+header {border-bottom:1px solid var(--border)}
+nav {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+  padding:24px 0;
+}
+.logo {color:#fff;font-weight:800;font-size:1.1rem}
+.links {display:flex;gap:20px;flex-wrap:wrap}
+.links a {color:#d3deee}
+.hero {padding:70px 0 75px}
+.eyebrow {
+  color:var(--accent);
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-weight:bold;
+  font-size:.8rem;
+}
+h1 {font-size:clamp(2.8rem,7vw,5rem);line-height:1.05;margin:14px 0}
+h2 {font-size:clamp(1.6rem,4vw,2.2rem);line-height:1.2}
+h3 {font-size:1.3rem;line-height:1.3}
+.hero p {color:var(--muted);max-width:750px;font-size:1.1rem}
+.btn {
+  display:inline-block;
+  padding:11px 17px;
+  border:1px solid var(--border);
+  background:#172844;
+  border-radius:10px;
+  margin:6px 8px 6px 0;
+  color:#fff;
+}
+.btn.primary {background:var(--accent);color:#09101d;font-weight:bold}
+main {padding:55px 0 80px}
+.section-subtitle {color:var(--muted);margin-bottom:30px}
+.grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.card {
+  background:rgba(20,30,51,.9);
+  border:1px solid var(--border);
+  border-radius:17px;
+  overflow:hidden;
+}
+.card img {display:block;width:100%;height:210px;object-fit:contain;background:#0d1728}
+.card-body {padding:24px}
+.card-body p {color:var(--muted)}
+.status {
+  color:var(--accent);
+  font-size:.76rem;
+  font-weight:bold;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+.tags {display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
+.tag {
+  color:#b6dfff;
+  border:1px solid var(--border);
+  border-radius:30px;
+  padding:5px 10px;
+  font-size:.77rem;
+}
+.project-detail {
+  padding:50px 0;
+  border-top:1px solid var(--border);
+  scroll-margin-top:20px;
+}
+.project-detail h2 {margin-bottom:10px}
+.project-detail > p {color:var(--muted);max-width:850px}
+.detail-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+  margin-top:25px;
+  align-items:start;
+}
+.info {padding:25px}
+.info h3 {margin:0 0 10px}
+.info h3:not(:first-child) {margin-top:25px}
+.info p,.info li {color:#d5e0f2}
+.info ul {padding-left:20px}
+.info li {margin-bottom:8px}
+.gallery {padding:15px}
+.gallery img {
+  width:100%;
+  max-height:400px;
+  object-fit:contain;
+  cursor:zoom-in;
+  border-radius:10px;
+}
+.gallery-nav {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-top:12px;
+}
+.gallery-nav button {
+  background:#1b3050;
+  border:1px solid var(--border);
+  color:white;
+  border-radius:8px;
+  padding:5px 14px;
+}
+.caption {color:var(--muted);font-size:.85rem;text-align:center}
+.research {
+  margin-top:40px;
+  padding:32px;
+}
+.research p {color:var(--muted)}
+footer {
+  border-top:1px solid var(--border);
+  text-align:center;
+  padding:30px;
+  color:var(--muted);
+}
+.lightbox {
+  position:fixed;
+  inset:0;
+  z-index:100;
+  background:rgba(0,0,0,.95);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:60px 20px;
+}
+.lightbox[hidden] {display:none}
+.lightbox img {max-width:95%;max-height:85vh;object-fit:contain}
+.lightbox button {
+  position:absolute;
+  right:20px;
+  top:15px;
+  background:#203754;
+  color:white;
+  border:1px solid var(--border);
+  border-radius:50%;
+  width:45px;
+  height:45px;
+  font-size:1.5rem;
+}
+.missing {
+  min-height:180px;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  padding:20px;
+  color:var(--muted);
+  background:#101b2f;
+}
+@media(max-width:800px) {
+  .grid,.detail-grid {grid-template-columns:1fr}
+  .hero {padding:45px 0}
+}
+@media(max-width:480px) {
+  .card-body,.info {padding:18px}
+  .links {gap:12px}
+}
+</style>
 </head>
 <body>
-  <header>
-    <div class="shell">
-      <nav>
-        <div class="brand">Matthew Sexton</div>
-        <div class="nav-links">
-          <a href="index.html">Home</a>
-          <a href="projects.html">Projects</a>
-          <a href="lab.html">Lab</a>
-          <a href="index.html#resume">Resume</a>
-          <a href="education.html">Education</a>
-          <a href="index.html#contact">Contact</a>
-        </div>
-      </nav>
 
-      <section class="hero">
-        <p class="eyebrow">Project Hall</p>
-        <h1>Projects</h1>
-        <p>Cybersecurity labs, infrastructure builds, app development, and portfolio work organized in an app-style project dashboard.</p>
-      </section>
+<header>
+  <nav class="container">
+    <a class="logo" href="index.html">Matthew Sexton</a>
+    <div class="links">
+      <a href="index.html">Home</a>
+      <a href="projects.html" aria-current="page">Projects</a>
+      <a href="research.html">Research</a>
+      <a href="lab.html">Lab</a>
+      <a href="index.html#resume">Résumé</a>
+      <a href="index.html#contact">Contact</a>
     </div>
-  </header>
+  </nav>
 
-  <main class="shell">
-    <section class="stats">
-      <div class="stat card-glass"><span>Total Projects</span><strong>7</strong></div>
-      <div class="stat card-glass"><span>Active Builds</span><strong>6</strong></div>
-      <div class="stat card-glass"><span>Focus</span><strong>Security / Infrastructure / Dev</strong></div>
-    </section>
-
-    <section class="controls">
-      <input class="control" id="projectSearch" type="text" placeholder="Search projects..." />
-      <select class="control" id="projectSelect">
-        <option value="masters-thesis">Master’s Thesis — Network Segmentation & Lateral Movement</option>
-        <option value="homelab">Enterprise Segmented Cybersecurity Homelab</option>
-        <option value="security-onion">Security Onion Monitoring Environment</option>
-        <option value="firewall">OPNsense Firewall & VLAN Policy Design</option>
-        <option value="proxmox">Proxmox Multi-Node Virtualization Lab</option>
-        <option value="dnd-app">D&D App - Overview</option>
-        <option value="dnd-dashboard">D&D App - Dashboard & Interface</option>
-        <option value="dnd-account">D&D App - Account & Profile</option>
-        <option value="dnd-character-creator">D&D App - Character Creator</option>
-        <option value="dnd-my-characters">D&D App - My Characters</option>
-        <option value="dnd-character-sheet">D&D App - Character Sheet</option>
-        <option value="dnd-campaigns">D&D App - Campaigns</option>
-        <option value="dnd-achievements">D&D App - Achievements</option>
-        <option value="dnd-library">D&D App - Library</option>
-        <option value="dnd-crafting">D&D App - Crafting</option>
-        <option value="dnd-store">D&D App - Store</option>
-        <option value="dnd-store-management">D&D App - Store Management</option>
-        <option value="dnd-party">D&D App - Party Management</option>
-        <option value="dnd-dm-tools">D&D App - DM Tools</option>
-        <option value="dnd-inventory">D&D App - Inventory System</option>
-        <option value="dnd-spells">D&D App - Spell System</option>
-        <option value="dnd-database">D&D App - Supabase Database</option>
-        <option value="dnd-auth">D&D App - Authentication & Permissions</option>
-        <option value="website">Notxes Portfolio Website</option>
-      </select>
-    </section>
-
-    <section class="categories card-glass">
-      <h2>Categories</h2>
-      <div class="category-grid">
-        <button class="category-btn active" type="button" data-category="cybersecurity"><span>Cybersecurity</span><small>3 projects</small></button>
-        <button class="category-btn" type="button" data-category="firewall"><span>Firewall</span><small>1 project</small></button>
-        <button class="category-btn" type="button" data-category="proxmox"><span>Proxmox Server</span><small>1 project</small></button>
-        <button class="category-btn" type="button" data-category="dnd"><span>D&D App</span><small>17 systems</small></button>
-      </div>
-    </section>
-
-    <section class="workspace">
-      <aside class="project-list card-glass">
-        <h2>Project List</h2>
-        <p class="muted" id="listHint">Cybersecurity projects</p>
-
-        <button class="project-btn active" type="button" data-category="cybersecurity" data-project="masters-thesis"><span>Master’s Thesis — Network Segmentation & Lateral Movement</span><small>Graduate research • In progress</small></button>
-        <button class="project-btn" type="button" data-category="cybersecurity" data-project="homelab"><span>Enterprise Segmented Cybersecurity Homelab</span><small>Cybersecurity • Active lab</small></button>
-        <button class="project-btn" type="button" data-category="cybersecurity" data-project="security-onion"><span>Security Onion Monitoring Environment</span><small>SOC lab • Detection</small></button>
-        <button class="project-btn" type="button" data-category="firewall" data-project="firewall" hidden><span>OPNsense Firewall & VLAN Policy Design</span><small>Firewall • Segmentation</small></button>
-        <button class="project-btn" type="button" data-category="proxmox" data-project="proxmox" hidden><span>Proxmox Multi-Node Virtualization Lab</span><small>Infrastructure • Virtualization</small></button>
-        <button class="project-btn" type="button" data-category="dnd" data-project="dnd-app" hidden><span>▾ D&D Campaign Management App</span><small>Overview • Active development</small></button>
-        <button class="project-btn" type="button" data-category="dnd" data-project="dnd-dashboard" hidden><span>Dashboard & Interface</span><small>UI/UX • Navigation</small></button>
-        <button class="project-btn" type="button" data-category="dnd" data-project="dnd-account" hidden><span>Account & Profile</span><small>Users • Profile settings</small></button>
-        <button class="project-btn" type="button" data-category="dnd" data-project="dnd-character-creator" hidden><span>Character Creator</span><small>Wizard • Validation</small></button>
-        <button class="project-btn" type="button" data-category="dnd" data-project="dnd-my-characters" hidden><span>My Characters</span><small>Saved characters • Management</small></button>
-        <button class="project-btn" type="button" data-category="dnd" data-project="dnd-character-sheet" hidden><span>Character Sheet</span><small>Player tools • Automation</small></button>
-        <button class="project-btn" type="button" data-category="dnd" data-project="dnd-campaigns" hidden><span>Campaigns</span><small>Shared adventures • Progress</small></button>
-        <button class="project-btn" type="button" data-category="dnd" data-project="dnd-achievements" hidden><span>Achievements</span><small>Progression • Rewards</small></button>
-        <button class="project-btn" type="button" data-category="dnd" data-project="dnd-library" hidden><span>Library</span><small>Rules • Spells • Reference</small></button>
-        <button class="project-btn" type="button" data-category="dnd" data-project="dnd-crafting" hidden><span>Crafting</span><small>Items • Materials • Progress</small></button>
-        <button class="project-btn" type="button" data-category="dnd" data-project="dnd-store" hidden><span>Store</span><small>Shop • Items</small></button>
-        <button class="project-btn" type="button" data-category="dnd" data-project="dnd-store-management" hidden><span>Store Management</span><small>Stock • Prices • Admin</small></button>
-        <button class="project-btn" type="button" data-category="dnd" data-project="dnd-party" hidden><span>Party Management</span><small>Party members • Oversight</small></button>
-        <button class="project-btn" type="button" data-category="dnd" data-project="dnd-dm-tools" hidden><span>DM Tools</span><small>DM controls • Utilities</small></button>
-        <button class="project-btn" type="button" data-category="dnd" data-project="dnd-inventory" hidden><span>Inventory System</span><small>Equipment • Containers</small></button>
-        <button class="project-btn" type="button" data-category="dnd" data-project="dnd-spells" hidden><span>Spell System</span><small>Spells • Slots • Rules</small></button>
-        <button class="project-btn" type="button" data-category="dnd" data-project="dnd-database" hidden><span>Supabase Database</span><small>Backend • PostgreSQL</small></button>
-        <button class="project-btn" type="button" data-category="dnd" data-project="dnd-auth" hidden><span>Authentication & Permissions</span><small>Access control • Ownership</small></button>
-        <button class="project-btn" type="button" data-category="website" data-project="website" hidden><span>Notxes Portfolio Website</span><small>Portfolio • Career branding</small></button>
-      </aside>
-
-      <section class="project-detail card-glass">
-
-        <article id="masters-thesis" class="project-panel" data-title="masters thesis graduate research network segmentation credential lateral movement pass the hash active directory opnsense security onion zeek suricata grc governance risk compliance incident response">
-          <div class="project-panel-top">
-            <div>
-              <p class="project-label">Graduate Research • In Progress</p>
-              <h2>Master’s Thesis — Network Segmentation & Credential-Based Lateral Movement</h2>
-              <div class="tags"><span>Research</span><span>Active Directory</span><span>OPNsense</span><span>Security Onion</span><span>GRC</span></div>
-            </div>
-            <strong class="project-badge">Featured Project</strong>
-          </div>
-
-          <p>This controlled technical study evaluates whether VLAN-based segmentation and least-privilege inter-VLAN firewall rules reduce credential-based lateral movement in a simulated municipal Active Directory environment while maintaining useful monitoring visibility.</p>
-
-          <img src="images/thesis-architecture.png" class="project-image" alt="Thesis lab architecture comparing flat and segmented network designs" />
-
-          <div class="thesis-grid">
-            <div class="detail-box">
-              <h3>Research Question</h3>
-              <p>To what extent does VLAN-based network segmentation with least-privilege inter-VLAN access control reduce successful credential-based lateral movement compared with a flatter network design in a controlled Active Directory cyber range?</p>
-            </div>
-            <div class="detail-box">
-              <h3>Current Status</h3>
-              <ul class="status-list">
-                <li>Research scope and technical direction defined</li>
-                <li>Existing Red, Blue, Victim, and infrastructure lab being documented</li>
-                <li>Security Onion, Zeek, and Suricata visibility being validated</li>
-                <li>Experiment run sheet and evidence structure in development</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="detail-box">
-            <h3>Study Design</h3>
-            <ul>
-              <li><strong>Baseline condition:</strong> a flatter network with broader reachability between selected systems.</li>
-              <li><strong>Experimental condition:</strong> segmented VLANs with explicit least-privilege OPNsense rules.</li>
-              <li><strong>Attack scenario:</strong> controlled credential-based lateral movement, including Pass-the-Hash where appropriate.</li>
-              <li><strong>Primary measurements:</strong> reachable services, successful and blocked movement attempts, detection outcome, alert timing, and detection latency.</li>
-              <li><strong>Repetition:</strong> multiple standardized runs under each condition using restored snapshots and documented procedures.</li>
-            </ul>
-          </div>
-
-          <div class="thesis-grid">
-            <div class="detail-box">
-              <h3>Technical Environment</h3>
-              <ul>
-                <li>Proxmox virtualization hosts and isolated virtual machines</li>
-                <li>Windows Server Active Directory and Windows 11 victim endpoints</li>
-                <li>OPNsense routing, VLANs, firewall rules, and trust boundaries</li>
-                <li>Security Onion with Zeek and Suricata monitoring</li>
-                <li>Kali Linux / Red Team system for controlled testing</li>
-                <li>Windows event logs, network telemetry, and packet evidence</li>
-              </ul>
-            </div>
-            <div class="detail-box">
-              <h3>Evidence Collected</h3>
-              <ul>
-                <li>Experiment run records and timestamps</li>
-                <li>Firewall allow/deny evidence</li>
-                <li>Security Onion alerts and Hunt results</li>
-                <li>Zeek connection and protocol logs</li>
-                <li>Suricata detections and metadata</li>
-                <li>Windows authentication and security events</li>
-                <li>Screenshots, diagrams, and configuration excerpts</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="detail-box">
-            <h3>Documents & Downloads</h3>
-            <div class="file-library">
-              <a class="file-card" href="images/thesis-overview.pdf" target="_blank" rel="noopener"><strong>Thesis Overview</strong><small>PDF • Project overview and research scope</small></a>
-              <a class="file-card" href="images/thesis-lab-architecture.pdf" target="_blank" rel="noopener"><strong>Lab Architecture</strong><small>PDF • Network diagrams and trust boundaries</small></a>
-              <a class="file-card" href="images/thesis-experiment-methodology.pdf" target="_blank" rel="noopener"><strong>Experiment Methodology</strong><small>PDF • Procedure, variables, and controls</small></a>
-              <a class="file-card" href="images/thesis-results-summary.pdf" target="_blank" rel="noopener"><strong>Results Summary</strong><small>PDF • Findings, charts, and conclusions</small></a>
-              <a class="file-card" href="images/thesis-evidence.zip" target="_blank" rel="noopener"><strong>Research Evidence Package</strong><small>ZIP • Selected logs, screenshots, and run records</small></a>
-              <a class="file-card" href="images/thesis-final.pdf" target="_blank" rel="noopener"><strong>Final Thesis</strong><small>PDF • Completed research paper</small></a>
-            </div>
-          </div>
-
-          <div class="detail-box">
-            <h3>Supplemental GRC & Security Program</h3>
-            <p>This companion security program uses the same controlled environment and evidence to connect technical testing with governance, risk management, incident response, security operations, resilience, compliance mapping, and assurance.</p>
-
-            <div class="thesis-grid">
-              <div class="detail-box">
-                <h3>Foundation & Architecture</h3>
-                <ul>
-                  <li>Project charter, organization profile, scope, assumptions, and boundaries</li>
-                  <li>VM and network asset inventory</li>
-                  <li>Current-state flat network diagram</li>
-                  <li>Target segmented network diagram</li>
-                  <li>System categorization and data-classification matrix</li>
-                  <li>Business impact analysis for core services</li>
-                </ul>
-              </div>
-
-              <div class="detail-box">
-                <h3>Risk Management</h3>
-                <ul>
-                  <li>Risk-assessment methodology and scoring scales</li>
-                  <li>Risk register with treatment and residual-risk fields</li>
-                  <li>Risk treatment plan</li>
-                  <li>NIST CSF 2.0 current and target profile</li>
-                  <li>Risk-acceptance and security-exception forms</li>
-                </ul>
-              </div>
-
-              <div class="detail-box">
-                <h3>Governance Policies & Standards</h3>
-                <ul>
-                  <li>Information Security Policy</li>
-                  <li>Network Segmentation Standard</li>
-                  <li>Access Control Policy</li>
-                  <li>Logging and Monitoring Standard</li>
-                  <li>Vulnerability and Patch Management Standard</li>
-                  <li>Change Management Procedure and change-ticket template</li>
-                  <li>Backup and Recovery Policy</li>
-                </ul>
-              </div>
-
-              <div class="detail-box">
-                <h3>Incident Response</h3>
-                <ul>
-                  <li>Incident Response Plan</li>
-                  <li>Incident severity, declaration, roles, escalation, and notification matrix</li>
-                  <li>Evidence-handling procedure and chain-of-custody form</li>
-                  <li>Credential Theft and Lateral Movement Playbook</li>
-                  <li>Containment, eradication, recovery, timeline, and lessons-learned templates</li>
-                </ul>
-              </div>
-
-              <div class="detail-box">
-                <h3>Security Operations</h3>
-                <ul>
-                  <li>Security Onion alert-triage procedure</li>
-                  <li>Zeek, Suricata, Windows, and OPNsense investigation guide</li>
-                  <li>Alert-severity matrix</li>
-                  <li>Detection use-case catalog</li>
-                  <li>Daily and weekly monitoring checklists</li>
-                  <li>False-positive log and case-management template</li>
-                </ul>
-              </div>
-
-              <div class="detail-box">
-                <h3>Testing & Assurance</h3>
-                <ul>
-                  <li>Security test plan and rules of engagement</li>
-                  <li>Test-case matrix, pretest checklist, and evidence log</li>
-                  <li>Pilot-trial summary and deviation records</li>
-                  <li>Findings register and POA&amp;M/corrective-action tracker</li>
-                  <li>Control-effectiveness assessment</li>
-                  <li>Retest report and final residual-risk decisions</li>
-                </ul>
-              </div>
-
-              <div class="detail-box">
-                <h3>Business Continuity & Disaster Recovery</h3>
-                <ul>
-                  <li>Combined Business Continuity and Disaster Recovery Plan</li>
-                  <li>RTO/RPO worksheet and recovery-priority matrix</li>
-                  <li>Backup schedule and restoration checklist</li>
-                  <li>Backup-testing procedure and recovery-test report</li>
-                  <li>Credential-compromise tabletop exercise and after-action report</li>
-                  <li>Incident and continuity communications plan</li>
-                </ul>
-              </div>
-
-              <div class="detail-box">
-                <h3>Compliance & Control Mapping</h3>
-                <ul>
-                  <li>NIST CSF 2.0 profile and gap summary</li>
-                  <li>NIST SP 800-53 and CIS Controls crosswalk</li>
-                  <li>NIST SP 800-61 incident-response cross-reference</li>
-                  <li>NIST SP 800-207 least-privilege design cross-reference</li>
-                  <li>CJIS Security Policy considerations memo</li>
-                  <li>Control implementation and evidence-status tracking</li>
-                </ul>
-              </div>
-
-              <div class="detail-box">
-                <h3>Final Assessment & Portfolio</h3>
-                <ul>
-                  <li>Main repeated-trial evidence set</li>
-                  <li>Executive security assessment report</li>
-                  <li>Final risk register and treatment decisions</li>
-                  <li>Sanitized findings, diagrams, metrics, and selected evidence</li>
-                  <li>Website case study and downloadable portfolio artifacts</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="detail-box">
-              <h3>Core GRC Documents</h3>
-              <div class="file-library">
-                <a class="file-card" href="images/grc-project-charter.pdf" target="_blank" rel="noopener"><strong>Project Charter & Scope</strong><small>PDF • Organization profile, assumptions, boundaries, and objectives</small></a>
-                <a class="file-card" href="images/grc-asset-inventory.xlsx" target="_blank" rel="noopener"><strong>Asset Inventory</strong><small>XLSX • Systems, network assets, criticality, and recovery priority</small></a>
-                <a class="file-card" href="images/grc-architecture-diagrams.pdf" target="_blank" rel="noopener"><strong>Architecture Diagrams</strong><small>PDF • Flat and segmented network designs</small></a>
-                <a class="file-card" href="images/grc-classification-matrix.xlsx" target="_blank" rel="noopener"><strong>Classification Matrix</strong><small>XLSX • System categorization and data classification</small></a>
-                <a class="file-card" href="images/grc-business-impact-analysis.xlsx" target="_blank" rel="noopener"><strong>Business Impact Analysis</strong><small>XLSX • Service impact, dependencies, and recovery priorities</small></a>
-                <a class="file-card" href="images/grc-risk-methodology.pdf" target="_blank" rel="noopener"><strong>Risk Methodology</strong><small>PDF • Likelihood, impact, scoring, and treatment criteria</small></a>
-                <a class="file-card" href="images/grc-risk-register.xlsx" target="_blank" rel="noopener"><strong>Risk Register & Treatment Plan</strong><small>XLSX • Inherent risk, controls, treatment, and residual risk</small></a>
-                <a class="file-card" href="images/grc-nist-csf-profile.xlsx" target="_blank" rel="noopener"><strong>NIST CSF 2.0 Profile</strong><small>XLSX • Current state, target state, gaps, and priorities</small></a>
-
-                <a class="file-card" href="images/grc-information-security-policy.pdf" target="_blank" rel="noopener"><strong>Information Security Policy</strong><small>PDF • Top-level security requirements</small></a>
-                <a class="file-card" href="images/grc-network-segmentation-standard.pdf" target="_blank" rel="noopener"><strong>Network Segmentation Standard</strong><small>PDF • Allowed flows, prohibited flows, logging, and exceptions</small></a>
-                <a class="file-card" href="images/grc-access-control-policy.pdf" target="_blank" rel="noopener"><strong>Access Control Policy</strong><small>PDF • Least privilege, administrative access, and account controls</small></a>
-                <a class="file-card" href="images/grc-logging-monitoring-standard.pdf" target="_blank" rel="noopener"><strong>Logging & Monitoring Standard</strong><small>PDF • Data sources, retention, review, and detection requirements</small></a>
-
-                <a class="file-card" href="images/grc-incident-response-plan.pdf" target="_blank" rel="noopener"><strong>Incident Response Plan</strong><small>PDF • Roles, phases, escalation, evidence, and recovery</small></a>
-                <a class="file-card" href="images/grc-incident-governance-matrix.xlsx" target="_blank" rel="noopener"><strong>Incident Governance Matrix</strong><small>XLSX • Severity, declaration, roles, escalation, and notification</small></a>
-                <a class="file-card" href="images/grc-evidence-handling.pdf" target="_blank" rel="noopener"><strong>Evidence Handling & Chain of Custody</strong><small>PDF • Evidence identifiers, preservation, hashes, and custody records</small></a>
-                <a class="file-card" href="images/grc-credential-lateral-movement-playbook.pdf" target="_blank" rel="noopener"><strong>Credential Theft & Lateral Movement Playbook</strong><small>PDF • Detect, validate, contain, eradicate, recover, and review</small></a>
-                <a class="file-card" href="images/grc-ir-template-pack.docx" target="_blank" rel="noopener"><strong>Incident Response Template Pack</strong><small>DOCX • Containment, recovery, timeline, and lessons learned</small></a>
-
-                <a class="file-card" href="images/grc-security-onion-triage.pdf" target="_blank" rel="noopener"><strong>Security Onion Triage Procedure</strong><small>PDF • Alert validation, enrichment, escalation, and closure</small></a>
-                <a class="file-card" href="images/grc-investigation-guide.pdf" target="_blank" rel="noopener"><strong>Investigation Guide</strong><small>PDF • Zeek, Suricata, Windows, and OPNsense workflows</small></a>
-                <a class="file-card" href="images/grc-detection-catalog.xlsx" target="_blank" rel="noopener"><strong>Detection Use-Case Catalog</strong><small>XLSX • Logic, data sources, severity, response, and false positives</small></a>
-
-                <a class="file-card" href="images/grc-security-test-plan.pdf" target="_blank" rel="noopener"><strong>Security Test Plan & Rules of Engagement</strong><small>PDF • Authorized scope, procedures, controls, and boundaries</small></a>
-                <a class="file-card" href="images/grc-test-assurance-workbook.xlsx" target="_blank" rel="noopener"><strong>Test & Evidence Workbook</strong><small>XLSX • Test cases, readiness, runs, and evidence log</small></a>
-                <a class="file-card" href="images/grc-pilot-summary.pdf" target="_blank" rel="noopener"><strong>Pilot Trial Summary</strong><small>PDF • Repeatability, deviations, visibility, and reset validation</small></a>
-                <a class="file-card" href="images/grc-findings-poam.xlsx" target="_blank" rel="noopener"><strong>Findings & POA&amp;M</strong><small>XLSX • Findings, remediation, owners, due dates, and status</small></a>
-
-                <a class="file-card" href="images/grc-business-continuity-dr-plan.pdf" target="_blank" rel="noopener"><strong>Business Continuity & DR Plan</strong><small>PDF • Continuity strategy and technical restoration</small></a>
-                <a class="file-card" href="images/grc-bcdr-workbook.xlsx" target="_blank" rel="noopener"><strong>BC/DR Workbook</strong><small>XLSX • RTO/RPO, recovery priority, backup schedule, and restoration</small></a>
-
-                <a class="file-card" href="images/grc-control-crosswalk.xlsx" target="_blank" rel="noopener"><strong>Control Crosswalk</strong><small>XLSX • NIST SP 800-53 and CIS Controls mapping</small></a>
-                <a class="file-card" href="images/grc-control-effectiveness-assessment.pdf" target="_blank" rel="noopener"><strong>Control-Effectiveness Assessment</strong><small>PDF • Baseline versus segmented control results</small></a>
-                <a class="file-card" href="images/grc-retest-report.pdf" target="_blank" rel="noopener"><strong>Retest Report</strong><small>PDF • Corrective-action validation and finding disposition</small></a>
-                <a class="file-card" href="images/grc-executive-security-assessment.pdf" target="_blank" rel="noopener"><strong>Executive Security Assessment</strong><small>PDF • Risks, results, limitations, and recommendations</small></a>
-              </div>
-            </div>
-
-            <div class="detail-box">
-              <h3>Supporting GRC Artifacts</h3>
-              <div class="file-library">
-                <a class="file-card" href="images/grc-vulnerability-patch-standard.pdf" target="_blank" rel="noopener"><strong>Vulnerability & Patch Management Standard</strong><small>PDF • Assessment, prioritization, remediation, and verification</small></a>
-                <a class="file-card" href="images/grc-change-management-procedure.pdf" target="_blank" rel="noopener"><strong>Change Management Procedure</strong><small>PDF • Requests, approvals, testing, rollback, and validation</small></a>
-                <a class="file-card" href="images/grc-backup-recovery-policy.pdf" target="_blank" rel="noopener"><strong>Backup & Recovery Policy</strong><small>PDF • Backup scope, retention, testing, and recovery</small></a>
-                <a class="file-card" href="images/grc-risk-exception-forms.docx" target="_blank" rel="noopener"><strong>Risk Acceptance & Exception Forms</strong><small>DOCX • Ownership, expiration, compensating controls, and approval</small></a>
-                <a class="file-card" href="images/grc-monitoring-checklists.xlsx" target="_blank" rel="noopener"><strong>Monitoring Checklists</strong><small>XLSX • Daily and weekly ingestion, alert, health, and clock checks</small></a>
-                <a class="file-card" href="images/grc-case-management-templates.xlsx" target="_blank" rel="noopener"><strong>Case & False-Positive Templates</strong><small>XLSX • Case records, evidence links, tuning, and closure</small></a>
-                <a class="file-card" href="images/grc-recovery-test-report.pdf" target="_blank" rel="noopener"><strong>Recovery Test Report</strong><small>PDF • Restoration timing, defects, and corrective actions</small></a>
-                <a class="file-card" href="images/grc-tabletop-after-action.pdf" target="_blank" rel="noopener"><strong>Tabletop & After-Action Report</strong><small>PDF • Scenario decisions, observations, and improvements</small></a>
-                <a class="file-card" href="images/grc-nist-focused-cross-reference.pdf" target="_blank" rel="noopener"><strong>NIST 800-61 & 800-207 Cross-Reference</strong><small>PDF • IR lifecycle and least-privilege design references</small></a>
-                <a class="file-card" href="images/grc-cjis-considerations.pdf" target="_blank" rel="noopener"><strong>CJIS Considerations Memo</strong><small>PDF • Public-sector security considerations</small></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="detail-box">
-            <h3>Results & Findings</h3>
-            <p>This section will present validated findings from repeated testing, including reachable-service counts, successful versus blocked attempts, alert coverage, and detection-latency comparisons.</p>
-          </div>
-
-          <div class="detail-box">
-            <h3>Limitations & Ethical Boundaries</h3>
-            <ul>
-              <li>All testing occurs in an isolated, controlled cyber range.</li>
-              <li>No production organization, employee, resident, or real municipal network is used as a research subject.</li>
-              <li>Results apply to the defined lab design, tools, configurations, and attack scenarios.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article id="homelab" class="project-panel" hidden data-title="enterprise segmented cybersecurity homelab cybersecurity vlan security onion active directory">
-          <div class="project-panel-top"><div><p class="project-label">Active Lab</p><h2>Enterprise Segmented Cybersecurity Homelab</h2><div class="tags"><span>Cybersecurity</span><span>VLANs</span><span>Security Onion</span><span>Active Directory</span></div></div><strong class="project-badge">Core Project</strong></div>
-          <p>Designed and built a segmented cybersecurity homelab to simulate enterprise network architecture and real-world attack and defense scenarios.</p>
-          <img src="images/homelab-diagram.png" class="project-image" alt="Enterprise cybersecurity homelab network diagram" />
-          <div class="detail-box"><h3>Technologies Used</h3><ul><li>Proxmox multi-node virtualization</li><li>OPNsense firewall, routing, VPN, and VLAN policies</li><li>Security Onion monitoring and detection</li><li>Active Directory and Windows endpoint environment</li><li>Kali Linux offensive testing system</li><li>Pi-hole DNS and WireGuard remote access</li><li>Cisco switching and SPAN traffic monitoring</li></ul></div>
-         <div class="detail-box">
-    <h3>Explore the Full Homelab</h3>
-
+  <div class="container hero">
+    <div class="eyebrow">Hands-On Technical Work</div>
+    <h1>Infrastructure.<br>Security. Systems.</h1>
     <p>
-        This project is part of a much larger enterprise-style cybersecurity
-        homelab featuring multiple servers, segmented VLANs, Active Directory,
-        virtualization, AI infrastructure, security monitoring, and hosted
-        services.
+      Independent projects demonstrating practical skills in network
+      engineering, systems administration, virtualization, and
+      defensive security monitoring.
+    </p>
+    <a class="btn primary" href="#featured">Explore Projects</a>
+    <a class="btn" href="lab.html">View Homelab</a>
+    <a class="btn" href="research.html">Graduate Research</a>
+  </div>
+</header>
+
+<main class="container">
+
+<section id="featured">
+  <div class="eyebrow">Selected Projects</div>
+  <h2>Featured Technical Work</h2>
+  <p class="section-subtitle">
+    Practical implementations supported by architecture diagrams,
+    configuration evidence, and technical documentation.
+  </p>
+
+  <div class="grid">
+
+    <article class="card">
+      <img src="images/security-onion-dashboard.jpg"
+           alt="Security Onion monitoring dashboard"
+           data-fallback>
+      <div class="card-body">
+        <span class="status">Security Monitoring</span>
+        <h3>Security Onion Monitoring Environment</h3>
+        <p>
+          Deployed and configured a network monitoring environment
+          using Security Onion, Zeek, Suricata, and mirrored network traffic.
+        </p>
+        <div class="tags">
+          <span class="tag">Security Onion</span>
+          <span class="tag">Zeek</span>
+          <span class="tag">Suricata</span>
+          <span class="tag">Cisco SPAN</span>
+        </div>
+        <a href="#security-onion">Explore Project →</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="images/homelab-diagram.png"
+           alt="Segmented cybersecurity homelab network diagram"
+           data-fallback>
+      <div class="card-body">
+        <span class="status">Network Infrastructure</span>
+        <h3>Enterprise Segmented Cybersecurity Homelab</h3>
+        <p>
+          Designed and built a segmented infrastructure environment
+          integrating Active Directory, Cisco networking, OPNsense,
+          Proxmox, and defensive security systems.
+        </p>
+        <div class="tags">
+          <span class="tag">Active Directory</span>
+          <span class="tag">Cisco</span>
+          <span class="tag">VLANs</span>
+          <span class="tag">Windows Server</span>
+        </div>
+        <a href="#homelab">Explore Project →</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="images/opnsense-vlans.jpg"
+           alt="OPNsense VLAN configuration"
+           data-fallback>
+      <div class="card-body">
+        <span class="status">Network Security</span>
+        <h3>OPNsense Firewall &amp; VLAN Segmentation</h3>
+        <p>
+          Configured VLAN interfaces, inter-VLAN access policies,
+          routing, and network security controls across isolated lab networks.
+        </p>
+        <div class="tags">
+          <span class="tag">OPNsense</span>
+          <span class="tag">Firewall Rules</span>
+          <span class="tag">Routing</span>
+          <span class="tag">VPN</span>
+        </div>
+        <a href="#firewall">Explore Project →</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="images/proxmox-lab-infra.jpg"
+           alt="Proxmox virtualization infrastructure"
+           data-fallback>
+      <div class="card-body">
+        <span class="status">Systems &amp; Virtualization</span>
+        <h3>Proxmox Virtualization Infrastructure</h3>
+        <p>
+          Built and administered virtual infrastructure supporting
+          Windows, Linux, Active Directory, security monitoring,
+          and controlled testing environments.
+        </p>
+        <div class="tags">
+          <span class="tag">Proxmox</span>
+          <span class="tag">Windows</span>
+          <span class="tag">Linux</span>
+          <span class="tag">Virtual Networking</span>
+        </div>
+        <a href="#proxmox">Explore Project →</a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section style="margin-top:85px">
+  <div class="eyebrow">Implementation &amp; Evidence</div>
+  <h2>Project Case Studies</h2>
+  <p class="section-subtitle">
+    Technical objectives, configuration work, supporting evidence,
+    and outcomes from controlled lab environments.
+  </p>
+
+  <section id="security-onion" class="project-detail">
+    <span class="status">Independent Cybersecurity Lab</span>
+    <h2>Security Onion Monitoring Environment</h2>
+    <p>
+      Network security monitoring using Zeek, Suricata,
+      mirrored VLAN traffic, and Security Onion investigation tools.
     </p>
 
-    <a class="btn primary" href="lab.html">View Full Lab Specifications →</a>
+    <div class="detail-grid">
+      <div class="card info">
+        <h3>Objective</h3>
+        <p>
+          Establish visibility into network traffic across segmented
+          systems and practice alert analysis and event investigation.
+        </p>
+
+        <h3>Implementation</h3>
+        <ul>
+          <li>Installed and configured Security Onion.</li>
+          <li>Configured management and monitoring interfaces.</li>
+          <li>Integrated mirrored traffic from Cisco switches.</li>
+          <li>Reviewed network events, alerts, logs, and traffic data.</li>
+          <li>Troubleshot SPAN configuration and monitoring visibility.</li>
+        </ul>
+
+        <h3>Evidence</h3>
+        <p>
+          Security Onion dashboard, alert review, and Hunt interface screenshots.
+        </p>
+
+        <h3>Outcome</h3>
+        <p>
+          Developed practical experience deploying monitoring infrastructure,
+          investigating events, and troubleshooting network telemetry
+          in a controlled cybersecurity lab.
+        </p>
+      </div>
+
+      <div class="card gallery" data-gallery="security-onion">
+        <img alt="Security Onion screenshot" data-gallery-image tabindex="0">
+        <div class="gallery-nav">
+          <button type="button" data-prev>←</button>
+          <span class="caption" data-caption></span>
+          <button type="button" data-next>→</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="homelab" class="project-detail">
+    <span class="status">Active Infrastructure Lab</span>
+    <h2>Enterprise Segmented Cybersecurity Homelab</h2>
+    <p>
+      Multi-system infrastructure environment simulating enterprise
+      networking, systems administration, and security operations.
+    </p>
+
+    <div class="detail-grid">
+      <div class="card info">
+        <h3>Objective</h3>
+        <p>
+          Build a reusable environment for network engineering,
+          infrastructure administration, and security testing.
+        </p>
+
+        <h3>Implementation</h3>
+        <ul>
+          <li>Designed management, red-team, victim, blue-team, and IoT VLANs.</li>
+          <li>Integrated Cisco switches and OPNsense firewall routing.</li>
+          <li>Deployed Active Directory and Windows client systems.</li>
+          <li>Configured Proxmox virtual machines and virtual networking.</li>
+          <li>Integrated security monitoring and supporting services.</li>
+        </ul>
+
+        <h3>Evidence</h3>
+        <p>
+          Homelab architecture diagram and documented network infrastructure.
+        </p>
+
+        <h3>Outcome</h3>
+        <p>
+          Maintains a practical environment for testing connectivity,
+          segmentation, firewall behavior, Windows administration,
+          and defensive security tools.
+        </p>
+
+        <a href="lab.html">View Complete Homelab Specifications →</a>
+      </div>
+
+      <div class="card">
+        <img src="images/homelab-diagram.png"
+             alt="Enterprise homelab architecture"
+             data-fallback>
+      </div>
+    </div>
+  </section>
+
+  <section id="firewall" class="project-detail">
+    <span class="status">Independent Network Security Lab</span>
+    <h2>OPNsense Firewall &amp; VLAN Segmentation</h2>
+    <p>
+      Network security design using VLAN-based separation,
+      firewall access controls, routing, and trust boundaries.
+    </p>
+
+    <div class="detail-grid">
+      <div class="card info">
+        <h3>Objective</h3>
+        <p>
+          Restrict unnecessary network communication while preserving
+          explicitly permitted connections between lab services.
+        </p>
+
+        <h3>Implementation</h3>
+        <ul>
+          <li>Configured OPNsense VLAN interfaces and network routing.</li>
+          <li>Created allow and deny rules for inter-VLAN communication.</li>
+          <li>Separated management, security, attacker, victim, and IoT networks.</li>
+          <li>Troubleshot DNS resolution, routing, and connectivity.</li>
+          <li>Configured and evaluated remote access controls.</li>
+        </ul>
+
+        <h3>Evidence</h3>
+        <p>
+          OPNsense interface and firewall policy configuration screenshots.
+        </p>
+
+        <h3>Outcome</h3>
+        <p>
+          Built a segmented lab environment for studying least-privilege
+          network access and firewall behavior. Formal effectiveness
+          testing remains part of ongoing research.
+        </p>
+      </div>
+
+      <div class="card gallery" data-gallery="firewall">
+        <img alt="OPNsense screenshot" data-gallery-image tabindex="0">
+        <div class="gallery-nav">
+          <button type="button" data-prev>←</button>
+          <span class="caption" data-caption></span>
+          <button type="button" data-next>→</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="proxmox" class="project-detail">
+    <span class="status">Independent Virtualization Lab</span>
+    <h2>Proxmox Virtualization Infrastructure</h2>
+    <p>
+      Virtualized Windows, Linux, and security infrastructure
+      supporting controlled administrative and cybersecurity scenarios.
+    </p>
+
+    <div class="detail-grid">
+      <div class="card info">
+        <h3>Objective</h3>
+        <p>
+          Deploy flexible virtualized infrastructure for testing,
+          troubleshooting, and running isolated workloads.
+        </p>
+
+        <h3>Implementation</h3>
+        <ul>
+          <li>Configured multiple Proxmox hosts.</li>
+          <li>Built virtual machines and VLAN-aware bridges.</li>
+          <li>Separated red-team, blue-team, victim, and infrastructure workloads.</li>
+          <li>Deployed Windows Server, Windows clients, Linux, and Kali.</li>
+          <li>Supported virtualized security monitoring systems.</li>
+        </ul>
+
+        <h3>Evidence</h3>
+        <p>
+          Proxmox host and virtual infrastructure screenshots.
+        </p>
+
+        <h3>Outcome</h3>
+        <p>
+          Developed experience managing virtualized infrastructure,
+          segmented virtual networks, and system deployments.
+        </p>
+      </div>
+
+      <div class="card gallery" data-gallery="proxmox">
+        <img alt="Proxmox screenshot" data-gallery-image tabindex="0">
+        <div class="gallery-nav">
+          <button type="button" data-prev>←</button>
+          <span class="caption" data-caption></span>
+          <button type="button" data-next>→</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<aside class="card research">
+  <span class="status">Graduate Research — In Progress</span>
+  <h2>Network Segmentation &amp; Credential-Based Lateral Movement</h2>
+  <p>
+    Ongoing master's research examining how VLAN segmentation and
+    least-privilege firewall rules affect credential-based lateral
+    movement in a simulated Active Directory environment.
+  </p>
+  <p>
+    Includes planned controlled testing, security monitoring,
+    risk assessments, and GRC documentation.
+  </p>
+  <a class="btn" href="research.html">Explore Graduate Research →</a>
+</aside>
+
+<p class="section-subtitle" style="margin-top:35px">
+  Additional development work includes this portfolio website,
+  built using HTML, CSS, and JavaScript.
+</p>
+
+</main>
+
+<footer>
+  Matthew Sexton | IT Infrastructure &amp; Cybersecurity Projects
+</footer>
+
+<div class="lightbox" id="lightbox" hidden role="dialog"
+     aria-modal="true" aria-label="Image preview">
+  <button type="button" id="closeLightbox" aria-label="Close">×</button>
+  <img id="lightboxImage" alt="Enlarged project screenshot">
 </div>
-          <div class="detail-box"><h3>Results</h3><p>This project strengthened my understanding of segmentation, firewall policy design, traffic flow, monitoring visibility, trust boundaries, and how defensive tools observe attacker behavior.</p></div>
-        </article>
 
-        <article id="security-onion" class="project-panel" hidden data-title="security onion monitoring soc zeek suricata span alerts">
-          <div class="project-panel-top"><div><p class="project-label">Monitoring</p><h2>Security Onion Monitoring Environment</h2><div class="tags"><span>SOC</span><span>Zeek</span><span>Suricata</span><span>SPAN</span></div></div><strong class="project-badge">SOC Lab</strong></div>
-          <p>Deployed Security Onion to observe segmented lab traffic and practice SOC workflows including alert review, event investigation, packet visibility, and traffic analysis.</p>
-          <div class="detail-box"><h3>What I Did</h3><ul><li>Installed and configured Security Onion in the lab</li><li>Configured management and monitoring interfaces</li><li>Used mirrored traffic from selected VLANs</li><li>Reviewed dashboards, alerts, packet capture, and logs</li><li>Troubleshot interface, SPAN, and visibility issues</li></ul></div>
-          <div class="screenshot-viewer" data-viewer="security-onion">
-            <div class="screenshot-stage">
-              <button class="shot-arrow" type="button" data-prev="security-onion">‹</button>
-              <img data-shot-image="security-onion" src="images/security-onion-dashboard.jpg" alt="Security Onion dashboard">
-              <button class="shot-arrow" type="button" data-next="security-onion">›</button>
-            </div>
-            <p class="screenshot-caption"><span data-shot-caption="security-onion">Security Onion dashboard</span> <span class="screenshot-count" data-shot-count="security-onion">1 / 3</span></p>
-          </div>
-        </article>
+<script>
+const galleries = {
+  "security-onion": [
+    ["images/security-onion-dashboard.jpg","Security Onion Dashboard"],
+    ["images/security-onion-alerts.jpg","Security Onion Alerts"],
+    ["images/security-onion-hunt.jpg","Security Onion Hunt"]
+  ],
+  "firewall": [
+    ["images/opnsense-vlans.jpg","OPNsense VLAN Interfaces"],
+    ["images/opnsense-firewall-rules.jpg","OPNsense Firewall Rules"]
+  ],
+  "proxmox": [
+    ["images/proxmox-lab-infra.jpg","Infrastructure Host"],
+    ["images/proxmox-lab-blue.jpg","Blue Team Host"],
+    ["images/proxmox-lab-red.jpg","Red Team Host"]
+  ]
+};
 
-        <article id="firewall" class="project-panel" hidden data-title="opnsense firewall vlan rules segmentation wireguard dns routing">
-          <div class="project-panel-top"><div><p class="project-label">Firewall</p><h2>OPNsense Firewall & VLAN Policy Design</h2><div class="tags"><span>OPNsense</span><span>Firewall Rules</span><span>VLANs</span><span>WireGuard</span></div></div><strong class="project-badge">Security Control</strong></div>
-          <p>Designed firewall rules to control inter-VLAN traffic, restrict lateral movement, route segmented networks, and support VPN access into the lab.</p>
-          <div class="detail-box"><h3>What I Did</h3><ul><li>Created segmented VLAN interfaces</li><li>Built allow/deny policies between lab zones</li><li>Controlled Red Team, Victim, SOC, DMZ, IoT, and Management traffic</li><li>Troubleshot DNS, routing, and connectivity issues</li><li>Used rules to simulate enterprise trust boundaries</li></ul></div>
-          <div class="screenshot-viewer" data-viewer="firewall">
-            <div class="screenshot-stage">
-              <button class="shot-arrow" type="button" data-prev="firewall">‹</button>
-              <img data-shot-image="firewall" src="images/opnsense-vlans.jpg" alt="OPNsense VLAN interfaces">
-              <button class="shot-arrow" type="button" data-next="firewall">›</button>
-            </div>
-            <p class="screenshot-caption"><span data-shot-caption="firewall">OPNsense VLAN interfaces</span> <span class="screenshot-count" data-shot-count="firewall">1 / 2</span></p>
-          </div>
-        </article>
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const closeLightbox = document.getElementById("closeLightbox");
+let previousFocus = null;
 
-        <article id="proxmox" class="project-panel" hidden data-title="proxmox virtualization multi node server bridges infrastructure">
-          <div class="project-panel-top"><div><p class="project-label">Infrastructure</p><h2>Proxmox Multi-Node Virtualization Lab</h2><div class="tags"><span>Proxmox</span><span>Virtualization</span><span>Bridges</span><span>Infrastructure</span></div></div><strong class="project-badge">Infrastructure</strong></div>
-          <p>Built and managed a Proxmox-based virtualization environment to host attacker systems, victim machines, monitoring tools, infrastructure services, and lab networks.</p>
-          <div class="detail-box"><h3>What I Did</h3><ul><li>Configured multiple Proxmox hosts for lab workloads</li><li>Created virtual networks and VLAN-aware bridges</li><li>Separated infrastructure, Red Team, Blue Team, and victim workloads</li><li>Hosted Windows Server, Windows clients, Linux systems, Kali, and monitoring tools</li></ul></div>
-          <div class="screenshot-viewer" data-viewer="proxmox">
-            <div class="screenshot-stage">
-              <button class="shot-arrow" type="button" data-prev="proxmox">‹</button>
-              <img data-shot-image="proxmox" src="images/proxmox-lab-infra.jpg" alt="Proxmox infrastructure host">
-              <button class="shot-arrow" type="button" data-next="proxmox">›</button>
-            </div>
-            <p class="screenshot-caption"><span data-shot-caption="proxmox">Proxmox infrastructure host</span> <span class="screenshot-count" data-shot-count="proxmox">1 / 3</span></p>
-          </div>
-        </article>
+function openPreview(img) {
+  if (!img.naturalWidth) return;
+  previousFocus = document.activeElement;
+  lightboxImage.src = img.currentSrc || img.src;
+  lightboxImage.alt = img.alt;
+  lightbox.hidden = false;
+  document.body.style.overflow = "hidden";
+  closeLightbox.focus();
+}
 
-        <article id="dnd-app" class="project-panel" hidden data-title="dnd campaign management app nextjs supabase postgres typescript achievement character creator">
-          <div class="project-panel-top"><div><p class="project-label">Active Development</p><h2>D&D Campaign Management App</h2><div class="tags"><span>Next.js</span><span>Supabase</span><span>PostgreSQL</span><span>TypeScript</span></div></div><strong class="project-badge">Full-Stack</strong></div>
-          <p>Built a custom full-stack D&D 5.5 / 2024 application focused on campaign management, character creation, character sheets, inventory, spells, features, achievements, and database-driven automation.</p>
-          <img src="images/dnd-app-dashboard.jpg" class="project-image" alt="D&D app dashboard preview" />
-          <div class="detail-box"><h3>What I Did</h3><ul><li>Designed and built a multi-step character creator</li><li>Created database-backed systems for species, classes, backgrounds, spells, inventory, equipment, and features</li><li>Built app-style UI screens for achievements, characters, campaign tools, and progression systems</li><li>Worked through schema migrations, permission issues, frontend bugs, and data consistency problems</li></ul></div>
-          <div class="detail-box"><h3>Results</h3><p>This project demonstrates full-stack development, database design, complex rule modeling, debugging, UI organization, and long-term project ownership.</p></div>
-        </article>
+function closePreview() {
+  lightbox.hidden = true;
+  lightboxImage.removeAttribute("src");
+  document.body.style.overflow = "";
+  if (previousFocus?.focus) previousFocus.focus();
+}
 
-        <article id="dnd-dashboard" class="project-panel" hidden data-title="dnd dashboard app interface navigation ui ux">
-          <div class="project-panel-top"><div><p class="project-label">D&D App Section</p><h2>Dashboard & Interface</h2><div class="tags"><span>UI/UX</span><span>Navigation</span><span>Dashboard</span><span>Player Hub</span></div></div><strong class="project-badge">Interface</strong></div>
-          <p>The dashboard acts as the central hub for the application, giving users access to characters, campaign tools, achievements, progression systems, and app navigation.</p>
-          <img src="images/dnd-app-dashboard.jpg" class="project-image" alt="D&D app dashboard preview" />
-          <div class="detail-box"><h3>What This Shows</h3><ul><li>App-style interface design</li><li>Organized navigation between major systems</li><li>Player-focused layout for campaign tools and progression</li><li>Visual consistency across the app</li></ul></div>
-        </article>
+closeLightbox.addEventListener("click", closePreview);
+lightbox.addEventListener("click", e => {
+  if (e.target === lightbox) closePreview();
+});
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape" && !lightbox.hidden) closePreview();
+});
 
-        <article id="dnd-account" class="project-panel" hidden data-title="dnd account profile user settings titles cosmetics dashboard backgrounds authentication">
-          <div class="project-panel-top"><div><p class="project-label">D&D App Section</p><h2>Account & Profile</h2><div class="tags"><span>User Accounts</span><span>Profiles</span><span>Cosmetics</span><span>Settings</span></div></div><strong class="project-badge">User System</strong></div>
-          <p>Account and profile functionality supports user identity, personalization, profile editing, and future cosmetic progression such as equipped titles and dashboard backgrounds.</p>
-          <div class="detail-box"><h3>What I Built / Planned</h3><ul><li>User profile structure tied to saved characters and campaign ownership</li><li>Profile customization support for titles, cosmetics, and backgrounds</li><li>Foundation for achievement reward unlocks</li><li>Account-aware user flows across protected app areas</li></ul></div>
-        </article>
+document.querySelectorAll("[data-gallery]").forEach(gallery => {
+  const slides = galleries[gallery.dataset.gallery] || [];
+  const img = gallery.querySelector("[data-gallery-image]");
+  const caption = gallery.querySelector("[data-caption]");
+  let index = 0;
+  const missing = new Set();
 
-        <article id="dnd-character-creator" class="project-panel" hidden data-title="dnd character creator wizard species classes backgrounds ability scores equipment validation">
-          <div class="project-panel-top"><div><p class="project-label">D&D App Section</p><h2>Character Creator</h2><div class="tags"><span>Wizard Flow</span><span>Validation</span><span>Rules Logic</span><span>Character Data</span></div></div><strong class="project-badge">Core System</strong></div>
-          <p>A multi-step character creation system for building characters through species, class, background, ability scores, language choices, equipment, and spells.</p>
-          <img src="images/dnd-character-creator.jpg" class="project-image" alt="D&D app character creator preview" />
-          <div class="detail-box"><h3>Features</h3><ul><li>Step-by-step creation flow</li><li>Species, class, and background selection</li><li>Ability score assignment and validation</li><li>Starting equipment and spell selection logic</li><li>Database-backed options instead of hardcoded assumptions</li></ul></div>
-          <div class="detail-box"><h3>Why It Matters</h3><p>This section demonstrates complex frontend state management, database-driven content, validation logic, and the ability to translate tabletop rules into structured application workflows.</p></div>
-        </article>
+  function show() {
+    if (missing.size === slides.length) {
+      img.hidden = true;
+      caption.textContent = "Screenshots unavailable";
+      return;
+    }
+    img.hidden = false;
+    img.src = slides[index][0];
+    img.alt = slides[index][1];
+    caption.textContent = slides[index][1];
+  }
 
-        <article id="dnd-my-characters" class="project-panel" hidden data-title="dnd my characters saved characters manage review open character sheets">
-          <div class="project-panel-top"><div><p class="project-label">D&D App Section</p><h2>My Characters</h2><div class="tags"><span>Character Management</span><span>Saved Data</span><span>Player Tools</span></div></div><strong class="project-badge">Player Hub</strong></div>
-          <p>The My Characters section lets users open, review, and manage their saved characters from one central place.</p>
-          <div class="detail-box"><h3>What This Shows</h3><ul><li>Saved character ownership</li><li>Character listing and management workflows</li><li>Navigation into detailed character sheets</li><li>Foundation for campaign assignment and player-facing tools</li></ul></div>
-        </article>
-
-        <article id="dnd-character-sheet" class="project-panel" hidden data-title="dnd character sheet inventory actions features spells defenses resources automation">
-          <div class="project-panel-top"><div><p class="project-label">D&D App Section</p><h2>Character Sheet</h2><div class="tags"><span>Player Tools</span><span>Inventory</span><span>Actions</span><span>Automation</span></div></div><strong class="project-badge">Player System</strong></div>
-          <p>The character sheet is the player-facing hub for viewing character data, actions, defenses, features, inventory, spells, and progression-related information.</p>
-          <img src="images/dnd-character-sheet.jpg" class="project-image" alt="D&D app character sheet preview" />
-          <div class="detail-box"><h3>Features</h3><ul><li>Character stats, features, senses, defenses, and resources</li><li>Inventory and equipment display</li><li>Spell and action sections</li><li>Foundation for future automation such as spell slots, rests, resources, and combat actions</li></ul></div>
-        </article>
-
-        <article id="dnd-campaigns" class="project-panel" hidden data-title="dnd campaigns shared adventures progress campaign management">
-          <div class="project-panel-top"><div><p class="project-label">D&D App Section</p><h2>Campaigns</h2><div class="tags"><span>Campaigns</span><span>Shared Adventures</span><span>Progress</span></div></div><strong class="project-badge">Campaign System</strong></div>
-          <p>The Campaigns section supports joining campaigns, tracking progress, and managing shared adventures between players and the DM.</p>
-          <div class="detail-box"><h3>What This Shows</h3><ul><li>Campaign-level organization</li><li>Shared player/DM spaces</li><li>Future campaign progress tracking</li><li>Relationship between users, characters, and campaigns</li></ul></div>
-        </article>
-
-        <article id="dnd-achievements" class="project-panel" hidden data-title="dnd achievement system categories rewards cosmetics unlocks points progression">
-          <div class="project-panel-top"><div><p class="project-label">D&D App Section</p><h2>Achievement System</h2><div class="tags"><span>Progression</span><span>Rewards</span><span>Cosmetics</span><span>Unlocks</span></div></div><strong class="project-badge">Gamification</strong></div>
-          <p>A progression and reward system that tracks achievement categories, points, unlocks, rewards, cosmetics, and player milestones.</p>
-          <img src="images/dnd-achievements.jpg" class="project-image" alt="D&D app achievement system preview" />
-          <div class="detail-box"><h3>Features</h3><ul><li>Achievement categories and progress tracking</li><li>Reward and cosmetic unlock support</li><li>Points-based progression</li><li>Designed for future automatic triggers from gameplay events</li></ul></div>
-        </article>
-
-        <article id="dnd-library" class="project-panel" hidden data-title="dnd library rules spells books reference material">
-          <div class="project-panel-top"><div><p class="project-label">D&D App Section</p><h2>Library</h2><div class="tags"><span>Reference</span><span>Rules</span><span>Spells</span><span>Books</span></div></div><strong class="project-badge">Reference System</strong></div>
-          <p>The Library provides access to books, rules, spells, and reference material used throughout the app.</p>
-          <div class="detail-box"><h3>What This Shows</h3><ul><li>Centralized rules/reference access</li><li>Foundation for spell browsing and filtering</li><li>Reusable data across character tools and gameplay systems</li></ul></div>
-        </article>
-
-        <article id="dnd-crafting" class="project-panel" hidden data-title="dnd crafting magic items materials downtime cost progress">
-          <div class="project-panel-top"><div><p class="project-label">D&D App Section</p><h2>Crafting</h2><div class="tags"><span>Crafting</span><span>Materials</span><span>Progress</span><span>Downtime</span></div></div><strong class="project-badge">Item System</strong></div>
-          <p>Crafting tracks magic item crafting projects, required materials, downtime, cost, and progress.</p>
-          <div class="detail-box"><h3>What This Shows</h3><ul><li>Long-running player activities</li><li>Material and cost tracking</li><li>Progress-based workflows</li><li>Future integration with inventory and stores</li></ul></div>
-        </article>
-
-        <article id="dnd-store" class="project-panel" hidden data-title="dnd store buy items gear resources shop">
-          <div class="project-panel-top"><div><p class="project-label">D&D App Section</p><h2>Store</h2><div class="tags"><span>Shop</span><span>Items</span><span>Gear</span></div></div><strong class="project-badge">Player Economy</strong></div>
-          <p>The Store is designed for players to buy items, gear, and resources from available campaign stores.</p>
-          <div class="detail-box"><h3>What This Shows</h3><ul><li>Player-facing item purchasing flow</li><li>Integration point for inventory and currency</li><li>Foundation for campaign-specific item availability</li></ul></div>
-        </article>
-
-        <article id="dnd-store-management" class="project-panel" hidden data-title="dnd store management stock prices quantities admin dm tools">
-          <div class="project-panel-top"><div><p class="project-label">D&D App Section</p><h2>Store Management</h2><div class="tags"><span>Admin Tools</span><span>Stock</span><span>Pricing</span><span>Quantities</span></div></div><strong class="project-badge">Management</strong></div>
-          <p>Store Management lets the DM toggle available items, set prices, manage stock, and control item quantities.</p>
-          <div class="detail-box"><h3>What This Shows</h3><ul><li>Admin-style item management</li><li>Stock and price controls</li><li>DM-facing campaign economy tools</li><li>Connection between backend item data and player-facing store views</li></ul></div>
-        </article>
-
-        <article id="dnd-party" class="project-panel" hidden data-title="dnd party management player character sheets party members overview">
-          <div class="project-panel-top"><div><p class="project-label">D&D App Section</p><h2>Party Management</h2><div class="tags"><span>Party</span><span>Members</span><span>Character Sheets</span></div></div><strong class="project-badge">DM System</strong></div>
-          <p>Party Management lets the DM review player character sheets, party members, and overall table status.</p>
-          <div class="detail-box"><h3>What This Shows</h3><ul><li>DM visibility into party characters</li><li>Multi-character oversight</li><li>Foundation for initiative, resources, and campaign management tools</li></ul></div>
-        </article>
-
-        <article id="dnd-dm-tools" class="project-panel" hidden data-title="dnd dm tools dm only controls utilities campaign tools">
-          <div class="project-panel-top"><div><p class="project-label">D&D App Section</p><h2>DM Tools</h2><div class="tags"><span>DM Controls</span><span>Utilities</span><span>Campaign Tools</span></div></div><strong class="project-badge">Admin Tools</strong></div>
-          <p>DM Tools provides DM-only controls, utilities, and future campaign management features.</p>
-          <div class="detail-box"><h3>What This Shows</h3><ul><li>Role-aware tools</li><li>Admin/DM-only workflows</li><li>Foundation for campaign controls, chat tools, initiative, and encounter support</li></ul></div>
-        </article>
-
-        <article id="dnd-inventory" class="project-panel" hidden data-title="dnd inventory equipment containers items ammo weapons armor">
-          <div class="project-panel-top"><div><p class="project-label">D&D App Section</p><h2>Inventory System</h2><div class="tags"><span>Inventory</span><span>Equipment</span><span>Containers</span><span>Items</span></div></div><strong class="project-badge">Item Logic</strong></div>
-          <p>The Inventory System handles character items, equipment, containers, weapons, armor, and item movement between characters or storage.</p>
-          <div class="detail-box"><h3>What This Shows</h3><ul><li>Equipment and item organization</li><li>Container-aware item storage</li><li>Foundation for ammunition, quivers, stores, loot, and crafting</li><li>Complex item rules represented in application logic</li></ul></div>
-        </article>
-
-        <article id="dnd-spells" class="project-panel" hidden data-title="dnd spell system spells slots prepared known casting automation">
-          <div class="project-panel-top"><div><p class="project-label">D&D App Section</p><h2>Spell System</h2><div class="tags"><span>Spells</span><span>Slots</span><span>Prepared</span><span>Rules</span></div></div><strong class="project-badge">Rules Logic</strong></div>
-          <p>The Spell System supports spell data, spell display, character spell access, and the foundation for spellcasting automation.</p>
-          <div class="detail-box"><h3>What This Shows</h3><ul><li>Spell library and character spell display</li><li>Class-based spell logic</li><li>Foundation for spell slots, casting, healing, damage, buffs, and targeting</li><li>Database-driven spell rules instead of static hardcoding</li></ul></div>
-        </article>
-
-        <article id="dnd-database" class="project-panel" hidden data-title="dnd supabase database postgresql schema design authentication permissions migrations">
-          <div class="project-panel-top"><div><p class="project-label">D&D App Section</p><h2>Supabase Database</h2><div class="tags"><span>Supabase</span><span>PostgreSQL</span><span>Schema Design</span><span>Permissions</span></div></div><strong class="project-badge">Backend</strong></div>
-          <p>The backend uses Supabase and PostgreSQL to store character data, rules content, items, spells, features, achievements, campaign data, and application state.</p>
-          <div class="detail-box"><h3>What This Shows</h3><ul><li>Database-backed app architecture</li><li>Schema design for complex game rules and player data</li><li>Permission troubleshooting and migrations</li><li>Long-term data organization across many related systems</li></ul></div>
-          <div class="detail-box"><h3>Why It Matters</h3><p>This section demonstrates backend thinking, database modeling, debugging, and the ability to build a system that can grow over time instead of relying only on static frontend data.</p></div>
-        </article>
-
-        <article id="dnd-auth" class="project-panel" hidden data-title="dnd authentication permissions protected routes user ownership authorization supabase auth">
-          <div class="project-panel-top"><div><p class="project-label">D&D App Section</p><h2>Authentication & Permissions</h2><div class="tags"><span>Auth</span><span>Permissions</span><span>Protected Routes</span><span>Ownership</span></div></div><strong class="project-badge">Security</strong></div>
-          <p>Authentication and permissions protect user data, support account-specific character ownership, and create role-aware access for player and DM features.</p>
-          <div class="detail-box"><h3>What This Shows</h3><ul><li>User authentication and session-aware app behavior</li><li>Protected routes and account-owned data</li><li>Role-aware separation between player and DM tools</li><li>Permission troubleshooting across frontend and Supabase backend</li></ul></div>
-        </article>
-
-        <article id="website" class="project-panel" hidden data-title="notxes portfolio website html css branding">
-          <div class="project-panel-top"><div><p class="project-label">Portfolio</p><h2>Notxes Portfolio Website</h2><div class="tags"><span>HTML</span><span>CSS</span><span>Portfolio</span><span>Branding</span></div></div><strong class="project-badge">Professional</strong></div>
-          <p>Built and maintained a personal portfolio website to present cybersecurity projects, education, technical skills, and professional experience.</p>
-          <div class="detail-box"><h3>Purpose</h3><p>The site gives employers a clear view of practical technical work, including cybersecurity labs, infrastructure projects, application development, and career progress.</p></div>
-        </article>
-      </section>
-    </section>
-  </main>
-
-  <footer><div class="shell"></div></footer>
-
-  <div class="image-lightbox" id="imageLightbox" aria-hidden="true">
-    <button class="lightbox-close" type="button" id="lightboxClose" aria-label="Close image preview">×</button>
-    <img id="lightboxImage" src="" alt="">
-    <div class="lightbox-caption" id="lightboxCaption"></div>
-  </div>
-
-  <script>
-        const screenshots = {
-      thesis: [
-        { src: 'images/thesis-architecture.png', alt: 'Sanitized thesis architecture', caption: 'Sanitized thesis architecture' },
-        { src: 'images/thesis-flat-baseline.png', alt: 'Flat-network baseline design', caption: 'Flat-network baseline design' },
-        { src: 'images/thesis-segmented-design.png', alt: 'Segmented least-privilege design', caption: 'Segmented least-privilege design' }
-      ],
-      'security-onion': [
-        { src: 'images/security-onion-dashboard.jpg', alt: 'Security Onion dashboard', caption: 'Security Onion dashboard' },
-        { src: 'images/security-onion-alerts.jpg', alt: 'Security Onion alerts', caption: 'Security Onion alerts' },
-        { src: 'images/security-onion-hunt.jpg', alt: 'Security Onion hunt view', caption: 'Security Onion hunt view' }
-      ],
-      firewall: [
-        { src: 'images/opnsense-vlans.jpg', alt: 'OPNsense VLAN interfaces', caption: 'OPNsense VLAN interfaces' },
-        { src: 'images/opnsense-firewall-rules.jpg', alt: 'OPNsense firewall rules', caption: 'OPNsense firewall rules' }
-      ],
-      proxmox: [
-        { src: 'images/proxmox-lab-infra.jpg', alt: 'Proxmox infrastructure host', caption: 'Proxmox infrastructure host' },
-        { src: 'images/proxmox-lab-blue.jpg', alt: 'Proxmox blue team host', caption: 'Proxmox blue team host' },
-        { src: 'images/proxmox-lab-red.jpg', alt: 'Proxmox red team host', caption: 'Proxmox red team host' }
-      ]
-    };
-
-    const screenshotIndex = { thesis: 0, 'security-onion': 0, firewall: 0, proxmox: 0 };
-
-    function renderScreenshot(viewerId) {
-      const viewerShots = screenshots[viewerId];
-      if (!viewerShots) return;
-      const current = screenshotIndex[viewerId];
-      const shot = viewerShots[current];
-      const image = document.querySelector(`[data-shot-image="${viewerId}"]`);
-      const caption = document.querySelector(`[data-shot-caption="${viewerId}"]`);
-      const count = document.querySelector(`[data-shot-count="${viewerId}"]`);
-      if (image) {
-        image.src = shot.src;
-        image.alt = shot.alt;
+  img.addEventListener("error", () => {
+    missing.add(index);
+    for (let i=0; i<slides.length; i++) {
+      index = (index+1)%slides.length;
+      if (!missing.has(index)) {
+        show();
+        return;
       }
-      if (caption) caption.textContent = shot.caption;
-      if (count) count.textContent = `${current + 1} / ${viewerShots.length}`;
     }
+    show();
+  });
 
-    document.querySelectorAll('[data-prev]').forEach(button => {
-      button.addEventListener('click', () => {
-        const id = button.dataset.prev;
-        screenshotIndex[id] = (screenshotIndex[id] - 1 + screenshots[id].length) % screenshots[id].length;
-        renderScreenshot(id);
-      });
-    });
-
-    document.querySelectorAll('[data-next]').forEach(button => {
-      button.addEventListener('click', () => {
-        const id = button.dataset.next;
-        screenshotIndex[id] = (screenshotIndex[id] + 1) % screenshots[id].length;
-        renderScreenshot(id);
-      });
-    });
-
-    const lightbox = document.getElementById('imageLightbox');
-    const lightboxImage = document.getElementById('lightboxImage');
-    const lightboxCaption = document.getElementById('lightboxCaption');
-    const lightboxClose = document.getElementById('lightboxClose');
-
-    function openLightbox(image) {
-      if (!lightbox || !lightboxImage || !lightboxCaption) return;
-      lightboxImage.src = image.src;
-      lightboxImage.alt = image.alt || 'Project screenshot';
-      lightboxCaption.textContent = image.alt || 'Project screenshot';
-      lightbox.classList.add('open');
-      lightbox.setAttribute('aria-hidden', 'false');
+  function advance(direction) {
+    for (let i=0; i<slides.length; i++) {
+      index = (index+direction+slides.length)%slides.length;
+      if (!missing.has(index)) {
+        show();
+        break;
+      }
     }
+  }
 
-    function closeLightbox() {
-      if (!lightbox) return;
-      lightbox.classList.remove('open');
-      lightbox.setAttribute('aria-hidden', 'true');
-      if (lightboxImage) lightboxImage.src = '';
+  gallery.querySelector("[data-prev]").onclick = () => advance(-1);
+  gallery.querySelector("[data-next]").onclick = () => advance(1);
+  img.addEventListener("click", () => openPreview(img));
+  img.addEventListener("keydown", e => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      openPreview(img);
     }
+  });
+  show();
+});
 
-    document.querySelectorAll('.screenshot-stage img, .project-image').forEach(image => {
-      image.addEventListener('click', () => openLightbox(image));
-    });
+document.querySelectorAll("img[data-fallback]").forEach(img => {
+  function fallback() {
+    if (img.dataset.broken) return;
+    img.dataset.broken = "1";
+    const message = document.createElement("div");
+    message.className = "missing";
+    message.textContent = "Project image not available.";
+    img.replaceWith(message);
+  }
+  img.addEventListener("error", fallback);
+  if (img.complete && !img.naturalWidth) fallback();
+});
+</script>
 
-    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
-    if (lightbox) {
-      lightbox.addEventListener('click', event => {
-        if (event.target === lightbox) closeLightbox();
-      });
-    }
-    document.addEventListener('keydown', event => {
-      if (event.key === 'Escape') closeLightbox();
-    });
-
-    const categoryButtons = document.querySelectorAll('[data-category].category-btn');
-    const projectButtons = document.querySelectorAll('.project-btn[data-project]');
-    const panels = document.querySelectorAll('.project-panel');
-    const select = document.getElementById('projectSelect');
-    const search = document.getElementById('projectSearch');
-    const listHint = document.getElementById('listHint');
-
-    const categoryLabels = {
-      cybersecurity: 'Cybersecurity projects',
-      firewall: 'Firewall projects',
-      proxmox: 'Proxmox Server projects',
-      dnd: 'D&D App projects',
-      website: 'Website projects'
-    };
-
-    function showProject(id) {
-      panels.forEach(panel => panel.hidden = panel.id !== id);
-      projectButtons.forEach(button => button.classList.toggle('active', button.dataset.project === id));
-      if (select) select.value = id;
-    }
-
-    function showCategory(category) {
-      categoryButtons.forEach(button => button.classList.toggle('active', button.dataset.category === category));
-      projectButtons.forEach(button => button.hidden = button.dataset.category !== category);
-      if (listHint) listHint.textContent = categoryLabels[category] || 'Projects';
-      const firstProject = Array.from(projectButtons).find(button => button.dataset.category === category);
-      if (firstProject) showProject(firstProject.dataset.project);
-    }
-
-    categoryButtons.forEach(button => button.addEventListener('click', () => showCategory(button.dataset.category)));
-    projectButtons.forEach(button => button.addEventListener('click', () => showProject(button.dataset.project)));
-
-    if (select) {
-      select.addEventListener('change', () => {
-        const selectedButton = Array.from(projectButtons).find(button => button.dataset.project === select.value);
-        if (selectedButton) showCategory(selectedButton.dataset.category);
-        showProject(select.value);
-      });
-    }
-
-    if (search) {
-      search.addEventListener('input', () => {
-        const query = search.value.toLowerCase().trim();
-        if (!query) return;
-        const match = Array.from(panels).find(panel => panel.dataset.title.includes(query));
-        if (!match) return;
-        const selectedButton = Array.from(projectButtons).find(button => button.dataset.project === match.id);
-        if (selectedButton) showCategory(selectedButton.dataset.category);
-        showProject(match.id);
-      });
-    }
-  </script>
 </body>
 </html>
-projects-thesis-grc-clean-final.html
-HTML
-
-
-
-
-Library
-/
-Thesis
-/
-projects-with-masters-thesis.html
