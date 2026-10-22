@@ -1,895 +1,632 @@
-<!DOCTYPE html>
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#09101d">
+  <meta name="description" content="Matthew Sexton's education in Cyber Defense, Information Assurance, and cybersecurity, including completed degrees and certification study.">
   <title>Matthew Sexton | Education</title>
-  <meta name="description" content="Education background, degrees, certifications, and continuous learning of Matthew Sexton." />
 
   <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    :root {
+      color-scheme: dark;
+      --bg: #09101d;
+      --panel: #141e33;
+      --line: rgba(114, 176, 247, .24);
+      --text: #edf3ff;
+      --muted: #b4c4df;
+      --accent: #74baff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 24px;
+    }
 
     body {
       margin: 0;
-      min-height: 100vh;
-      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      font: 16px/1.65 system-ui, -apple-system, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at top right, rgba(100, 181, 255, 0.18), transparent 36%),
-        radial-gradient(circle at top left, rgba(80, 120, 255, 0.12), transparent 32%),
-        linear-gradient(180deg, #09101d 0%, #0f1830 100%);
-      color: #e8ecf4;
-      line-height: 1.6;
-    }
-
-    body, h1, h2, h3, p, li, span, small, strong, a, button, select {
-      color: #e8ecf4;
+        radial-gradient(
+          circle at 83% 0%,
+          rgba(62,117,230,.20),
+          transparent 38%
+        ),
+        linear-gradient(
+          180deg,
+          #09101d,
+          #101a2d 55%,
+          #09111f
+        );
     }
 
     a {
-      text-decoration: none;
+      color: var(--accent);
+      text-underline-offset: 3px;
     }
 
     a:hover {
-      color: #64b5ff;
+      color: #d6ebff;
     }
 
-    button, select {
-      font: inherit;
+    a:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 4px;
     }
 
     .shell {
-      width: min(1280px, 94%);
+      width: min(1160px, 92%);
       margin: 0 auto;
     }
 
-    header {
-      padding: 28px 0 34px;
-      border-bottom: 1px solid rgba(100, 181, 255, 0.18);
-      background: rgba(8, 15, 30, 0.45);
+    .site-header {
+      border-bottom: 1px solid var(--line);
     }
 
-    nav {
+    .nav {
+      padding: 22px 0;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 18px;
+      justify-content: space-between;
       flex-wrap: wrap;
-      margin-bottom: 40px;
+      gap: 18px;
     }
 
     .brand {
-      font-weight: 900;
-      letter-spacing: 0.04em;
-      color: #ffffff;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 850;
+      letter-spacing: .035em;
     }
 
     .nav-links {
       display: flex;
-      gap: 18px;
+      gap: 12px 22px;
       flex-wrap: wrap;
     }
 
     .nav-links a {
-      color: #dce4f5;
-      opacity: 0.9;
+      color: #cfdbef;
+      text-decoration: none;
+      font-size: .91rem;
+    }
+
+    .nav-links a:hover,
+    .nav-links a[aria-current="page"] {
+      color: var(--accent);
     }
 
     .hero {
-      text-align: center;
-      padding: 18px 0 4px;
+      padding: 65px 0 67px;
     }
 
     .eyebrow {
-      margin: 0 0 10px;
-      color: #64b5ff;
-      font-weight: 900;
-      letter-spacing: 0.18em;
+      margin: 0 0 12px;
+      color: var(--accent);
+      font-size: .78rem;
+      font-weight: 850;
       text-transform: uppercase;
-      font-size: 0.78rem;
+      letter-spacing: .15em;
     }
 
-    .hero h1 {
-      margin: 0 0 14px;
-      color: #f3f7ff;
-      font-size: clamp(3rem, 7vw, 5.4rem);
-      line-height: 0.98;
-      font-weight: 900;
-      letter-spacing: -0.05em;
-    }
-
-    .hero p {
-      margin: 0 auto;
-      max-width: 780px;
-      color: #a8b0c5;
-      font-size: 1.03rem;
-    }
-
-    main {
-      padding: 24px 0 70px;
-    }
-
-    .card-glass {
-      background: rgba(18, 25, 49, 0.82);
-      border: 1px solid rgba(100, 181, 255, 0.28);
-      border-radius: 16px;
-      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.28);
-      backdrop-filter: blur(8px);
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-
-    .stat {
-      padding: 18px;
-    }
-
-    .stat span {
-      display: block;
-      color: #64b5ff;
-      font-size: 0.76rem;
-      font-weight: 900;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-    }
-
-    .stat strong {
-      display: block;
-      margin-top: 8px;
-      color: #ffffff;
-      font-size: 1.45rem;
-      line-height: 1.1;
-    }
-
-    .categories {
-      padding: 18px;
-      margin-bottom: 18px;
-    }
-
-    .categories h2,
-    .education-list h2 {
-      margin: 0 0 14px;
-      color: #f3f7ff;
-    }
-
-    .category-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-    }
-
-    .category-btn,
-    .edu-btn {
-      width: 100%;
-      text-align: left;
-      cursor: pointer;
-      border: 1px solid rgba(100, 181, 255, 0.22);
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.025);
-      transition: 0.18s ease;
-    }
-
-    .category-btn {
-      padding: 14px;
-    }
-
-    .category-btn:hover,
-    .edu-btn:hover,
-    .category-btn.active,
-    .edu-btn.active {
-      background: rgba(100, 181, 255, 0.12);
-      border-color: rgba(100, 181, 255, 0.62);
-    }
-
-    .category-btn span {
-      display: block;
-      color: #ffffff;
-      font-weight: 900;
-    }
-
-    .category-btn small {
-      display: block;
-      margin-top: 4px;
-      color: #64b5ff;
-      font-weight: 800;
-    }
-
-    .workspace {
-      display: grid;
-      grid-template-columns: 360px minmax(0, 1fr);
-      gap: 16px;
-      align-items: start;
-    }
-
-    .education-list,
-    .education-detail {
-      padding: 18px;
-    }
-
-    .education-list {
-      position: sticky;
-      top: 16px;
-    }
-
-    .education-list .muted,
-    .muted {
-      color: #a8b0c5;
-    }
-
-    .edu-btn {
-      display: block;
-      padding: 14px;
-      margin-top: 10px;
-    }
-
-    .edu-btn[hidden] {
-      display: none !important;
-    }
-
-    .edu-btn span {
-      display: block;
-      color: #ffffff;
-      font-weight: 900;
-    }
-
-    .edu-btn small {
-      display: block;
-      margin-top: 4px;
-      color: #64b5ff;
-      text-transform: uppercase;
-      font-size: 0.7rem;
-      font-weight: 900;
-      letter-spacing: 0.04em;
-    }
-
-    .edu-panel[hidden] {
-      display: none !important;
-    }
-
-    .edu-panel-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      align-items: flex-start;
-      margin-bottom: 14px;
-    }
-
-    .edu-label {
-      margin: 0 0 8px;
-      color: #64b5ff;
-      font-size: 0.75rem;
-      font-weight: 900;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-    }
-
-    .edu-panel h2 {
-      margin: 0 0 10px;
-      color: #f3f7ff;
-      font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+    h1 {
+      margin: 0 0 18px;
+      font-size: clamp(2.8rem, 5.6vw, 4.6rem);
+      letter-spacing: -.045em;
       line-height: 1.08;
-      font-weight: 900;
-      letter-spacing: -0.035em;
     }
 
-    .edu-badge {
-      white-space: nowrap;
-      color: #dbeafe;
-      border: 1px solid rgba(100, 181, 255, 0.48);
-      background: rgba(100, 181, 255, 0.08);
-      border-radius: 999px;
-      padding: 8px 12px;
-      font-weight: 900;
+    h2 {
+      margin: 0 0 12px;
+      font-size: clamp(1.7rem, 3.4vw, 2.25rem);
+      line-height: 1.2;
     }
 
-    .tags {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 18px;
-    }
-
-    .tags span {
-      color: #64b5ff;
-      border: 1px solid rgba(100, 181, 255, 0.34);
-      background: rgba(100, 181, 255, 0.08);
-      border-radius: 999px;
-      padding: 6px 10px;
-      font-size: 0.75rem;
-      font-weight: 900;
-      text-transform: uppercase;
-    }
-
-    .detail-box {
-      margin-top: 16px;
-      padding: 16px;
-      border: 1px solid rgba(100, 181, 255, 0.22);
-      border-radius: 14px;
-      background: rgba(5, 10, 22, 0.42);
-    }
-
-    .detail-box h3 {
+    h3 {
       margin: 0 0 10px;
-      color: #f3f7ff;
+      font-size: 1.22rem;
+      line-height: 1.35;
     }
 
-    .detail-box p,
-    .detail-box li {
-      color: #dce4f5;
+    p {
+      margin-top: 0;
     }
 
-    .detail-box ul {
-      margin: 0;
+    .lead {
+      max-width: 770px;
+      color: var(--muted);
+      font-size: 1.08rem;
     }
 
-    .detail-box p:last-child {
-      margin-bottom: 0;
-    }
-
-    .cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .btn {
+    .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 12px 18px;
-      border-radius: 12px;
-      border: 1px solid rgba(100, 181, 255, 0.28);
-      background: rgba(18, 25, 49, 0.88);
-      color: #e8ecf4;
+      margin: 7px 9px 0 0;
+      padding: 10px 16px;
+      border: 1px solid rgba(116,187,255,.5);
+      border-radius: 10px;
+      background: rgba(116,186,255,.12);
+      color: #f1f7ff;
+      font-weight: 750;
+      text-decoration: none;
+    }
+
+    .button:hover {
+      background: rgba(116,186,255,.25);
+      color: #fff;
+    }
+
+    .button.primary {
+      color: #081424;
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .button.primary:hover {
+      color: #081424;
+      background: #b7dcff;
+    }
+
+    main {
+      padding: 47px 0 78px;
+    }
+
+    .section {
+      margin-bottom: 67px;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 800px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      background: rgba(20,30,51,.86);
+      border-radius: 17px;
+    }
+
+    .degree-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .degree-card {
+      padding: 26px;
+    }
+
+    .degree-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .school {
+      color: var(--accent);
+      font-weight: 770;
+      margin: 0 0 5px;
+    }
+
+    .degree-card p {
+      color: #d8e4f3;
+    }
+
+    .degree-card h3 {
+      font-size: clamp(1.3rem, 2.7vw, 1.65rem);
+    }
+
+    .status {
+      display: inline-block;
+      color: #b9dfff;
+      border: 1px solid rgba(116,187,255,.4);
+      border-radius: 999px;
+      padding: 5px 11px;
+      font-size: .76rem;
       font-weight: 800;
+      white-space: nowrap;
     }
 
-    .btn.primary {
-      background: #64b5ff;
-      color: #08111f;
-      border-color: transparent;
+    .status.progress {
+      color: #e8d69e;
+      border-color: rgba(232,199,118,.42);
     }
 
-    footer {
-      border-top: 1px solid rgba(100, 181, 255, 0.18);
-      padding: 24px 0;
+    .meta {
+      color: var(--muted) !important;
+      font-size: .9rem;
     }
 
-    @media (max-width: 1000px) {
-      .stats,
-      .category-grid,
-      .workspace {
+    .tag-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+
+    .tag {
+      color: #b9dfff;
+      border: 1px solid var(--line);
+      padding: 4px 9px;
+      border-radius: 999px;
+      font-size: .78rem;
+    }
+
+    .details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 17px;
+    }
+
+    .details div {
+      background: rgba(7,16,29,.38);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .details h4 {
+      margin: 0 0 7px;
+      font-size: .93rem;
+    }
+
+    .details p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(3,minmax(0,1fr));
+      gap: 16px;
+      margin-top: 23px;
+    }
+
+    .cert {
+      padding: 24px;
+    }
+
+    .cert h3 {
+      margin-top: 14px;
+    }
+
+    .cert p {
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    .research {
+      padding: 29px;
+      display: flex;
+      gap: 25px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .research p {
+      color: var(--muted);
+      max-width: 750px;
+      margin-bottom: 0;
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .footer .shell {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    @media (max-width: 850px) {
+      .cert-grid {
         grid-template-columns: 1fr;
       }
 
-      .education-list {
-        position: static;
+      .research {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .hero {
+        padding: 50px 0 55px;
+      }
+
+      main {
+        padding-top: 34px;
+      }
+
+      .section {
+        margin-bottom: 54px;
+      }
+
+      .degree-card,
+      .cert,
+      .research {
+        padding: 21px;
+      }
+
+      .details {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
       }
     }
   </style>
-
 </head>
 
 <body>
-  <header>
-    <div class="shell">
-      <nav>
-        <div class="brand">Matthew Sexton</div>
-        <div class="nav-links">
-          <a href="index.html">Home</a>
-          <a href="projects.html">Projects</a>
-          <a href="lab.html">Lab</a>
-          <a href="index.html#resume">Resume</a>
-          <a href="education.html">Education</a>
-          <a href="index.html#contact">Contact</a>
+
+<header class="site-header">
+  <nav class="nav shell" aria-label="Main navigation">
+    <a class="brand" href="index.html">Matthew Sexton</a>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="research.html">Research</a>
+      <a href="lab.html">Lab</a>
+      <a href="education.html" aria-current="page">Education</a>
+      <a href="index.html#resume">Résumé</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </nav>
+
+  <div class="hero shell">
+    <p class="eyebrow">Academic background</p>
+
+    <h1>Education &amp; Certifications</h1>
+
+    <p class="lead">
+      Education in cybersecurity, information assurance, and network
+      administration, supported by hands-on technical work and
+      ongoing graduate research.
+    </p>
+
+    <a class="button primary" href="#degrees">View degrees ↓</a>
+    <a class="button" href="#certifications">Certifications</a>
+    <a class="button" href="research.html">Graduate research</a>
+  </div>
+</header>
+
+<main class="shell">
+
+  <section class="section" id="degrees">
+    <p class="eyebrow">Formal education</p>
+    <h2>Degrees</h2>
+
+    <p class="section-intro">
+      Two completed degrees and a master's program currently in progress.
+    </p>
+
+    <div class="degree-list">
+
+      <!-- MASTER'S DEGREE -->
+
+      <article class="degree-card card">
+        <div class="degree-top">
+          <div>
+            <p class="school">Davenport University</p>
+
+            <h3>Master of Science in Information Assurance</h3>
+
+            <p class="meta">Expected graduation: December 2027</p>
+          </div>
+
+          <span class="status progress">In Progress</span>
         </div>
-      </nav>
 
+        <p>
+          Graduate coursework in enterprise security, information
+          assurance, legal and ethical issues, risk management,
+          and defensive security.
+        </p>
 
-  <section class="hero">
-    <p class="eyebrow">Academic Background</p>
-    <h1>Education</h1>
-    <p>Degrees, certification progress, and continuous learning focused on cybersecurity, infrastructure, and practical technical growth.</p>
+        <div class="details">
+          <div>
+            <h4>Academic focus</h4>
+            <p>
+              Security architecture, governance, detection,
+              and enterprise systems.
+            </p>
+          </div>
+
+          <div>
+            <h4>Research</h4>
+            <p>
+              VLAN segmentation, least-privilege access,
+              and credential-based lateral movement
+              in Active Directory.
+            </p>
+          </div>
+        </div>
+
+        <p style="margin:16px 0 0">
+          <a href="research.html">View master's research →</a>
+        </p>
+      </article>
+
+      <!-- BACHELOR'S DEGREE -->
+
+      <article class="degree-card card">
+        <div class="degree-top">
+          <div>
+            <p class="school">Davenport University</p>
+
+            <h3>Bachelor of Science in Cyber Defense</h3>
+
+            <p class="meta">
+              Completed 2026 · GPA: 3.87
+            </p>
+          </div>
+
+          <span class="status">Completed</span>
+        </div>
+
+        <p>
+          Undergraduate study in cyber defense,
+          network security, systems administration,
+          and information assurance.
+        </p>
+
+        <div class="details">
+          <div>
+            <h4>Concentrations</h4>
+            <p>
+              Health Care Information Assurance Specialty
+              and Information Assurance Specialty.
+            </p>
+          </div>
+
+          <div>
+            <h4>Applied work</h4>
+            <p>
+              Network segmentation, virtualization,
+              Windows administration, and cybersecurity
+              homelab projects.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ASSOCIATE DEGREE -->
+
+      <article class="degree-card card">
+        <div class="degree-top">
+          <div>
+            <p class="school">Delta College</p>
+
+            <h3>Associate in Applied Science in Cybersecurity</h3>
+
+            <p class="meta">Completed April 2024</p>
+          </div>
+
+          <span class="status">Completed</span>
+        </div>
+
+        <p>
+          Foundational technical study in cybersecurity,
+          networking, operating systems, and IT support.
+        </p>
+
+        <div class="tag-row">
+          <span class="tag">Cybersecurity</span>
+          <span class="tag">Networking</span>
+          <span class="tag">IT Systems</span>
+        </div>
+      </article>
+
+    </div>
   </section>
-</div>
 
+  <!-- CERTIFICATIONS -->
 
-  </header>
+  <section class="section" id="certifications">
+    <p class="eyebrow">Professional development</p>
 
-  <main class="shell">
-    <section class="stats">
-      <div class="stat card-glass">
-        <span>Degrees</span>
-        <strong>3</strong>
-      </div>
+    <h2>Certification Progress</h2>
 
+    <p class="section-intro">
+      Current certification study and planned next steps.
+    </p>
 
-  <div class="stat card-glass">
-    <span>Certification Track</span>
-    <strong>Network+ / Security+ / CySA+</strong>
-  </div>
+    <div class="cert-grid">
 
-  <div class="stat card-glass">
-    <span>Learning Focus</span>
-    <strong>Security / Infrastructure / SOC</strong>
-  </div>
-</section>
+      <article class="cert card">
+        <span class="status progress">Studying</span>
 
-<section class="categories card-glass">
-  <h2>Categories</h2>
+        <h3>CompTIA Network+</h3>
 
-  <div class="category-grid">
-    <button class="category-btn active" type="button" data-category="degrees">
-      <span>Degrees</span>
-      <small>Formal education</small>
-    </button>
+        <p>
+          Network fundamentals, routing and switching,
+          troubleshooting, and network security.
+        </p>
+      </article>
 
-    <button class="category-btn" type="button" data-category="certs">
-      <span>Certifications</span>
-      <small>In progress + planned</small>
-    </button>
+      <article class="cert card">
+        <span class="status">Planned</span>
 
-    <button class="category-btn" type="button" data-category="learning">
-      <span>Continuous Learning</span>
-      <small>Hands-on growth</small>
-    </button>
-  </div>
-</section>
+        <h3>CompTIA Security+</h3>
 
-<section class="workspace">
-  <aside class="education-list card-glass">
-    <h2>Education List</h2>
-    <p class="muted" id="listHint">Degrees</p>
+        <p>
+          Security architecture, threats, vulnerabilities,
+          access control, and security operations.
+        </p>
+      </article>
 
-    <button class="edu-btn active" type="button" data-category="degrees" data-edu="davenport-ms">
-      <span>Master of Science in Information Assurance</span>
-      <small>Davenport University</small>
-    </button>
+      <article class="cert card">
+        <span class="status">Future Goal</span>
 
-    <button class="edu-btn" type="button" data-category="degrees" data-edu="davenport-bs">
-      <span>Bachelor of Science in Cyber Defense</span>
-      <small>Davenport University</small>
-    </button>
+        <h3>CompTIA CySA+</h3>
 
-    <button class="edu-btn" type="button" data-category="degrees" data-edu="delta">
-      <span>Associate in Applied Science in Cybersecurity</span>
-      <small>Delta College</small>
-    </button>
+        <p>
+          Security analytics, vulnerability management,
+          detection, and incident response.
+        </p>
+      </article>
 
-    <button class="edu-btn" type="button" data-category="certs" data-edu="network-plus" hidden>
-      <span>CompTIA Network+</span>
-      <small>In Progress</small>
-    </button>
+    </div>
+  </section>
 
-    <button class="edu-btn" type="button" data-category="certs" data-edu="security-plus" hidden>
-      <span>CompTIA Security+</span>
-      <small>Planned</small>
-    </button>
+  <!-- GRADUATE RESEARCH -->
 
-    <button class="edu-btn" type="button" data-category="certs" data-edu="cysa-plus" hidden>
-      <span>CompTIA CySA+</span>
-      <small>Planned</small>
-    </button>
+  <aside class="research card">
+    <div>
+      <p class="eyebrow">Graduate research</p>
 
-    <button class="edu-btn" type="button" data-category="learning" data-edu="homelab-learning" hidden>
-      <span>Homelab Development</span>
-      <small>Security infrastructure</small>
-    </button>
+      <h2>Network Segmentation &amp; Lateral Movement</h2>
 
-    <button class="edu-btn" type="button" data-category="learning" data-edu="soc-learning" hidden>
-      <span>SOC Workflows</span>
-      <small>Monitoring + detection</small>
-    </button>
+      <p>
+        My master's research examines VLAN segmentation
+        and least-privilege firewall policies in a
+        controlled Active Directory environment.
+      </p>
+    </div>
 
-    <button class="edu-btn" type="button" data-category="learning" data-edu="ad-learning" hidden>
-      <span>Active Directory</span>
-      <small>Windows domain skills</small>
-    </button>
-
-    <button class="edu-btn" type="button" data-category="learning" data-edu="network-learning" hidden>
-      <span>Network Security</span>
-      <small>VLANs + firewall rules</small>
-    </button>
+    <a class="button" href="research.html">
+      Explore research →
+    </a>
   </aside>
 
-  <section class="education-detail card-glass">
-    <article id="davenport-ms" class="edu-panel">
-      <div class="edu-panel-top">
-        <div>
-          <p class="edu-label">Degree</p>
-          <h2>Master of Science in Information Assurance</h2>
-
-          <div class="tags">
-            <span>Davenport University</span>
-            <span>Cybersecurity</span>
-            <span>Information Assurance</span>
-          </div>
-        </div>
-
-        <strong class="edu-badge">In Progress</strong>
-      </div>
-
-      <p class="muted">Currently pursuing graduate-level study focused on information assurance, cybersecurity, defensive operations, enterprise security, risk management, and advanced security concepts.</p>
-
-      <div class="detail-box">
-        <h3>Expected Graduation</h3>
-        <ul>
-          <li>December 2027</li>
-        </ul>
-      </div>
-
-      <div class="detail-box">
-        <h3>Academic Highlights</h3>
-        <ul>
-          <li>Graduate coursework in information assurance and cybersecurity</li>
-          <li>Focused on defensive security, risk management, and enterprise security concepts</li>
-          <li>Applying graduate-level knowledge through homelab and security projects</li>
-        </ul>
-      </div>
-
-      <div class="cta-row">
-        <a class="btn" href="#" aria-disabled="true">Degree Not Earned Yet</a>
-      </div>
-    </article>
-
-    <article id="davenport-bs" class="edu-panel" hidden>
-      <div class="edu-panel-top">
-        <div>
-          <p class="edu-label">Degree</p>
-          <h2>Bachelor of Science in Cyber Defense</h2>
-
-          <div class="tags">
-            <span>Davenport University</span>
-            <span>Cyber Defense</span>
-            <span>Information Assurance</span>
-          </div>
-        </div>
-
-        <strong class="edu-badge">3.90 GPA</strong>
-      </div>
-
-      <p class="muted">Completed a bachelor's degree focused on defensive security, enterprise infrastructure, risk management, and practical cybersecurity operations.</p>
-
-      <div class="detail-box">
-        <h3>Concentrations</h3>
-        <ul>
-          <li>Health Care Information Assurance Specialty</li>
-          <li>Information Assurance Specialty</li>
-        </ul>
-      </div>
-
-      <div class="detail-box">
-        <h3>Academic Highlights</h3>
-        <ul>
-          <li>3.90 GPA</li>
-          <li>Cyber Defense program focus</li>
-          <li>Focused on blue team operations and security fundamentals</li>
-          <li>Applied classroom knowledge through homelab projects</li>
-        </ul>
-      </div>
-
-      <div class="cta-row">
-        <a class="btn primary" href="images/davenport-degree.jpg" target="_blank">View Diploma</a>
-      </div>
-    </article>
-
-    <article id="delta" class="edu-panel" hidden>
-      <div class="edu-panel-top">
-        <div>
-          <p class="edu-label">Degree</p>
-          <h2>Associate in Applied Science in Cybersecurity</h2>
-
-          <div class="tags">
-            <span>Delta College</span>
-            <span>Cybersecurity</span>
-            <span>Networking</span>
-          </div>
-        </div>
-
-        <strong class="edu-badge">Foundation</strong>
-      </div>
-
-      <p class="muted">Completed an associate degree focused on cybersecurity, networking, systems support, and foundational IT skills.</p>
-
-      <div class="detail-box">
-        <h3>Academic Highlights</h3>
-        <ul>
-          <li>Built strong technical fundamentals before transfer</li>
-          <li>Focused on networking, security, and systems support</li>
-          <li>Prepared for advanced cyber defense studies</li>
-        </ul>
-      </div>
-
-      <div class="cta-row">
-        <a class="btn primary" href="images/delta-degree.jpg" target="_blank">View Diploma</a>
-      </div>
-    </article>
-
-    <article id="network-plus" class="edu-panel" hidden>
-      <div class="edu-panel-top">
-        <div>
-          <p class="edu-label">Certification</p>
-          <h2>CompTIA Network+</h2>
-
-          <div class="tags">
-            <span>Networking</span>
-            <span>Troubleshooting</span>
-            <span>Infrastructure</span>
-          </div>
-        </div>
-
-        <strong class="edu-badge">In Progress</strong>
-      </div>
-
-      <p class="muted">Currently studying for Network+ to strengthen networking fundamentals, routing, switching, troubleshooting, and security basics.</p>
-
-      <div class="detail-box">
-        <h3>Focus Areas</h3>
-        <ul>
-          <li>Network fundamentals</li>
-          <li>Routing and switching concepts</li>
-          <li>Wireless and wired networking</li>
-          <li>Network troubleshooting</li>
-          <li>Security fundamentals</li>
-        </ul>
-      </div>
-
-      <div class="cta-row">
-        <a class="btn" href="#" aria-disabled="true">Certificate Not Earned Yet</a>
-      </div>
-    </article>
-
-    <article id="security-plus" class="edu-panel" hidden>
-      <div class="edu-panel-top">
-        <div>
-          <p class="edu-label">Certification</p>
-          <h2>CompTIA Security+</h2>
-
-          <div class="tags">
-            <span>Security Fundamentals</span>
-            <span>Risk</span>
-            <span>Controls</span>
-          </div>
-        </div>
-
-        <strong class="edu-badge">Planned</strong>
-      </div>
-
-      <p class="muted">Planned certification path after Network+ to validate core cybersecurity knowledge and security operations fundamentals.</p>
-
-      <div class="detail-box">
-        <h3>Focus Areas</h3>
-        <ul>
-          <li>Threats and vulnerabilities</li>
-          <li>Security architecture</li>
-          <li>Identity and access management</li>
-          <li>Risk management</li>
-          <li>Security operations basics</li>
-        </ul>
-      </div>
-    </article>
-
-    <article id="cysa-plus" class="edu-panel" hidden>
-      <div class="edu-panel-top">
-        <div>
-          <p class="edu-label">Certification</p>
-          <h2>CompTIA CySA+</h2>
-
-          <div class="tags">
-            <span>Blue Team</span>
-            <span>SOC</span>
-            <span>Threat Detection</span>
-          </div>
-        </div>
-
-        <strong class="edu-badge">Planned</strong>
-      </div>
-
-      <p class="muted">Planned blue-team certification path focused on security analytics, detection, vulnerability management, and incident response.</p>
-
-      <div class="detail-box">
-        <h3>Focus Areas</h3>
-        <ul>
-          <li>Security monitoring</li>
-          <li>Threat detection</li>
-          <li>Vulnerability management</li>
-          <li>Incident response</li>
-          <li>SOC workflows</li>
-        </ul>
-      </div>
-    </article>
-
-    <article id="homelab-learning" class="edu-panel" hidden>
-      <div class="edu-panel-top">
-        <div>
-          <p class="edu-label">Continuous Learning</p>
-          <h2>Homelab Development</h2>
-
-          <div class="tags">
-            <span>Proxmox</span>
-            <span>OPNsense</span>
-            <span>Security Onion</span>
-          </div>
-        </div>
-
-        <strong class="edu-badge">Active</strong>
-      </div>
-
-      <p class="muted">Ongoing hands-on learning through building and maintaining a segmented cybersecurity homelab.</p>
-
-      <div class="detail-box">
-        <h3>Focus Areas</h3>
-        <ul>
-          <li>Virtual infrastructure</li>
-          <li>Firewall routing and segmentation</li>
-          <li>Monitoring visibility</li>
-          <li>Attack and defense simulation</li>
-        </ul>
-      </div>
-
-      <div class="cta-row">
-        <a class="btn primary" href="projects.html">View Related Projects</a>
-      </div>
-    </article>
-
-    <article id="soc-learning" class="edu-panel" hidden>
-      <div class="edu-panel-top">
-        <div>
-          <p class="edu-label">Continuous Learning</p>
-          <h2>SOC Workflows</h2>
-
-          <div class="tags">
-            <span>Security Onion</span>
-            <span>Alerts</span>
-            <span>Traffic Analysis</span>
-          </div>
-        </div>
-
-        <strong class="edu-badge">Active</strong>
-      </div>
-
-      <p class="muted">Hands-on learning focused on monitoring traffic, reviewing alerts, understanding logs, and practicing investigation workflows.</p>
-
-      <div class="detail-box">
-        <h3>Focus Areas</h3>
-        <ul>
-          <li>Security Onion dashboards</li>
-          <li>Alert review</li>
-          <li>Packet visibility</li>
-          <li>Traffic analysis</li>
-          <li>Detection concepts</li>
-        </ul>
-      </div>
-    </article>
-
-    <article id="ad-learning" class="edu-panel" hidden>
-      <div class="edu-panel-top">
-        <div>
-          <p class="edu-label">Continuous Learning</p>
-          <h2>Active Directory</h2>
-
-          <div class="tags">
-            <span>Windows Server</span>
-            <span>Domain</span>
-            <span>Identity</span>
-          </div>
-        </div>
-
-        <strong class="edu-badge">Active</strong>
-      </div>
-
-      <p class="muted">Practical learning around Windows domain environments, users, groups, endpoints, and enterprise identity concepts.</p>
-
-      <div class="detail-box">
-        <h3>Focus Areas</h3>
-        <ul>
-          <li>Windows Server domain setup</li>
-          <li>User and group management</li>
-          <li>Endpoint joining and troubleshooting</li>
-          <li>Identity and access control concepts</li>
-        </ul>
-      </div>
-    </article>
-
-    <article id="network-learning" class="edu-panel" hidden>
-      <div class="edu-panel-top">
-        <div>
-          <p class="edu-label">Continuous Learning</p>
-          <h2>Network Security</h2>
-
-          <div class="tags">
-            <span>VLANs</span>
-            <span>Firewall Rules</span>
-            <span>Routing</span>
-          </div>
-        </div>
-
-        <strong class="edu-badge">Active</strong>
-      </div>
-
-      <p class="muted">Practical learning focused on segmentation, VLANs, firewall policies, DNS, routing, and secure network design.</p>
-
-      <div class="detail-box">
-        <h3>Focus Areas</h3>
-        <ul>
-          <li>VLAN segmentation</li>
-          <li>Inter-VLAN firewall policy</li>
-          <li>DNS troubleshooting</li>
-          <li>Routing and switching basics</li>
-          <li>Reducing lateral movement</li>
-        </ul>
-      </div>
-    </article>
-  </section>
-</section>
-
-
-  </main>
-
-  <footer>
-    <div class="shell"></div>
-  </footer>
-
-  <script>
-    const categoryButtons = document.querySelectorAll('.category-btn');
-    const eduButtons = document.querySelectorAll('.edu-btn');
-    const eduPanels = document.querySelectorAll('.edu-panel');
-    const listHint = document.getElementById('listHint');
-
-    const categoryLabels = {
-      degrees: 'Degrees',
-      certs: 'Certifications',
-      learning: 'Continuous Learning'
-    };
-
-    function showEducation(id) {
-      eduPanels.forEach(panel => {
-        panel.hidden = panel.id !== id;
-      });
-
-      eduButtons.forEach(button => {
-        button.classList.toggle('active', button.dataset.edu === id);
-      });
-    }
-
-    function showCategory(category) {
-      categoryButtons.forEach(button => {
-        button.classList.toggle('active', button.dataset.category === category);
-      });
-
-      eduButtons.forEach(button => {
-        button.hidden = button.dataset.category !== category;
-      });
-
-      if (listHint) {
-        listHint.textContent = categoryLabels[category] || 'Education';
-      }
-
-      const firstItem = Array.from(eduButtons).find(button => button.dataset.category === category);
-
-      if (firstItem) {
-        showEducation(firstItem.dataset.edu);
-      }
-    }
-
-    categoryButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        showCategory(button.dataset.category);
-      });
-    });
-
-    eduButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        showEducation(button.dataset.edu);
-      });
-    });
-  </script>
+</main>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+  <div class="shell">
+    <span>
+      Matthew Sexton · Education &amp; professional development
+    </span>
+
+    <span>
+      <a href="projects.html">Projects</a> ·
+      <a href="lab.html">Lab</a> ·
+      <a href="index.html#contact">Contact</a>
+    </span>
+  </div>
+</footer>
 
 </body>
 </html>
