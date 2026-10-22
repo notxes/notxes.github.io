@@ -5,9 +5,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#09101d">
-<meta name="description" content="Matthew Sexton's hands-on cybersecurity homelab featuring OPNsense, Cisco switching, Proxmox, Active Directory and Security Onion.">
+<meta name="description" content="Matthew Sexton's homelab featuring segmented networking, OPNsense, Cisco switching, Proxmox, Active Directory, and Security Onion.">
 <title>Matthew Sexton | Homelab Infrastructure</title>
-
 <style>
 :root {
   color-scheme: dark;
@@ -19,10 +18,7 @@
   --accent: #74baff;
 }
 * { box-sizing: border-box; }
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 24px;
-}
+html { scroll-behavior: smooth; scroll-padding-top: 24px; }
 body {
   margin: 0;
   color: var(--text);
@@ -53,11 +49,7 @@ a:focus-visible,summary:focus-visible {
   letter-spacing: .035em;
   color: #fff;
 }
-.nav-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px 22px;
-}
+.nav-links { display: flex; flex-wrap: wrap; gap: 12px 22px; }
 .nav-links a {
   color: #cfdbef;
   text-decoration: none;
@@ -91,11 +83,7 @@ h2 {
   line-height: 1.2;
   margin: 0 0 12px;
 }
-h3 {
-  font-size: 1.14rem;
-  line-height: 1.35;
-  margin: 0 0 8px;
-}
+h3 { font-size: 1.14rem; line-height: 1.35; margin: 0 0 8px; }
 p { margin-top: 0; }
 .lead,.muted,.intro { color: var(--muted); }
 .lead { max-width: 710px; font-size: 1.08rem; }
@@ -121,10 +109,7 @@ p { margin-top: 0; }
   background: rgba(116,186,255,.25);
   color: #fff;
 }
-.button.primary:hover {
-  background: #b7dcff;
-  color: #071322;
-}
+.button.primary:hover { background: #b7dcff; color: #071322; }
 .card {
   background: rgba(20,30,51,.86);
   border: 1px solid var(--line);
@@ -133,10 +118,7 @@ p { margin-top: 0; }
 .summary { padding: 24px; }
 .summary h2 { font-size: 1.1rem; margin: 0 0 14px; }
 .summary dl { margin: 0; }
-.summary dl > div {
-  border-top: 1px solid var(--line);
-  padding: 12px 0;
-}
+.summary dl > div { border-top: 1px solid var(--line); padding: 12px 0; }
 .summary dt {
   color: var(--accent);
   font-weight: 750;
@@ -144,11 +126,7 @@ p { margin-top: 0; }
   text-transform: uppercase;
   letter-spacing: .09em;
 }
-.summary dd {
-  margin: 3px 0 0;
-  color: #e3ecf9;
-  font-size: .94rem;
-}
+.summary dd { margin: 3px 0 0; color: #e3ecf9; font-size: .94rem; }
 main { padding: 46px 0 75px; }
 .section { margin-bottom: 66px; }
 .section-heading { max-width: 820px; margin-bottom: 23px; }
@@ -195,17 +173,8 @@ main { padding: 46px 0 75px; }
   min-width: min(100%,270px);
   font-weight: 750;
 }
-.node small {
-  display: block;
-  color: var(--muted);
-  font-weight: 400;
-}
-.line {
-  height: 22px;
-  width: 2px;
-  background: var(--accent);
-  opacity: .7;
-}
+.node small { display: block; color: var(--muted); font-weight: 400; }
+.line { height: 22px; width: 2px; background: var(--accent); opacity: .7; }
 .zones {
   width: 100%;
   display: grid;
@@ -219,16 +188,7 @@ main { padding: 46px 0 75px; }
   padding: 13px 10px;
 }
 .zone strong { display: block; font-size: .95rem; }
-.zone span {
-  display: block;
-  color: var(--muted);
-  font-size: .79rem;
-}
-.footnote {
-  color: var(--muted);
-  font-size: .85rem;
-  margin: 14px 0 0;
-}
+.zone span { display: block; color: var(--muted); font-size: .79rem; }
 .image-card { padding: 12px; margin: 16px 0 0; }
 .image-card img {
   display: block;
@@ -250,15 +210,8 @@ main { padding: 46px 0 75px; }
   gap: 13px;
 }
 .hardware-item { padding: 20px; }
-.hardware-item p {
-  color: var(--muted);
-  margin: 0 0 9px;
-}
-.hardware-item ul {
-  padding-left: 19px;
-  color: #d8e4f3;
-  margin: 0;
-}
+.hardware-item p { color: var(--muted); margin: 0 0 9px; }
+.hardware-item ul { padding-left: 19px; color: #d8e4f3; margin: 0; }
 .hardware-item li { margin-bottom: 5px; }
 .status {
   display: inline-block;
@@ -295,11 +248,7 @@ details p { margin: 10px 0 0; }
   gap: 20px;
   align-items: center;
 }
-.research-link p {
-  color: var(--muted);
-  max-width: 730px;
-  margin: 0;
-}
+.research-link p { color: var(--muted); max-width: 730px; margin: 0; }
 .footer {
   border-top: 1px solid var(--line);
   padding: 27px 0;
@@ -313,10 +262,7 @@ details p { margin: 10px 0 0; }
   flex-wrap: wrap;
 }
 @media(max-width:880px) {
-  .hero {
-    grid-template-columns: 1fr;
-    padding: 48px 0 55px;
-  }
+  .hero { grid-template-columns: 1fr; padding: 48px 0 55px; }
   .summary { max-width: 650px; }
   .three { grid-template-columns: 1fr; }
 }
@@ -354,10 +300,9 @@ details p { margin: 10px 0 0; }
       <p class="eyebrow">Independent infrastructure &amp; security lab</p>
       <h1>Building and securing a segmented homelab.</h1>
       <p class="lead">
-        An enterprise-style environment I design, configure,
-        and troubleshoot to develop practical skills in networking,
-        virtualization, Windows administration, and defensive
-        security monitoring.
+        An enterprise-style environment I designed and maintain
+        for networking, virtualization, Windows administration,
+        and security monitoring.
       </p>
       <a class="button primary" href="#architecture">Explore architecture →</a>
       <a class="button" href="#security">Security monitoring</a>
@@ -397,13 +342,13 @@ details p { margin: 10px 0 0; }
     <p>
       OPNsense manages inter-VLAN routing and access controls,
       while managed switching separates systems by role.
-      The goal is to make permitted traffic intentional and
-      observable rather than operate one flat lab network.
+      Firewall policies restrict communication between lab zones
+      while SPAN traffic mirroring provides visibility for Security Onion.
     </p>
   </div>
 
   <div class="architecture card">
-    <div class="topology" aria-label="Simplified network topology">
+    <div class="topology" aria-label="Lab network topology">
       <div class="node">Internet</div>
       <div class="line"></div>
       <div class="node">
@@ -444,11 +389,6 @@ details p { margin: 10px 0 0; }
         </div>
       </div>
     </div>
-    <p class="footnote">
-      Simplified conceptual layout. Actual routing and trust boundaries
-      depend on configured interfaces and firewall policies.
-      Public IPs and sensitive rules are intentionally omitted.
-    </p>
   </div>
 
   <div class="grid" style="margin-top:17px">
@@ -474,8 +414,8 @@ details p { margin: 10px 0 0; }
 
   <figure class="image-card card" data-optional-image>
     <img src="images/homelab-diagram.png"
-         alt="Detailed homelab architecture diagram" loading="lazy">
-    <figcaption>Detailed lab architecture diagram</figcaption>
+         alt="Homelab architecture diagram" loading="lazy">
+    <figcaption>Homelab network architecture</figcaption>
   </figure>
 </section>
 
@@ -484,9 +424,9 @@ details p { margin: 10px 0 0; }
     <p class="eyebrow">02 / Defensive security</p>
     <h2>Monitoring &amp; controlled testing</h2>
     <p>
-      The lab includes separate attacker, victim, and monitoring
-      workloads so I can review network activity and investigate
-      security events without touching production systems.
+      The lab separates attacker, victim, and monitoring workloads
+      for network traffic analysis, alert investigation,
+      and defensive testing.
     </p>
   </div>
 
@@ -521,14 +461,13 @@ details p { margin: 10px 0 0; }
     <figure class="image-card card" data-optional-image>
       <img src="images/security-onion-dashboard.jpg"
            alt="Security Onion monitoring screenshot" loading="lazy">
-      <figcaption>Security Onion dashboard from the lab</figcaption>
+      <figcaption>Security Onion dashboard</figcaption>
     </figure>
     <div class="info card">
       <h3>Technical evidence</h3>
       <p>
-        Configured interfaces, mirrored traffic, event review,
-        and investigation workflows are documented in the
-        dedicated project case study.
+        Security Onion deployment, VLAN traffic mirroring,
+        and event investigation are covered in the project case study.
       </p>
       <div class="tag-row">
         <span class="tag">SOC lab</span>
@@ -537,9 +476,7 @@ details p { margin: 10px 0 0; }
         <span class="tag">Alert review</span>
       </div>
       <p style="margin-top:22px">
-        <a href="projects.html#security-onion">
-          View Security Onion project →
-        </a>
+        <a href="projects.html#security-onion">View Security Onion project →</a>
       </p>
     </div>
   </div>
@@ -549,11 +486,7 @@ details p { margin: 10px 0 0; }
   <div class="section-heading">
     <p class="eyebrow">03 / Systems &amp; virtualization</p>
     <h2>Compute &amp; network infrastructure</h2>
-    <p>
-      A focused inventory of the equipment supporting the lab.
-      Planned GPU and research builds are kept separate from
-      systems documented as active.
-    </p>
+    <p>Servers, network equipment, and services supporting the homelab.</p>
   </div>
 
   <div class="hardware">
@@ -619,12 +552,6 @@ details p { margin: 10px 0 0; }
       </ul>
     </article>
   </div>
-
-  <p class="footnote">
-    Equipment roles and configurations evolve. Specifications above
-    describe the documented lab inventory rather than a production
-    service guarantee.
-  </p>
 </section>
 
 <section class="section" id="services">
@@ -632,8 +559,8 @@ details p { margin: 10px 0 0; }
     <p class="eyebrow">04 / Services &amp; administration</p>
     <h2>Systems I operate and troubleshoot</h2>
     <p>
-      These workloads provide real administration tasks
-      beyond merely installing virtual machines.
+      Core services supporting identity management,
+      network operations, and system administration.
     </p>
   </div>
 
@@ -642,7 +569,7 @@ details p { margin: 10px 0 0; }
       <h3>Windows Server &amp; Active Directory</h3>
       <p>
         Domain services, Windows clients, authentication,
-        permissions, and Group Policy testing in a controlled environment.
+        permissions, and Group Policy testing.
       </p>
     </article>
 
@@ -676,19 +603,19 @@ details p { margin: 10px 0 0; }
   <div class="section-heading">
     <p class="eyebrow">05 / In progress</p>
     <h2>Improvement roadmap</h2>
-    <p>Next steps are clearly separated from completed lab work.</p>
+    <p>Current priorities for lab development and documentation.</p>
   </div>
 
   <details>
-    <summary>Publish stronger technical evidence</summary>
+    <summary>Publish technical evidence</summary>
     <p>
       Sanitized firewall examples, diagrams, screenshots,
-      monitoring results, and short explanations of configuration decisions.
+      monitoring results, and configuration decisions.
     </p>
   </details>
 
   <details>
-    <summary>Improve observability and repeatability</summary>
+    <summary>Improve monitoring &amp; automation</summary>
     <p>
       Refine network monitoring coverage, service health visibility,
       configuration backups, and repeatable test procedures.
@@ -704,22 +631,21 @@ details p { margin: 10px 0 0; }
   </details>
 
   <details>
-    <summary>Finish specialized systems</summary>
+    <summary>Specialized systems</summary>
     <p>
-      Continue dedicated AI and security-research workstation
-      builds as time and coursework allow.
+      Continue AI and security research workstation development.
     </p>
   </details>
 </section>
 
 <aside class="research-link card">
   <div>
-    <p class="eyebrow">Graduate research · in progress</p>
+    <p class="eyebrow">Graduate research · In progress</p>
     <h2>Network Segmentation &amp; Lateral Movement</h2>
     <p>
-      This lab supports controlled research into whether VLAN
-      segmentation and least-privilege firewall policies reduce
-      credential-based movement in an Active Directory environment.
+      This lab supports research into whether VLAN segmentation
+      and least-privilege firewall policies reduce credential-based
+      movement in an Active Directory environment.
     </p>
   </div>
   <a class="button" href="research.html">View research →</a>
@@ -746,6 +672,5 @@ document.querySelectorAll('[data-optional-image]').forEach(figure => {
   if (img.complete && !img.naturalWidth) hide();
 });
 </script>
-
 </body>
 </html>
