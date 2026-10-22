@@ -13,7 +13,7 @@
       color-scheme: dark;
       --bg: #09101d;
       --panel: #141e33;
-      --line: rgba(114, 176, 247, .24);
+      --line: rgba(114,176,247,.24);
       --text: #edf3ff;
       --muted: #b4c4df;
       --accent: #74baff;
@@ -31,7 +31,8 @@
     body {
       margin: 0;
       color: var(--text);
-      font: 16px/1.65 system-ui, -apple-system, "Segoe UI", sans-serif;
+      font: 16px/1.65 system-ui,
+        -apple-system, "Segoe UI", sans-serif;
       background:
         radial-gradient(
           circle at 83% 0%,
@@ -61,7 +62,7 @@
     }
 
     .shell {
-      width: min(1160px, 92%);
+      width: min(1160px,92%);
       margin: 0 auto;
     }
 
@@ -117,14 +118,14 @@
 
     h1 {
       margin: 0 0 18px;
-      font-size: clamp(2.8rem, 5.6vw, 4.6rem);
+      font-size: clamp(2.8rem,5.6vw,4.6rem);
       letter-spacing: -.045em;
       line-height: 1.08;
     }
 
     h2 {
       margin: 0 0 12px;
-      font-size: clamp(1.7rem, 3.4vw, 2.25rem);
+      font-size: clamp(1.7rem,3.4vw,2.25rem);
       line-height: 1.2;
     }
 
@@ -156,6 +157,7 @@
       color: #f1f7ff;
       font-weight: 750;
       text-decoration: none;
+      transition: background .2s ease;
     }
 
     .button:hover {
@@ -223,7 +225,7 @@
     }
 
     .degree-card h3 {
-      font-size: clamp(1.3rem, 2.7vw, 1.65rem);
+      font-size: clamp(1.3rem,2.7vw,1.65rem);
     }
 
     .status {
@@ -284,6 +286,12 @@
     .details p {
       margin: 0;
       color: var(--muted);
+    }
+
+    .diploma-actions {
+      margin-top: 21px;
+      padding-top: 17px;
+      border-top: 1px solid var(--line);
     }
 
     .cert-grid {
@@ -381,14 +389,18 @@
 
 <header class="site-header">
   <nav class="nav shell" aria-label="Main navigation">
-    <a class="brand" href="index.html">Matthew Sexton</a>
+    <a class="brand" href="index.html">
+      Matthew Sexton
+    </a>
 
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="projects.html">Projects</a>
       <a href="research.html">Research</a>
       <a href="lab.html">Lab</a>
-      <a href="education.html" aria-current="page">Education</a>
+      <a href="education.html" aria-current="page">
+        Education
+      </a>
       <a href="index.html#resume">Résumé</a>
       <a href="index.html#contact">Contact</a>
     </div>
@@ -400,56 +412,72 @@
     <h1>Education &amp; Certifications</h1>
 
     <p class="lead">
-      Education in cybersecurity, information assurance, and network
-      administration, supported by hands-on technical work and
-      ongoing graduate research.
+      Education in cybersecurity, information assurance,
+      and network administration, supported by hands-on
+      technical work and ongoing graduate research.
     </p>
 
-    <a class="button primary" href="#degrees">View degrees ↓</a>
-    <a class="button" href="#certifications">Certifications</a>
-    <a class="button" href="research.html">Graduate research</a>
+    <a class="button primary" href="#degrees">
+      View degrees ↓
+    </a>
+    <a class="button" href="#certifications">
+      Certifications
+    </a>
+    <a class="button" href="research.html">
+      Graduate research
+    </a>
   </div>
 </header>
 
 <main class="shell">
 
+  <!-- DEGREES -->
+
   <section class="section" id="degrees">
+
     <p class="eyebrow">Formal education</p>
     <h2>Degrees</h2>
 
     <p class="section-intro">
-      Two completed degrees and a master's program currently in progress.
+      Two completed degrees and a master's program
+      currently in progress.
     </p>
 
     <div class="degree-list">
 
-      <!-- MASTER'S DEGREE -->
+      <!-- MASTER OF SCIENCE -->
 
       <article class="degree-card card">
         <div class="degree-top">
           <div>
             <p class="school">Davenport University</p>
 
-            <h3>Master of Science in Information Assurance</h3>
+            <h3>
+              Master of Science in Information Assurance
+            </h3>
 
-            <p class="meta">Expected graduation: December 2027</p>
+            <p class="meta">
+              Expected graduation: December 2027
+            </p>
           </div>
 
-          <span class="status progress">In Progress</span>
+          <span class="status progress">
+            In Progress
+          </span>
         </div>
 
         <p>
-          Graduate coursework in enterprise security, information
-          assurance, legal and ethical issues, risk management,
-          and defensive security.
+          Graduate coursework in enterprise security,
+          information assurance, legal and ethical issues,
+          risk management, and defensive security.
         </p>
 
         <div class="details">
           <div>
             <h4>Academic focus</h4>
             <p>
-              Security architecture, governance, detection,
-              and enterprise systems.
+              Security architecture, governance,
+              detection, and enterprise systems.
             </p>
           </div>
 
@@ -464,18 +492,22 @@
         </div>
 
         <p style="margin:16px 0 0">
-          <a href="research.html">View master's research →</a>
+          <a href="research.html">
+            View master's research →
+          </a>
         </p>
       </article>
 
-      <!-- BACHELOR'S DEGREE -->
+      <!-- BACHELOR OF SCIENCE -->
 
       <article class="degree-card card">
         <div class="degree-top">
           <div>
             <p class="school">Davenport University</p>
 
-            <h3>Bachelor of Science in Cyber Defense</h3>
+            <h3>
+              Bachelor of Science in Cyber Defense
+            </h3>
 
             <p class="meta">
               Completed 2026 · GPA: 3.87
@@ -509,18 +541,32 @@
             </p>
           </div>
         </div>
+
+        <div class="diploma-actions">
+          <a
+            class="button primary"
+            href="images/davenport-degree.jpg"
+            target="_blank"
+            rel="noopener noreferrer">
+            View Bachelor's Diploma ↗
+          </a>
+        </div>
       </article>
 
-      <!-- ASSOCIATE DEGREE -->
+      <!-- ASSOCIATE IN APPLIED SCIENCE -->
 
       <article class="degree-card card">
         <div class="degree-top">
           <div>
             <p class="school">Delta College</p>
 
-            <h3>Associate in Applied Science in Cybersecurity</h3>
+            <h3>
+              Associate in Applied Science in Cybersecurity
+            </h3>
 
-            <p class="meta">Completed April 2024</p>
+            <p class="meta">
+              Completed April 2024
+            </p>
           </div>
 
           <span class="status">Completed</span>
@@ -536,6 +582,16 @@
           <span class="tag">Networking</span>
           <span class="tag">IT Systems</span>
         </div>
+
+        <div class="diploma-actions">
+          <a
+            class="button primary"
+            href="images/delta-degree.jpg"
+            target="_blank"
+            rel="noopener noreferrer">
+            View Associate's Diploma ↗
+          </a>
+        </div>
       </article>
 
     </div>
@@ -544,6 +600,7 @@
   <!-- CERTIFICATIONS -->
 
   <section class="section" id="certifications">
+
     <p class="eyebrow">Professional development</p>
 
     <h2>Certification Progress</h2>
@@ -555,7 +612,9 @@
     <div class="cert-grid">
 
       <article class="cert card">
-        <span class="status progress">Studying</span>
+        <span class="status progress">
+          Studying
+        </span>
 
         <h3>CompTIA Network+</h3>
 
@@ -566,7 +625,9 @@
       </article>
 
       <article class="cert card">
-        <span class="status">Planned</span>
+        <span class="status">
+          Planned
+        </span>
 
         <h3>CompTIA Security+</h3>
 
@@ -577,7 +638,9 @@
       </article>
 
       <article class="cert card">
-        <span class="status">Future Goal</span>
+        <span class="status">
+          Future Goal
+        </span>
 
         <h3>CompTIA CySA+</h3>
 
@@ -596,7 +659,9 @@
     <div>
       <p class="eyebrow">Graduate research</p>
 
-      <h2>Network Segmentation &amp; Lateral Movement</h2>
+      <h2>
+        Network Segmentation &amp; Lateral Movement
+      </h2>
 
       <p>
         My master's research examines VLAN segmentation
